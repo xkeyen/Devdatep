@@ -1,0 +1,8 @@
+.css_ticketdate_label, .css_ticketdate_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_ticketdate_grid_line, .css_ticketdate_grid_line:hover {vertical-align: top;text-align: center;}
+.css_ticketcontent_label, .css_ticketcontent_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_ticketcontent_grid_line, .css_ticketcontent_grid_line:hover {vertical-align: top;text-align: left;}
+.css_messagetype_label, .css_messagetype_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_messagetype_grid_line, .css_messagetype_grid_line:hover {vertical-align: top;text-align: left;}
+.css_operatorid_label, .css_operatorid_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_operatorid_grid_line, .css_operatorid_grid_line:hover {vertical-align: top;text-align: left;}

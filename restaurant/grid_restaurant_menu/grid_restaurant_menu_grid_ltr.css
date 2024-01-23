@@ -1,0 +1,8 @@
+.css_tb_restaurant_menu_header_label, .css_tb_restaurant_menu_header_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_tb_restaurant_menu_header_grid_line, .css_tb_restaurant_menu_header_grid_line:hover {vertical-align: middle;text-align: left;}
+.css_tb_restaurant_menu_description_label, .css_tb_restaurant_menu_description_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_tb_restaurant_menu_description_grid_line, .css_tb_restaurant_menu_description_grid_line:hover {vertical-align: top;text-align: left;}
+.css_tb_restaurant_menu_price_label, .css_tb_restaurant_menu_price_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_tb_restaurant_menu_price_grid_line, .css_tb_restaurant_menu_price_grid_line:hover {vertical-align: middle;text-align: right;}
+.css_tb_restaurant_menu_active_menu_label, .css_tb_restaurant_menu_active_menu_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_tb_restaurant_menu_active_menu_grid_line, .css_tb_restaurant_menu_active_menu_grid_line:hover {vertical-align: middle;text-align: center;}

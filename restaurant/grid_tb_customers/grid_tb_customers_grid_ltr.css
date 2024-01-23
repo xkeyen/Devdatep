@@ -1,0 +1,14 @@
+.css_id_customer_label, .css_id_customer_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_id_customer_grid_line, .css_id_customer_grid_line:hover {vertical-align: top;text-align: right;}
+.css_customer_name_label, .css_customer_name_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_customer_name_grid_line, .css_customer_name_grid_line:hover {vertical-align: top;text-align: left;}
+.css_customer_birthday_label, .css_customer_birthday_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_customer_birthday_grid_line, .css_customer_birthday_grid_line:hover {vertical-align: top;text-align: center;}
+.css_customer_phone1_label, .css_customer_phone1_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_customer_phone1_grid_line, .css_customer_phone1_grid_line:hover {vertical-align: top;text-align: left;}
+.css_id_country_label, .css_id_country_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_id_country_grid_line, .css_id_country_grid_line:hover {vertical-align: top;text-align: right;}
+.css_customer_num_doc_label, .css_customer_num_doc_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_customer_num_doc_grid_line, .css_customer_num_doc_grid_line:hover {vertical-align: top;text-align: left;}
+.css_customer_gender_label, .css_customer_gender_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_customer_gender_grid_line, .css_customer_gender_grid_line:hover {vertical-align: top;text-align: left;}

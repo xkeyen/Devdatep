@@ -1,0 +1,62 @@
+.scAppCalendarPage { font-family: Leelawadee, Ebrima, 'Bahnschrift Light', Gadugi, 'Nirmala UI', 'Segoe UI', Verdana; font-size: 13px; background-color: #fff; background-image: none; opacity: 1; filter: alpha(opacity=100); margin: 20px }
+#calendar_mini.fc .fc-daygrid-day-number { padding: 0 4px; position: relative; z-index: 4 }
+#calendar_mini.fc .fc-scroller-liquid-absolute { position: relative; overflow: visible !important }
+#calendar_mini.fc .fc-scroller-liquid-absolute .fc-daygrid-body { width: 100% !important }
+#calendar_mini.fc .fc-scroller-liquid-absolute .fc-daygrid-body .fc-scrollgrid-sync-table { width: 100% !important }
+#calendar_mini .fc-scroller { overflow: visible !important }
+#calendar_mini .fc-scroller .fc-col-header { width: 100% !important }
+.ready .fc-toolbar-title { font-size: 14px !important }
+.fc-toolbar-title { white-space: normal; word-wrap: break-word }
+.fc-toolbar-chunk { display: flex; flex-direction: row; flex-wrap: nowrap }
+#calendar_mini.fc .fc-view-harness { height: auto !important }
+#calendar_mini.fc .fc-view-harness-active>.fc-view { position: relative !important }
+.scAppCalendarHeader { background-color: #ff7f50; background-image: none; opacity: 1; filter: alpha(opacity=100); border-color: #ff7f50; border-style: solid; border-width: 1px }
+.scAppCalendarHeaderFont { color: #FFFFFF; font-family: Leelawadee, Ebrima, 'Bahnschrift Light', Gadugi, 'Nirmala UI', 'Segoe UI', Verdana; font-size: 13px; text-decoration: none }
+.fc-daygrid-event { flex-direction: column; justify-content: flex-start; align-items: flex-start; overflow: hidden }
+.scAppCalendarPage .fc-theme-standard .fc-content, .scAppCalendarPage .fc-theme-standard .fc-divider, .scAppCalendarPage .fc-theme-standard .fc-list-heading td, .scAppCalendarPage .fc-theme-standard .fc-list-view, .scAppCalendarPage .fc-theme-standard .fc-popover, .scAppCalendarPage .fc-theme-standard .fc-row, .scAppCalendarPage .fc-theme-standard tbody, .scAppCalendarPage .fc-theme-standard td, .scAppCalendarPage .fc-theme-standard th, .scAppCalendarPage .fc-theme-standard thead, .fc .fc-scrollgrid { border-color: rgba(0,0,0,.05) }
+.scAppCalendarPage .fc-button { padding: 2px 18px !important; font-size: 13px !important; height: 32px !important }
+.scAppCalendarPage .fc .fc-timegrid-cols > table { height: 100% }
+.scAppCalendarPage .fc .fc-day-today, .scAppCalendarPage #calendar_mini .fc-day-today .fc-daygrid-day-frame { background-color: #FCFCEE !important; color: #6c757d !important }
+.scAppCalendarPage .fc-col-header-cell { background-color: #f1f3fa; color: #6c757d; border-color: #fff; border-width: 1px; border-style: solid; height: 40px; line-height: 40px }
+.fc-timegrid-axis, .fc-timegrid-slot-label { background-color: #f1f3fa; color: #6c757d; border-color: #fff; border-width: 1px; border-style: solid; font-family: Leelawadee, Ebrima, 'Bahnschrift Light', Gadugi, 'Nirmala UI', 'Segoe UI', Verdana; font-size: 13px }
+.fc-header-title, .fc-daygrid-day-number, .fc-toolbar-title { color: #6c757d; font-family: Leelawadee, Ebrima, 'Bahnschrift Light', Gadugi, 'Nirmala UI', 'Segoe UI', Verdana }
+.fc-sun, .fc-mon, .fc-tue, .fc-wed, .fc-thu, .fc-fri, .fc-sat, .fc-agenda-axis, .fc-agenda-gutter { background-image: none; opacity: 1; filter: alpha(opacity=100); color: #6c757d; font-family: Leelawadee, Ebrima, 'Bahnschrift Light', Gadugi, 'Nirmala UI', 'Segoe UI', Verdana; font-size: 13px; font-style: normal; text-decoration: none }
+.fc-not-today { color: #000; font-family: Leelawadee, Ebrima, 'Bahnschrift Light', Gadugi, 'Nirmala UI', 'Segoe UI', Verdana; font-size: 13px }
+.scCalendarEventPast { background-color: #FFE8E8; background-image: none; opacity: 1; filter: alpha(opacity=100); color: #6c757d; border-color: #CB4949; border-style: solid; border-width: 1px; padding: 3px !important }
+.scCalendarEventPastFont { color: #6c757d }
+.scCalendarEventPastFont:hover { color: #6c757d }
+.scCalendarEventPast.fc-daygrid-dot-event:hover { background-color: #FFE8E8 }
+.scCalendarEventOnDay { background-color: #D0FDD0; background-image: none; opacity: 1; filter: alpha(opacity=100); color: #6c757d; border-color: #1AAA44; border-style: solid; border-width: 1px; padding: 3px !important }
+.scCalendarEventOnDayFont { color: #6c757d }
+.scCalendarEventOnDayFont:hover { color: #6c757d }
+.scCalendarEventOnDay.fc-daygrid-dot-event:hover { background-color: #D0FDD0 }
+.scCalendarEventFuture { background-color: #9EBFEB; background-image: none; opacity: 1; filter: alpha(opacity=100); color: #6c757d; border-color: #495DCB; border-style: solid; border-width: 1px; padding: 3px !important }
+.scCalendarEventFutureFont { color: #6c757d }
+.scCalendarEventFutureFont:hover { color: #6c757d }
+.scCalendarEventFuture.fc-daygrid-dot-event:hover { background-color: #9EBFEB }
+.scCalendarPrintDate { font-family: Leelawadee, Ebrima, 'Bahnschrift Light', Gadugi, 'Nirmala UI', 'Segoe UI', Verdana; font-size: 13px; font-style: normal; text-decoration: none }
+.scCalendarPrintTime { font-family: Leelawadee, Ebrima, 'Bahnschrift Light', Gadugi, 'Nirmala UI', 'Segoe UI', Verdana; font-size: 13px; font-style: normal; text-decoration: none }
+.scCalendarPrintEvent { font-family: Leelawadee, Ebrima, 'Bahnschrift Light', Gadugi, 'Nirmala UI', 'Segoe UI', Verdana; font-size: 13px; font-style: normal; text-decoration: none }
+#calendar_mini { margin: 0 0 20px 0 }
+#calendar_mini .fc-toolbar.fc-header-toolbar { margin-bottom: 20px !important }
+#calendar_mini .fc-toolbar-title { font-size: 1.1em; margin: 13px 0 0 0; display: inline-block !important }
+#calendar_mini .fc-day-today { background-color: #FCFCEE }
+#calendar_mini .fc-col-header-cell { background-image: none; color: #6c757d; font-family: Leelawadee, Ebrima, 'Bahnschrift Light', Gadugi, 'Nirmala UI', 'Segoe UI', Verdana; font-size: 13px; font-style: normal; text-decoration: none; height: 25px; line-height: 25px }
+#calendar_mini .fc-daygrid-day-frame { background-image: none; color: #6c757d; font-family: Leelawadee, Ebrima, 'Bahnschrift Light', Gadugi, 'Nirmala UI', 'Segoe UI', Verdana; font-size: 13px; font-style: normal; text-decoration: none; cursor: pointer }
+#calendar_mini .fc-day-number { color: #6c757d; font-family: Leelawadee, Ebrima, 'Bahnschrift Light', Gadugi, 'Nirmala UI', 'Segoe UI', Verdana; font-size: 13px; font-style: normal; text-decoration: none }
+#calendar_mini .fc-state-highlight { background-color: #FCFCEE; background-image: none; border-color: #E0E6ED; border-style: solid; border-width: 1px; color: #6c757d; font-family: Leelawadee, Ebrima, 'Bahnschrift Light', Gadugi, 'Nirmala UI', 'Segoe UI', Verdana; font-size: 13px; font-style: normal; text-decoration: none }
+#calendar_mini .fc-basic-view .fc-body .fc-row { min-height: 0px }
+#calendar_mini .fc-button { font-size: 13px !important; background-image: none !important; text-shadow: 0px 0px !important; border-style: none !important; padding: 2px 18px !important; height: 32px !important; line-height: 28px !important }
+#calendar_mini .fc-content-skeleton tbody { display: none }
+div.fc button.fc-button-primary { font-size: 13px; background-image: none; text-shadow: 0px 0px; border-style: none; padding: 2px 18px; height: 32px; line-height: 28px; border: 1px solid; background-color: #f5f5f5; border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25); color: #333; box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05) }
+div.fc button.fc-button-primary:hover { background-color: #e6e6e6; color: #333; transition: background-position .1s linear }
+div.fc button.fc-button-primary:not(:disabled).fc-button-active, div.fc button.fc-button-primary:not(:disabled):active { font-size: 13px; background-image: none; text-shadow: 0px 0px; border-style: none; padding: 2px 18px; height: 32px; line-height: 28px; background-color: #ccc; box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05); border: none; color: #333 }
+div.fc button.fc-button-primary:disabled { font-size: 13px; background-image: none; text-shadow: 0px 0px; border-style: none; padding: 2px 18px; height: 32px; line-height: 28px; pointer-events: none; box-shadow: none; color: #333; background-color: #e6e6e6; border: 1px solid; border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25) }
+div.fc button.fc-button-primary:focus,div.fc button.fc-button-primary:not(:disabled).fc-button-active:focus, div.fc button.fc-button-primary:not(:disabled):active:focus { box-shadow: none }
+.fc .fc-view-container .fc-listMonth-view .fc-scroller { overflow: inherit !important }
+.scCalendarCategory { background-image: none; border-style: solid; border-width: 0; border-collapse: collapse; margin: 0; padding: 5px 0 0 0 }
+.scCalendarCategoryItemsMoldura { background-image: none; border-style: solid; border-width: 0; border-collapse: collapse; margin: 0; padding: 10px 0 0 10px; cursor: pointer }
+.scCalendarCategoryTitle { background-image: none; border-width: 0; color: #6c757d; font-family: Leelawadee, Ebrima, 'Bahnschrift Light', Gadugi, 'Nirmala UI', 'Segoe UI', Verdana; font-size: 13px; font-style: normal; text-decoration: none }
+.scCalendarCategoryItem { background-image: none; border-style: solid; border-width: 0; color: #6c757d; font-family: Leelawadee, Ebrima, 'Bahnschrift Light', Gadugi, 'Nirmala UI', 'Segoe UI', Verdana; font-size: 13px; padding: 2px; text-decoration: none }
+.scCalendarCategoryItemActive { border-style: solid; border-width: 0; color: #6c757d }
+.scCalendarCategoryItemActive div { background-image: url(../../img/scriptcase__NM__ico__NM__check_checkbox.png); background-repeat: no-repeat }

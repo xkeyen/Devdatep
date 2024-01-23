@@ -1,0 +1,12 @@
+.css_r_reservation_date_label, .css_r_reservation_date_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_r_reservation_date_grid_line, .css_r_reservation_date_grid_line:hover {vertical-align: top;text-align: center;}
+.css_r_reservation_time_label, .css_r_reservation_time_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_r_reservation_time_grid_line, .css_r_reservation_time_grid_line:hover {vertical-align: top;text-align: center;}
+.css_r_number_hours_label, .css_r_number_hours_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_r_number_hours_grid_line, .css_r_number_hours_grid_line:hover {vertical-align: top;text-align: right;}
+.css_r_people_label, .css_r_people_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_r_people_grid_line, .css_r_people_grid_line:hover {vertical-align: top;text-align: right;}
+.css_s_stage_info_label, .css_s_stage_info_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_s_stage_info_grid_line, .css_s_stage_info_grid_line:hover {vertical-align: top;text-align: right;}
+.css_r_reservation_endtime_label, .css_r_reservation_endtime_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_r_reservation_endtime_grid_line, .css_r_reservation_endtime_grid_line:hover {vertical-align: top;text-align: center;}

@@ -1,0 +1,8 @@
+.css_ticketid_label, .css_ticketid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_ticketid_grid_line, .css_ticketid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_timeelapsedanswer_label, .css_timeelapsedanswer_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_timeelapsedanswer_grid_line, .css_timeelapsedanswer_grid_line:hover {vertical-align: top;text-align: left;}
+.css_ownerid_label, .css_ownerid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_ownerid_grid_line, .css_ownerid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_categoryid_label, .css_categoryid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_categoryid_grid_line, .css_categoryid_grid_line:hover {vertical-align: top;text-align: right;}

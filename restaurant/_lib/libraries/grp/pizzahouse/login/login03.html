@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--SC_PAGE_CHARSET-->
+        <title>{lang_index_title}</title>
+        <link rel="stylesheet" type="text/css" href="{SC_LIB_CURRENT}login/css/login.css">
+        <link rel="stylesheet" type="text/css" href="{SC_LIB_CURRENT}libs/css/styles.css">
+        <style>
+        span.sc-ui-pwd-toggle-icon {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            right: 0.5rem;
+            z-index: 2;
+            float: right;
+            bottom: 1.7rem;
+        }
+        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body class="page-sidebar page-background bg-half-img" style="background-image:url('{SC_LIB_CURRENT}login/img/bg.jpg');background-size:100%;">
+        <div class="page">
+            <div class="container">
+                <div class="grid">
+                    <div class="col-7">
+                        <div class="content">
+                            <h1>
+                                {lang_index_title}
+                            </h1>
+                            <p>
+                                {lang_index_description}
+                            </p>
+                            <p>
+                               <a class="button button-block" href="../grid_menu_category/" title="View Our Menu" target="_blank">{lang_index_view_menu}</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-1">
+                    </div>
+                    <div class="col-4">
+                        <form class="form half-size" action="" {SC_FORM_ATTR}>
+                            <!--SC_FORM_HIDDEN-->
+                            <h2>
+                                {lang_index_sign_in}
+                            </h2>
+                            <div class="control">
+                                <label class="label" for="name">{lang_sec_users_fld_login}</label>
+                                <input class="input {SC_FIELD_CLASS}" {SC_FIELD_INFO_login} type="text" placeholder="Name" name="name">
+                            </div>
+                            <div class="control">
+                                <label class="label" for="pass">{lang_sec_users_fld_pswd}</label>
+                                <!--SC_FIELD_INI_pswd-->
+                                <input class="input {SC_FIELD_CLASS}" {SC_FIELD_INFO_pswd} type="password" placeholder="Password" name="pass">
+                                <!--SC_FIELD_END_pswd-->
+                            </div>
+                            <!--SC_REQUIRED_MSG-->
+							<div class="flag-lang">
+								<a class="flags" href="../app_Login/app_Login.php?lang=en"><img src="{SC_LIB_CURRENT}login/img/en_us.png"></a>
+								<a class="flags" href="../app_Login/app_Login.php?lang=pt"><img src="{SC_LIB_CURRENT}login/img/pt_br.png"></a>
+								<a class="flags" href="../app_Login/app_Login.php?lang=es"><img src="{SC_LIB_CURRENT}login/img/es_es.png"></a>
+							</div>
+                            <!--SC_CAPTCHA-->
+                            <div class="submit">
+                                <input class="button" type="button" value="{lang_index_sign_in}" {SC_FORM_SUBMIT_CALL} />
+                            </div>
+                            {SC_FIELD_INFO_Links}							
+							<hr style="margin: 25px 0 20px;">
+							<div id='message'>
+								<p style='color:#333; font-size:12px; font-weight:bold;margin: 5px 0;'>{lang_sec_users_fild_login}</p>
+								<p style="margin: 0px;font-size: 12px;">{lang_admin}: admin | {lang_tb_orders_fld_user_login}: user1 | {lang_kitchen}: user2</p>
+								<p style='color:#333; font-size:12px; font-weight:bold;margin: 5px 0;'>{lang_sec_users_fild_pswd}</p>
+								<p style="margin: 0px;font-size: 12px;">admin </p>
+							</div>
+                        </form>
+						
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="alert-message negative">
+            <span class="message"></span>
+            <span class="close">&times;</span>
+        </div>
+		<div class="copyright">
+			<p>{lang_page_copyright}</p>
+		</div>
+        
+        <!--SC_JS_LIB-->
+        <script type="text/javascript" src="{SC_LIB_CURRENT}libs/js/error.js"></script>
+    </body>
+</html>

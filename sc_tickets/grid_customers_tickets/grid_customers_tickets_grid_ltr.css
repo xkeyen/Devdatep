@@ -1,0 +1,20 @@
+.css_ticket_ticketid_label, .css_ticket_ticketid_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_ticket_ticketid_grid_line, .css_ticket_ticketid_grid_line:hover {vertical-align: top;text-align: left;}
+.css_ticket_tickettrack_label, .css_ticket_tickettrack_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_ticket_tickettrack_grid_line, .css_ticket_tickettrack_grid_line:hover {vertical-align: top;text-align: left;}
+.css_ticket_ticketdate_label, .css_ticket_ticketdate_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_ticket_ticketdate_grid_line, .css_ticket_ticketdate_grid_line:hover {vertical-align: top;text-align: left;}
+.css_ticket_subject_label, .css_ticket_subject_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_ticket_subject_grid_line, .css_ticket_subject_grid_line:hover {vertical-align: top;text-align: left;}
+.css_staff_staffname_label, .css_staff_staffname_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_staff_staffname_grid_line, .css_staff_staffname_grid_line:hover {vertical-align: top;text-align: left;}
+.css_ticket_ticketlastupdate_label, .css_ticket_ticketlastupdate_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_ticket_ticketlastupdate_grid_line, .css_ticket_ticketlastupdate_grid_line:hover {vertical-align: top;text-align: center;}
+.css_ticketpriority_priorityicon_label, .css_ticketpriority_priorityicon_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_ticketpriority_priorityicon_grid_line, .css_ticketpriority_priorityicon_grid_line:hover {vertical-align: top;text-align: center;}
+.css_ticket_ticketpriorityid_label, .css_ticket_ticketpriorityid_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_ticket_ticketpriorityid_grid_line, .css_ticket_ticketpriorityid_grid_line:hover {vertical-align: top;text-align: left;}
+.css_ticketstatus_statusicon_label, .css_ticketstatus_statusicon_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_ticketstatus_statusicon_grid_line, .css_ticketstatus_statusicon_grid_line:hover {vertical-align: top;text-align: center;}
+.css_ticketstatus_statusname_label, .css_ticketstatus_statusname_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_ticketstatus_statusname_grid_line, .css_ticketstatus_statusname_grid_line:hover {vertical-align: top;text-align: left;}

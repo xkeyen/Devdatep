@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>{lang_header_customer_login}</title>
+		<meta name="description" content="{lang_page_desc}" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="{SC_LIB_PROJECT}tickets/css/main.css">
+		<!--SC_JS_LIB-->
+        <!--SC_PAGE_CHARSET-->				
+	</head>
+
+	<body class="page-background" style="background-image:url('{SC_LIB_PROJECT}tickets/img/helpdesk-customer-bg.jpg');">
+		<div class="page">
+			<div class="container-small container-alpha">
+				<div class="background">
+					<div class="content">
+						<h1>
+							{lang_header_customer_login}
+						</h1>
+
+						<p>
+							
+						</p>
+
+						<p>
+							{lang_page_button_download}
+						</p>
+					</div>
+				</div>
+
+				<form class="form" action="" {SC_FORM_ATTR}>
+					<!--SC_FORM_HIDDEN-->
+					<h2>
+						
+					</h2>
+
+					<div class="control">
+						<label class="label" for="name">{lang_btns_emai}</label>
+						<input class="input {SC_FIELD_CLASS}" type="text" placeholder="{lang_login}" {SC_FIELD_INFO_user}>
+					</div>
+
+					<div class="control">
+						<label class="label" for="pass">{lang_sec_users_fild_pswd}</label>
+						<input class="input {SC_FIELD_CLASS}" type="password" placeholder="{lang_password}" {SC_FIELD_INFO_password}>
+					</div>
+
+					<div class="submit">
+						<input class="button" type="submit" value="{lang_btns_cfrm}" {SC_FORM_SUBMIT_INFO} />
+						<a href="../form_new_customer/form_new_customer.php" style="position: absolute;right: 41px;margin-top: 5px;font-size: 12px;">{lang_button_create_account}</a>
+						<a href="../control_forget_password/control_forget_password.php" style="position: absolute;right: 41px;margin-top: 25px;font-size: 12px;">{lang_button_forgot_password}</a>
+					</div>
+					<!-- Idiomas -->
+					<div class="flag-lang">
+						<a class="flags" href="../customer_login/customer_login.php?lang=en"><img src="{SC_LIB_PROJECT}tickets/img/en_us.png"></a>
+						<a class="flags" href="../customer_login/customer_login.php?lang=pt"><img src="{SC_LIB_PROJECT}tickets/img/pt_br.png"></a>
+						<a class="flags" href="../customer_login/customer_login.php?lang=es"><img src="{SC_LIB_PROJECT}tickets/img/es_es.png"></a>
+					</div>
+					<hr style="margin: 25px 0 20px;">
+					<div id='message'>
+						<p>{lang_fld_lbl_access_system}</p>
+						<p style="color:#333;font-size:12px;"><b>{lang_login_to_access}</b></p>
+						<p style="color:#333;font-size:12px;"><b>{lang_fld_email}:</b> {lang_fld_user_email}</p>
+						<p style="color:#333;font-size:12px;"><b>{lang_fld_password}:</b> customer</p>
+					</div>
+				</form>
+			</div>
+		</div>
+		
+	</body>
+</html>

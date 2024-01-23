@@ -1,0 +1,8 @@
+.css_customerid_label, .css_customerid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_customerid_grid_line, .css_customerid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_customername_label, .css_customername_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_customername_grid_line, .css_customername_grid_line:hover {vertical-align: top;text-align: left;}
+.css_customeremail_label, .css_customeremail_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_customeremail_grid_line, .css_customeremail_grid_line:hover {vertical-align: top;text-align: left;}
+.css_customerphone_label, .css_customerphone_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_customerphone_grid_line, .css_customerphone_grid_line:hover {vertical-align: top;text-align: left;}
