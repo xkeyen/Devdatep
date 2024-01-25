@@ -1,0 +1,12 @@
+.css_login_label, .css_login_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_login_grid_line, .css_login_grid_line:hover {vertical-align: top;text-align: right;}
+.css_contrasena_label, .css_contrasena_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_contrasena_grid_line, .css_contrasena_grid_line:hover {vertical-align: top;text-align: right;}
+.css_nombre_label, .css_nombre_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_nombre_grid_line, .css_nombre_grid_line:hover {vertical-align: top;text-align: right;}
+.css_email_label, .css_email_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_email_grid_line, .css_email_grid_line:hover {vertical-align: top;text-align: right;}
+.css_activo_label, .css_activo_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_activo_grid_line, .css_activo_grid_line:hover {vertical-align: top;text-align: right;}
+.css_codigo_activacion_label, .css_codigo_activacion_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_codigo_activacion_grid_line, .css_codigo_activacion_grid_line:hover {vertical-align: top;text-align: right;}

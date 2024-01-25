@@ -1,0 +1,28 @@
+.css_id_agenda_label, .css_id_agenda_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_id_agenda_grid_line, .css_id_agenda_grid_line:hover {vertical-align: top;text-align: right;}
+.css_id_tecnico_label, .css_id_tecnico_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_id_tecnico_grid_line, .css_id_tecnico_grid_line:hover {vertical-align: top;text-align: right;}
+.css_valor_total_label, .css_valor_total_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_valor_total_grid_line, .css_valor_total_grid_line:hover {vertical-align: top;text-align: right;}
+.css_valor_total_tot_ger, .css_valor_total_tot_ger:hover {text-align: ;text-align: right;}
+.css_fecha_inicial_label, .css_fecha_inicial_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_fecha_inicial_grid_line, .css_fecha_inicial_grid_line:hover {vertical-align: top;text-align: center;}
+.css_hora_inicial_label, .css_hora_inicial_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_hora_inicial_grid_line, .css_hora_inicial_grid_line:hover {vertical-align: top;text-align: center;}
+.css_estado_actual_label, .css_estado_actual_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_estado_actual_grid_line, .css_estado_actual_grid_line:hover {vertical-align: top;text-align: right;}
+.css_estado_actual_tot_ger, .css_estado_actual_tot_ger:hover {text-align: ;text-align: right;}
+.css_evaluacion_label, .css_evaluacion_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_id_cliente_label, .css_id_cliente_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_id_cliente_grid_line, .css_id_cliente_grid_line:hover {vertical-align: top;text-align: right;}
+.css_valor_label, .css_valor_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_valor_grid_line, .css_valor_grid_line:hover {vertical-align: top;text-align: right;}
+.css_costes_adicionales_label, .css_costes_adicionales_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_costes_adicionales_grid_line, .css_costes_adicionales_grid_line:hover {vertical-align: top;text-align: right;}
+.css_descuento_label, .css_descuento_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_descuento_grid_line, .css_descuento_grid_line:hover {vertical-align: top;text-align: right;}
+.css_ga_detalle_grid_line, .css_ga_detalle_grid_line:hover {text-align: left;margin: 0px; padding: 0px;}
+.css_valor_total_S_sub_tot, .css_valor_total_S_sub_tot:hover {text-align: left;text-align: right;}
+.css_valor_total_S_tot_ger, .css_valor_total_S_tot_ger:hover {text-align: right;}
+.css_estado_actual_C_sub_tot, .css_estado_actual_C_sub_tot:hover {text-align: left;text-align: right;}
+.css_estado_actual_C_tot_ger, .css_estado_actual_C_tot_ger:hover {text-align: right;}

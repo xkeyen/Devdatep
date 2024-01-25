@@ -1,0 +1,12 @@
+.css_id_cliente_label, .css_id_cliente_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_id_cliente_grid_line, .css_id_cliente_grid_line:hover {font-weight:bold;vertical-align: top;text-align: right;}
+.css_nombre_cliente_label, .css_nombre_cliente_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_nombre_cliente_grid_line, .css_nombre_cliente_grid_line:hover {vertical-align: top;text-align: right;}
+.css_email_cliente_label, .css_email_cliente_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_email_cliente_grid_line, .css_email_cliente_grid_line:hover {vertical-align: top;text-align: right;}
+.css_telefono_cliente_label, .css_telefono_cliente_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_telefono_cliente_grid_line, .css_telefono_cliente_grid_line:hover {vertical-align: top;text-align: right;}
+.css_direccion_cliente_label, .css_direccion_cliente_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_direccion_cliente_grid_line, .css_direccion_cliente_grid_line:hover {vertical-align: top;text-align: right;}
+.css_ciudad_cliente_label, .css_ciudad_cliente_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_ciudad_cliente_grid_line, .css_ciudad_cliente_grid_line:hover {vertical-align: top;text-align: right;}
