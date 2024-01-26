@@ -1,0 +1,12 @@
+.css_tipos_agenda_descripcion_label, .css_tipos_agenda_descripcion_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_tipos_agenda_descripcion_grid_line, .css_tipos_agenda_descripcion_grid_line:hover {vertical-align: top;text-align: left;}
+.css_tipos_agenda_duracion_label, .css_tipos_agenda_duracion_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_tipos_agenda_duracion_grid_line, .css_tipos_agenda_duracion_grid_line:hover {vertical-align: top;text-align: right;}
+.css_tipos_agenda_valor_label, .css_tipos_agenda_valor_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_tipos_agenda_valor_grid_line, .css_tipos_agenda_valor_grid_line:hover {vertical-align: top;text-align: right;}
+.css_detalles_agenda_id_detalles_agenda_label, .css_detalles_agenda_id_detalles_agenda_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_detalles_agenda_id_detalles_agenda_grid_line, .css_detalles_agenda_id_detalles_agenda_grid_line:hover {vertical-align: top;text-align: right;}
+.css_detalles_agenda_id_tipos_agenda_label, .css_detalles_agenda_id_tipos_agenda_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_detalles_agenda_id_tipos_agenda_grid_line, .css_detalles_agenda_id_tipos_agenda_grid_line:hover {vertical-align: top;text-align: right;}
+.css_detalles_agenda_id_agenda_label, .css_detalles_agenda_id_agenda_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_detalles_agenda_id_agenda_grid_line, .css_detalles_agenda_id_agenda_grid_line:hover {vertical-align: top;text-align: right;}
