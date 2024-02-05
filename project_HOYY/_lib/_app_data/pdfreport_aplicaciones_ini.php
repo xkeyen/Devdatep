@@ -7,9 +7,9 @@
     $arr_data['prod_build'] = "3";
     $arr_data['initial'] = "index.php";
     $arr_data['group'] = "project_HOYY";
-    $arr_data['apl'] = "grid_agenda";
+    $arr_data['apl'] = "pdfreport_aplicaciones";
     $arr_data['description'] = "";
     $arr_data['status'] = "NAO";
-    $arr_data['type'] = "cons";
-    $arr_data['friendly_url'] = "grid_agenda";
+    $arr_data['type'] = "reportpdf";
+    $arr_data['friendly_url'] = "pdfreport_aplicaciones";
     $arr_data['md5'] = "LigMd5";

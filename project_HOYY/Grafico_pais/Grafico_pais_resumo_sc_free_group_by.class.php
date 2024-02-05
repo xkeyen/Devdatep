@@ -7517,7 +7517,7 @@ if (!$_SESSION['sc_session'][$this->Ini->sc_page]['Grafico_pais']['doc_word'])
            $nm_saida->saida("   var sc_ajaxBordS = '" . $this->Ini->Border_s_ajax . "';\r\n");
            $nm_saida->saida("   var sc_ajaxBordW = '" . $this->Ini->Border_w_ajax . "';\r\n");
            $nm_saida->saida(" </script>\r\n");
-           $nm_saida->saida(" <script type=\"text/javascript\" src=\"Grafico_pais_jquery_4276.js\"></script>\r\n");
+           $nm_saida->saida(" <script type=\"text/javascript\" src=\"Grafico_pais_jquery_437.js\"></script>\r\n");
            $nm_saida->saida(" <script type=\"text/javascript\" src=\"Grafico_pais_message.js\"></script>\r\n");
            $nm_saida->saida(" <script type=\"text/javascript\" src=\"../_lib/lib/js/scInput.js\"></script>\r\n");
            $nm_saida->saida(" <script type=\"text/javascript\" src=\"../_lib/lib/js/jquery.scInput.js\"></script>\r\n");
