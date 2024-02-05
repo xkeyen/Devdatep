@@ -1,0 +1,10 @@
+.css_id_label, .css_id_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_id_grid_line, .css_id_grid_line:hover {vertical-align: top;text-align: right;}
+.css_id_cliente_label, .css_id_cliente_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_id_cliente_grid_line, .css_id_cliente_grid_line:hover {vertical-align: top;text-align: right;}
+.css_codigo_pais_iso_label, .css_codigo_pais_iso_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_codigo_pais_iso_grid_line, .css_codigo_pais_iso_grid_line:hover {vertical-align: top;text-align: right;}
+.css_nombre_label, .css_nombre_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_nombre_grid_line, .css_nombre_grid_line:hover {vertical-align: top;text-align: right;}
+.css_distrito_label, .css_distrito_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_distrito_grid_line, .css_distrito_grid_line:hover {vertical-align: top;text-align: right;}
