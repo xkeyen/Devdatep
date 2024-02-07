@@ -51,7 +51,7 @@
    $_SESSION['scriptcase']['form_agenda_mob']['glo_nm_path_prod']       = "/scriptcase/prod";
    $_SESSION['scriptcase']['form_agenda_mob']['glo_nm_path_imagens']    = "/scriptcase/file/img";
    $_SESSION['scriptcase']['form_agenda_mob']['glo_nm_path_imag_temp']  = "/scriptcase/tmp";
-   $_SESSION['scriptcase']['form_agenda_mob']['glo_nm_path_cache']  = "C:/Program Files/NetMake/v9-php81/wwwroot/scriptcase/file/cache";
+   $_SESSION['scriptcase']['form_agenda_mob']['glo_nm_path_cache']  = "D:/SCRIPTCASE/wwwroot/scriptcase/file/cache";
    $_SESSION['scriptcase']['form_agenda_mob']['glo_nm_path_doc']        = "C:/Program Files/NetMake/v9-php81/wwwroot/scriptcase/file/doc";
    $_SESSION['scriptcase']['form_agenda_mob']['glo_nm_conexao']         = "conn_mysql";
    $NM_dir_atual = getcwd();
@@ -943,7 +943,7 @@ class form_agenda_mob_ini
               else 
               { 
 ?>
-                  <input type="button" id="sai" onClick="window.location='<?php echo $nm_url_saida ?>'; return false" class="scButton_danger" value="<?php echo $this->Nm_lang['lang_btns_exit'] ?>" title="__NM_HINT__ (Alt + Q)" style="<?php echo $sCondStyle; ?>vertical-align: middle;display: ''">
+                  <input type="button" id="sai" onClick="window.location='<?php echo $nm_url_saida ?>'; return false" class="scButton_danger" value="<?php echo $this->Nm_lang['lang_btns_exit'] ?>" title="<?php echo $this->Nm_lang['lang_btns_exit_hint'] ?>" style="<?php echo $sCondStyle; ?>vertical-align: middle;display: ''">
 
 <?php
               } 
@@ -1105,7 +1105,7 @@ class form_agenda_mob_ini
       $this->nm_bases_odbc       = array("odbc");
       $this->nm_bases_progress   = array("progress", "pdo_progress_odbc");
       $this->nm_bases_all        = array_merge($this->nm_bases_access, $this->nm_bases_db2, $this->nm_bases_ibase, $this->nm_bases_informix, $this->nm_bases_mssql, $this->nm_bases_mysql, $this->nm_bases_postgres, $this->nm_bases_oracle, $this->nm_bases_sqlite, $this->nm_bases_sybase, $this->nm_bases_vfp, $this->nm_bases_odbc, $this->nm_bases_progress);
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQNmDQB/HIrwHuFUDMvOVcXKDWF/HIXGD9XOH9B/HAN7D5FaHgveZSJ3DWF/VoBiDcJUZSX7Z1BYHuFaDMvOV9FeV5X/VEBiHQXOZ1X7HAvsZMFaHgBOHENiH5X/VoFGHQJKDuFaDSN7HuBOHgvOVcFeDuB7DoXGHQXGZSBqD1rwHQF7DMvCHArsH5BmVoFGDcXGH9BiDSN7HQB/DMvsVcFeHEFGVoBqD9BsZ1F7DSrYD5rqDMrYZSJ3V5B7ZuJsHQNmDQFaHIrKHuJeHgvOV9FeDuB7DoXGHQBsZSBqHArYHuXGHgNODkB/HEB7VoFGHQXsDuFaHANOHQXGHgrwZSJqDWrmDoXGDcNmZ1BiDSrYHQF7HgBOHArCV5B7DoF7D9XsDQJsDSBYV5FGHgNKDkBsDurGVEBiHQXOZ1FGD1rwHQraHgvsHENiDWFGVoFGHQXsDQBqHIrKHuFUDMrYVIBsH5B3DoXGHQBiZkFGZ1rYHuFaDMveDkXKH5BmVoFGHQJKH9BiHABYHurqHgrwVcB/H5XKVoBqD9BsZ1F7DSrYD5rqDMrYZSJ3HEB7ZuJsHQNmH9FUD1BOVWXGDMNOV9FeH5XKDoXGHQBsZ1BOHABYHQFaHgBODkXKDWB3VoFGHQXsH9FUHAN7HuXGDMrYV9BUDWrmDoXGDcFYZ1BiHIveHQBiHgNKVkJqHEB7DoF7D9XsDQJsDSBYV5FGHgNKDkBsHEX/VEBiDcNmZ1X7HANOHuFGHgBOHArCV5B3VoFGHQXsDuFaD1BeHQF7DMvODkB/DWXKDoXGHQXOH9BOHAvmZMBOHgvsVkJ3DuX/VoFGHQBiZSBiDSN7HuX7DMvsV9FeHEBmVoBqD9BsZ1F7DSrYD5rqDMrYZSJGH5FYDoF7DcXOZSFGHAveV5FUHuBYVcFKDur/VoJwHQJmVIJsDSvmD5FaHgNOHEBUDWr/DoB/DcBwZSFGHANOV5FUHuNOV9FiDWXCHMFaD9JmZ1B/HIrwV5FaDErKDkBsV5FaHMJeDcBwDQFGD1veHQXGHgvsVcBOHEX7DoraHQFYH9FaHAvmZMJeHgvCHEJGDWF/VoJeD9NwDQBqHIvsV5XGDMrwDkFCDuX7VEF7D9BiH9FaHAN7D5FaDEBOZSJGH5BmDoB/D9NwZSX7D1BeV5BOHuvmVcFCDWXCVENUDcBqH9B/HABYD5JeDMzGHAFKV5XKDoF7D9XsDQJsDSBYV5FGHgNKDkFCH5FqVoBqDcNwH9B/HIveD5FaDErKZSJGH5F/DoFUHQXsDQFaHABYHQF7DMzGDkB/H5XCHIFGHQXGZ1FUZ1rYHQX7HgveHENiDWFGDoXGHQXsZSBiHIrwHQF7DMvmVcFKV5BmVoBqD9BsZkFGHArKHQFaHgNOHEFiHEFaHMXGHQNmH9X7DSN7HuraHuzGVcrsDWB3VoX7HQNwZ1FGHArKV5FUDMrYZSXeV5FqHIJsHQXGZSX7HAN7V5JwHuzGVIBOV5FYVoJwDcBqZ1B/HIBeV5FaDEBOVkXeH5F/DoraDcXOZSX7Z1BYV5JwHgvsZSrCV5F/VorqD9JmZ1rqHArKHQJwDEBODkFeH5FYVoFGHQJKDQFaHAveD5NUHgNKDkBOV5FYHMBiHQBiZkBiHIBeD5rqDEBOHErCV5FaZuJeDcJeDQFUHAveHuFaHuNOZSrCH5FqDoXGHQJmZ1F7D1rKV5FaDEBOHEXeV5FaHIJsD9XsZ9JeD1BeD5F7DMvmVcBUDWrmVorqHQNmVINUD1vsD5BqHgveDkXKDWBmZuBOHQJKDQJsZ1vCV5FGHuNOV9FeDWB3VoFGHQXGZSB/Z1rYHQBqHgveHEBUHEFqZuBODcBiDQX7DSrwD5JwDMrYVcFCDWFYHMBiD9BsVIraD1rwV5X7HgBeHEFiH5F/VoB/D9XsDQX7Z1rwHuFaHuNOZSrCH5FqDoXGHQJmZ1BiDSvOV5FUHgveHEBOV5JeZura";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQJeDQJsHAN7HQJwDMNOV9FeV5F/VoFGD9BsZ1F7Z1BeHQJsDEBeHArCDWr/DoJeHQJKDQJsZ1vCV5FGHuNOV9FeDWB3VoF7HQBiZkBiDSNOHQBOHgrKZSJqDWFqHMFaHQXsZ9JeZ1BYHuF7HgrwDkBsDWXKVEX7HQBiZ1FUZ1vOZMJeHgNOHErsH5F/DoJsHQXOZ9rqZ1BYHuF7DMzGVIB/DWXCHMFGDcFYVIraD1rwV5FGDEBeHEXeH5X/DoF7HQNwDQBqDSN7HuJwDMrYVcBUDuFGVoX7HQXOVIJwZ1rYHuFGHgvsHErCDuFYHMJeHQNwDQBOZ1BYHuJwDMrYVcFeDWJeHINUHQBsVIraZ1rYHQXGHgBYHErCHEFaHIFGHQXsDuBOD1BeD5rqHuvmVcBOH5B7VoBqHQXOZkBiDSNOHuJsHgrKVkJ3DWr/HMBOHQNmZ9JeZ1BYV5FaHgvOVcBUDWBmVEX7HQJmVIraZ1rYHQBiDMvCHENiDurmZuJeHQJeDuBOZ1BYHQrqDMrYV9FeDuX7HMF7HQXOZ1FUD1rwV5FGDEBeHEXeH5X/DoF7D9NwZSX7D1BeV5raHuzGVcFKDWFaVENUD9JmZ1X7Z1BeHQFUHgBYDkFeV5FaHMFGHQJKZSFUHANOHuFGDMBOVcXKH5XCHMXGHQJmZ1BOD1rwHQBiHgvCZSJGDuFaZuBqD9NmZSFGHANOV5JwHuNODkFCH5B3VoraD9XOH9B/D1rwD5XGDEBeHEJGDWF/ZuFaDcJeZSX7HArYV5BqHgrKV9FiV5FGVoBqD9BsZ1F7DSrYD5rqDMrYZSJGH5FYDoF7DcXOZSX7HIrKV5JwHuzGDkFCH5XCVoJwHQBsZ1FGHArYHuX7HgrKZSJqH5F/HMXGHQFYDQBOZ1BYHuFGDMBOVcFeH5B7VEraHQXOH9BqZ1BeHuJwHgBeHEFiV5B3DoF7D9XsDuFaHAveD5B/HuBOVcBOHEX7VoBqD9XGZSBqD1rKV5X7DEvsZSJGDuFaHIXGHQNmZSBiHAveD5NUHgNKDkBOV5FYHMBiHQFYH9B/HANOD5FaDErKVkXeV5FqDoFUDcJeDQX7HIrwD5JwHuNOVIBOH5XCVoB/DcNwH9B/Z1rYD5FaDMBYDkFeV5XCDoBOD9JKDQJwHAveHuFaHuNOZSrCH5FqDoXGHQJmZ1FGHArKV5FUDMrYZSXeV5FqHIJsHQFYZSX7HArYD5F7HuBOVcFeDuFqHMFUHQXOZSFaHIveHQJwDEBODkFeH5FYVoFGHQJKDQJsD1veD5JwHuNOVcBOV5X7HMBiD9BsVIraD1rwV5X7HgBeHErsDWrGDoBOHQBiZ9XGD1NKV5JeDMvOZSNiDWB3VErqHQJmZ1F7Z1vmD5rqDEBOHArCDWBmZuJeDcJeDQFUHIrKV5BqDMBOVcFKDWXKVErqHQXOZkFGDSBeD5XGDEBeZSJ3DWXCHIJsD9XsZ9JeD1BeD5F7DMvmVcFKH5XCDoraD9BsZ1B/Z1BeHQJwDEBODkFeH5FYVoFGHQJKDQBqDSzGD5NUDMvOVcXeV5r/VEB/";
       $this->prep_conect();
       $this->conectDB();
       if (!in_array(strtolower($this->nm_tpbanco), $this->nm_bases_all))
@@ -1688,7 +1688,7 @@ class form_agenda_mob_ini
               elseif(!empty($nm_url_saida)) 
               { 
 ?>
-                  <input type="button" id="sai" onClick="window.location='<?php echo $nm_url_saida ?>'; return false" class="scButton_danger" value="<?php echo $this->Nm_lang['lang_btns_exit'] ?>" title="__NM_HINT__ (Alt + Q)" style="<?php echo $sCondStyle; ?>vertical-align: middle;display: ''">
+                  <input type="button" id="sai" onClick="window.location='<?php echo $nm_url_saida ?>'; return false" class="scButton_danger" value="<?php echo $this->Nm_lang['lang_btns_exit'] ?>" title="<?php echo $this->Nm_lang['lang_btns_exit_hint'] ?>" style="<?php echo $sCondStyle; ?>vertical-align: middle;display: ''">
 
 <?php
               } 

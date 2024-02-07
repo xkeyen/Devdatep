@@ -537,6 +537,10 @@ function process_hotkeys(hotkey)
 
   scJQGeneralAdd();
 
+  $('#SC_fast_search_t').keyup(function(e) {
+   scQuickSearchKeyUp('t', e);
+  });
+
   $(document).bind('drop dragover', function (e) {
       e.preventDefault();
   });
@@ -571,8 +575,96 @@ if (!$this->NM_ajax_flag && isset($this->NM_non_ajax_info['ajaxJavascript']) && 
  });
 
    $(window).on('load', function() {
+     if ($('#t').length>0) {
+         scQuickSearchKeyUp('t', null);
+     }
+     $("#fast_search_f0_t").select2({
+        containerCssClass: 'scGridQuickSearchDivResult',
+        dropdownCssClass: 'scGridQuickSearchDivDropdown',
+        placeholder: '<?php echo $this->Ini->Nm_lang['lang_srch_all_fields'] ?>',
+    });
+     $("#cond_fast_search_f0_t").select2({
+        containerCssClass: 'scGridQuickSearchDivResult',
+        dropdownCssClass: 'scGridQuickSearchDivDropdown',
+        minimumResultsForSearch: -1
+    });
    });
- if($(".sc-ui-block-control").length) {
+   function scQuickSearchSubmit_t() {
+     nm_move('fast_search', 't');
+   }
+
+   function scQuickSearchKeyUp(sPos, e) {
+     if (null != e) {
+       var keyPressed = e.charCode || e.keyCode || e.which;
+       if (13 == keyPressed) {
+         if ('t' == sPos) scQuickSearchSubmit_t();
+       }
+       else
+       {
+           $('#SC_fast_search_submit_'+sPos).show();
+       }
+     }
+   }
+   function nm_gp_submit_qsearch(pos)
+   {
+        nm_move('fast_search', pos);
+   }
+   function nm_gp_open_qsearch_div(pos)
+   {
+        if (typeof nm_gp_open_qsearch_div_mobile == 'function') {
+            return nm_gp_open_qsearch_div_mobile(pos);
+        }
+        if($('#SC_fast_search_dropdown_' + pos).hasClass('fa-caret-down'))
+        {
+            if(($('#quicksearchph_' + pos).offset().top+$('#id_qs_div_' + pos).height()+10) >= $(document).height())
+            {
+                $('#id_qs_div_' + pos).offset({top:($('#quicksearchph_' + pos).offset().top-($('#quicksearchph_' + pos).height()/2)-$('#id_qs_div_' + pos).height()-4)});
+            }
+
+            nm_gp_open_qsearch_div_store_temp(pos);
+            $('#SC_fast_search_dropdown_' + pos).removeClass('fa-caret-down').addClass('fa-caret-up');
+        }
+        else
+        {
+            $('#SC_fast_search_dropdown_' + pos).removeClass('fa-caret-up').addClass('fa-caret-down');
+        }
+        $('#id_qs_div_' + pos).toggle();
+   }
+
+   var tmp_qs_arr_fields = [], tmp_qs_arr_cond = "";
+   function nm_gp_open_qsearch_div_store_temp(pos)
+   {
+        tmp_qs_arr_fields = [], tmp_qs_str_cond = "";
+
+        if($('#fast_search_f0_' + pos).prop('type') == 'select-multiple')
+        {
+            tmp_qs_arr_fields = $('#fast_search_f0_' + pos).val();
+        }
+        else
+        {
+            tmp_qs_arr_fields.push($('#fast_search_f0_' + pos).val());
+        }
+
+        tmp_qs_str_cond = $('#cond_fast_search_f0_' + pos).val();
+   }
+
+   function nm_gp_cancel_qsearch_div_store_temp(pos)
+   {
+        $('#fast_search_f0_' + pos).val('');
+        $("#fast_search_f0_" + pos + " option").prop('selected', false);
+        for(it=0; it<tmp_qs_arr_fields.length; it++)
+        {
+            $("#fast_search_f0_" + pos + " option[value='"+ tmp_qs_arr_fields[it] +"']").prop('selected', true);
+        }
+        $("#fast_search_f0_" + pos).change();
+        tmp_qs_arr_fields = [];
+
+        $('#cond_fast_search_f0_' + pos).val(tmp_qs_str_cond);
+        $('#cond_fast_search_f0_' + pos).change();
+        tmp_qs_str_cond = "";
+
+        nm_gp_open_qsearch_div(pos);
+   } if($(".sc-ui-block-control").length) {
   preloadBlock = new Image();
   preloadBlock.src = "<?php echo $this->Ini->path_icones; ?>/" + sc_blockExp;
  }
@@ -833,7 +925,7 @@ if (($this->Embutida_form || !$this->Embutida_call || $this->Grid_editavel || $t
         $sCondStyle = ($this->nmgp_botoes['new'] == "on") ? '' : 'display: none;';
 ?>
 <?php
-        $buttonMacroDisabled = 'sc-unique-btn-6';
+        $buttonMacroDisabled = 'sc-unique-btn-16';
         $buttonMacroLabel = "";
 
         if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['new']) && 'on' == $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['new']) {
@@ -843,7 +935,7 @@ if (($this->Embutida_form || !$this->Embutida_call || $this->Grid_editavel || $t
             $buttonMacroLabel = $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_label']['new'];
         }
 ?>
-<?php echo nmButtonOutput($this->arr_buttons, "bnovo", "scBtnFn_sys_format_inc()", "scBtnFn_sys_format_inc()", "sc_b_new_t", "", "" . $buttonMacroLabel . "", "" . $sCondStyle . "", "", "", "", $this->Ini->path_botoes, "", "__NM_HINT__ (Ctrl + Enter)", "" . $buttonMacroDisabled . "", "", "");?>
+<?php echo nmButtonOutput($this->arr_buttons, "bnovo", "scBtnFn_sys_format_inc()", "scBtnFn_sys_format_inc()", "sc_b_new_t", "", "" . $buttonMacroLabel . "", "" . $sCondStyle . "", "", "", "", $this->Ini->path_botoes, "", "", "" . $buttonMacroDisabled . "", "", "");?>
  
 <?php
         $NM_btn = true;
@@ -852,7 +944,7 @@ if (($this->Embutida_form || !$this->Embutida_call || $this->Grid_editavel || $t
         $sCondStyle = ($this->nmgp_botoes['insert'] == "on") ? '' : 'display: none;';
 ?>
 <?php
-        $buttonMacroDisabled = 'sc-unique-btn-7';
+        $buttonMacroDisabled = 'sc-unique-btn-17';
         $buttonMacroLabel = "";
 
         if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['insert']) && 'on' == $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['insert']) {
@@ -862,7 +954,7 @@ if (($this->Embutida_form || !$this->Embutida_call || $this->Grid_editavel || $t
             $buttonMacroLabel = $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_label']['insert'];
         }
 ?>
-<?php echo nmButtonOutput($this->arr_buttons, "bincluir", "scBtnFn_sys_format_inc()", "scBtnFn_sys_format_inc()", "sc_b_ins_t", "", "" . $buttonMacroLabel . "", "" . $sCondStyle . "", "", "", "", $this->Ini->path_botoes, "", "__NM_HINT__ (Ctrl + Enter)", "" . $buttonMacroDisabled . "", "", "");?>
+<?php echo nmButtonOutput($this->arr_buttons, "bincluir", "scBtnFn_sys_format_inc()", "scBtnFn_sys_format_inc()", "sc_b_ins_t", "", "" . $buttonMacroLabel . "", "" . $sCondStyle . "", "", "", "", $this->Ini->path_botoes, "", "", "" . $buttonMacroDisabled . "", "", "");?>
  
 <?php
         $NM_btn = true;
@@ -871,7 +963,7 @@ if (($this->Embutida_form || !$this->Embutida_call || $this->Grid_editavel || $t
         $sCondStyle = ($this->nmgp_botoes['insert'] == "on" && $this->nmgp_botoes['cancel'] == "on") && ($this->nm_flag_saida_novo != "S" || $this->nmgp_botoes['exit'] != "on") ? '' : 'display: none;';
 ?>
 <?php
-        $buttonMacroDisabled = 'sc-unique-btn-8';
+        $buttonMacroDisabled = 'sc-unique-btn-18';
         $buttonMacroLabel = "";
 
         if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['bcancelar']) && 'on' == $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['bcancelar']) {
@@ -881,7 +973,7 @@ if (($this->Embutida_form || !$this->Embutida_call || $this->Grid_editavel || $t
             $buttonMacroLabel = $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_label']['bcancelar'];
         }
 ?>
-<?php echo nmButtonOutput($this->arr_buttons, "bcancelar", "scBtnFn_sys_format_cnl()", "scBtnFn_sys_format_cnl()", "sc_b_sai_t", "", "" . $buttonMacroLabel . "", "" . $sCondStyle . "", "", "", "", $this->Ini->path_botoes, "", "__NM_HINT__ (Escape)", "" . $buttonMacroDisabled . "", "", "");?>
+<?php echo nmButtonOutput($this->arr_buttons, "bcancelar", "scBtnFn_sys_format_cnl()", "scBtnFn_sys_format_cnl()", "sc_b_sai_t", "", "" . $buttonMacroLabel . "", "" . $sCondStyle . "", "", "", "", $this->Ini->path_botoes, "", "", "" . $buttonMacroDisabled . "", "", "");?>
  
 <?php
         $NM_btn = true;
@@ -890,7 +982,7 @@ if (($this->Embutida_form || !$this->Embutida_call || $this->Grid_editavel || $t
         $sCondStyle = ($this->nmgp_botoes['update'] == "on") ? '' : 'display: none;';
 ?>
 <?php
-        $buttonMacroDisabled = 'sc-unique-btn-9';
+        $buttonMacroDisabled = 'sc-unique-btn-19';
         $buttonMacroLabel = "";
 
         if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['update']) && 'on' == $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['update']) {
@@ -900,7 +992,7 @@ if (($this->Embutida_form || !$this->Embutida_call || $this->Grid_editavel || $t
             $buttonMacroLabel = $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_label']['update'];
         }
 ?>
-<?php echo nmButtonOutput($this->arr_buttons, "balterar", "scBtnFn_sys_format_alt()", "scBtnFn_sys_format_alt()", "sc_b_upd_t", "", "" . $buttonMacroLabel . "", "" . $sCondStyle . "", "", "", "", $this->Ini->path_botoes, "", "__NM_HINT__ (Ctrl + S)", "" . $buttonMacroDisabled . "", "", "");?>
+<?php echo nmButtonOutput($this->arr_buttons, "balterar", "scBtnFn_sys_format_alt()", "scBtnFn_sys_format_alt()", "sc_b_upd_t", "", "" . $buttonMacroLabel . "", "" . $sCondStyle . "", "", "", "", $this->Ini->path_botoes, "", "", "" . $buttonMacroDisabled . "", "", "");?>
  
 <?php
         $NM_btn = true;
@@ -909,7 +1001,7 @@ if (($this->Embutida_form || !$this->Embutida_call || $this->Grid_editavel || $t
         $sCondStyle = ($this->nmgp_botoes['delete'] == "on") ? '' : 'display: none;';
 ?>
 <?php
-        $buttonMacroDisabled = 'sc-unique-btn-10';
+        $buttonMacroDisabled = 'sc-unique-btn-20';
         $buttonMacroLabel = "";
 
         if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['delete']) && 'on' == $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['delete']) {
@@ -919,7 +1011,7 @@ if (($this->Embutida_form || !$this->Embutida_call || $this->Grid_editavel || $t
             $buttonMacroLabel = $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_label']['delete'];
         }
 ?>
-<?php echo nmButtonOutput($this->arr_buttons, "bexcluir", "scBtnFn_sys_format_exc()", "scBtnFn_sys_format_exc()", "sc_b_del_t", "", "" . $buttonMacroLabel . "", "" . $sCondStyle . "", "", "", "", $this->Ini->path_botoes, "", "__NM_HINT__ (Ctrl + Delete)", "" . $buttonMacroDisabled . "", "", "");?>
+<?php echo nmButtonOutput($this->arr_buttons, "bexcluir", "scBtnFn_sys_format_exc()", "scBtnFn_sys_format_exc()", "sc_b_del_t", "", "" . $buttonMacroLabel . "", "" . $sCondStyle . "", "", "", "", $this->Ini->path_botoes, "", "", "" . $buttonMacroDisabled . "", "", "");?>
  
 <?php
         $NM_btn = true;
@@ -927,7 +1019,7 @@ if (($this->Embutida_form || !$this->Embutida_call || $this->Grid_editavel || $t
         $sCondStyle = ($this->nmgp_botoes['reload'] == "on") ? '' : 'display: none;';
 ?>
 <?php
-        $buttonMacroDisabled = 'sc-unique-btn-11';
+        $buttonMacroDisabled = 'sc-unique-btn-21';
         $buttonMacroLabel = "";
 
         if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['breload']) && 'on' == $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['breload']) {
@@ -955,7 +1047,7 @@ if (($this->Embutida_form || !$this->Embutida_call || $this->Grid_editavel || $t
             $buttonMacroLabel = $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_label']['help'];
         }
 ?>
-<?php echo nmButtonOutput($this->arr_buttons, "bhelp", "scBtnFn_sys_format_hlp()", "scBtnFn_sys_format_hlp()", "sc_b_hlp_t", "", "" . $buttonMacroLabel . "", "" . $sCondStyle . "", "", "", "", $this->Ini->path_botoes, "", "__NM_HINT__ (F1)", "" . $buttonMacroDisabled . "", "", "");?>
+<?php echo nmButtonOutput($this->arr_buttons, "bhelp", "scBtnFn_sys_format_hlp()", "scBtnFn_sys_format_hlp()", "sc_b_hlp_t", "", "" . $buttonMacroLabel . "", "" . $sCondStyle . "", "", "", "", $this->Ini->path_botoes, "", "", "" . $buttonMacroDisabled . "", "", "");?>
  
 <?php
         $NM_btn = true;
@@ -964,7 +1056,7 @@ if (($this->Embutida_form || !$this->Embutida_call || $this->Grid_editavel || $t
         $sCondStyle = (($this->nm_flag_saida_novo == "S" || ($this->nm_Start_new && !$this->aba_iframe)) && $this->nmgp_botoes['exit'] == "on") ? '' : 'display: none;';
 ?>
 <?php
-        $buttonMacroDisabled = 'sc-unique-btn-12';
+        $buttonMacroDisabled = 'sc-unique-btn-22';
         $buttonMacroLabel = "";
 
         if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['exit']) && 'on' == $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['exit']) {
@@ -983,7 +1075,7 @@ if (($this->Embutida_form || !$this->Embutida_call || $this->Grid_editavel || $t
         $sCondStyle = ($this->nm_flag_saida_novo == "S" && $this->nmgp_botoes['exit'] == "on") ? '' : 'display: none;';
 ?>
 <?php
-        $buttonMacroDisabled = 'sc-unique-btn-13';
+        $buttonMacroDisabled = 'sc-unique-btn-23';
         $buttonMacroLabel = "";
 
         if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['exit']) && 'on' == $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['exit']) {
@@ -1002,7 +1094,7 @@ if (($this->Embutida_form || !$this->Embutida_call || $this->Grid_editavel || $t
         $sCondStyle = (isset($_SESSION['scriptcase']['nm_sc_retorno']) && !empty($_SESSION['scriptcase']['nm_sc_retorno']) && $nm_apl_dependente != 1 && $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['run_iframe'] != "F" && $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['run_iframe'] != "R" && !$this->aba_iframe && $this->nmgp_botoes['exit'] == "on") ? '' : 'display: none;';
 ?>
 <?php
-        $buttonMacroDisabled = 'sc-unique-btn-14';
+        $buttonMacroDisabled = 'sc-unique-btn-24';
         $buttonMacroLabel = "";
 
         if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['exit']) && 'on' == $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['exit']) {
@@ -1012,7 +1104,7 @@ if (($this->Embutida_form || !$this->Embutida_call || $this->Grid_editavel || $t
             $buttonMacroLabel = $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_label']['exit'];
         }
 ?>
-<?php echo nmButtonOutput($this->arr_buttons, "bsair", "scBtnFn_sys_format_sai()", "scBtnFn_sys_format_sai()", "sc_b_sai_t", "", "" . $buttonMacroLabel . "", "" . $sCondStyle . "", "", "", "", $this->Ini->path_botoes, "", "__NM_HINT__ (Alt + Q)", "" . $buttonMacroDisabled . "", "", "");?>
+<?php echo nmButtonOutput($this->arr_buttons, "bsair", "scBtnFn_sys_format_sai()", "scBtnFn_sys_format_sai()", "sc_b_sai_t", "", "" . $buttonMacroLabel . "", "" . $sCondStyle . "", "", "", "", $this->Ini->path_botoes, "", "", "" . $buttonMacroDisabled . "", "", "");?>
  
 <?php
         $NM_btn = true;
@@ -1021,7 +1113,7 @@ if (($this->Embutida_form || !$this->Embutida_call || $this->Grid_editavel || $t
         $sCondStyle = (!isset($_SESSION['scriptcase']['nm_sc_retorno']) || empty($_SESSION['scriptcase']['nm_sc_retorno']) || $nm_apl_dependente == 1 || $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['run_iframe'] == "F" || $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['run_iframe'] == "R" || $this->aba_iframe || $this->nmgp_botoes['exit'] != "on") && ($_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['run_iframe'] != "R" && $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['run_iframe'] != "F" && $this->nmgp_botoes['exit'] == "on") && ($nm_apl_dependente == 1 && $this->nmgp_botoes['exit'] == "on") ? '' : 'display: none;';
 ?>
 <?php
-        $buttonMacroDisabled = 'sc-unique-btn-15';
+        $buttonMacroDisabled = 'sc-unique-btn-25';
         $buttonMacroLabel = "";
 
         if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['exit']) && 'on' == $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['exit']) {
@@ -1040,7 +1132,7 @@ if (($this->Embutida_form || !$this->Embutida_call || $this->Grid_editavel || $t
         $sCondStyle = (!isset($_SESSION['scriptcase']['nm_sc_retorno']) || empty($_SESSION['scriptcase']['nm_sc_retorno']) || $nm_apl_dependente == 1 || $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['run_iframe'] == "F" || $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['run_iframe'] == "R" || $this->aba_iframe || $this->nmgp_botoes['exit'] != "on") && ($_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['run_iframe'] != "R" && $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['run_iframe'] != "F" && $this->nmgp_botoes['exit'] == "on") && ($nm_apl_dependente != 1 || $this->nmgp_botoes['exit'] != "on") && ((!$this->aba_iframe || $this->is_calendar_app) && $this->nmgp_botoes['exit'] == "on") ? '' : 'display: none;';
 ?>
 <?php
-        $buttonMacroDisabled = 'sc-unique-btn-16';
+        $buttonMacroDisabled = 'sc-unique-btn-26';
         $buttonMacroLabel = "";
 
         if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['exit']) && 'on' == $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['exit']) {
@@ -1050,7 +1142,7 @@ if (($this->Embutida_form || !$this->Embutida_call || $this->Grid_editavel || $t
             $buttonMacroLabel = $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_label']['exit'];
         }
 ?>
-<?php echo nmButtonOutput($this->arr_buttons, "bsair", "scBtnFn_sys_format_sai()", "scBtnFn_sys_format_sai()", "sc_b_sai_t", "", "" . $buttonMacroLabel . "", "" . $sCondStyle . "", "", "", "", $this->Ini->path_botoes, "", "__NM_HINT__ (Alt + Q)", "" . $buttonMacroDisabled . "", "", "");?>
+<?php echo nmButtonOutput($this->arr_buttons, "bsair", "scBtnFn_sys_format_sai()", "scBtnFn_sys_format_sai()", "sc_b_sai_t", "", "" . $buttonMacroLabel . "", "" . $sCondStyle . "", "", "", "", $this->Ini->path_botoes, "", "", "" . $buttonMacroDisabled . "", "", "");?>
  
 <?php
         $NM_btn = true;
@@ -2105,7 +2197,7 @@ if ($opcao_botoes != "novo" && $this->nmgp_botoes['summary'] == "on")
         $sCondStyle = ($this->nmgp_botoes['first'] == "on") ? '' : 'display: none;';
 ?>
 <?php
-        $buttonMacroDisabled = 'sc-unique-btn-17';
+        $buttonMacroDisabled = 'sc-unique-btn-27';
         $buttonMacroLabel = "";
 
         if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['first']) && 'on' == $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['first']) {
@@ -2115,7 +2207,7 @@ if ($opcao_botoes != "novo" && $this->nmgp_botoes['summary'] == "on")
             $buttonMacroLabel = $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_label']['first'];
         }
 ?>
-<?php echo nmButtonOutput($this->arr_buttons, "binicio", "scBtnFn_sys_format_ini()", "scBtnFn_sys_format_ini()", "sc_b_ini_b", "", "" . $buttonMacroLabel . "", "" . $sCondStyle . "", "", "", "", $this->Ini->path_botoes, "", "__NM_HINT__ (Ctrl + Shift + &#8592;)", "" . $buttonMacroDisabled . "", "", "");?>
+<?php echo nmButtonOutput($this->arr_buttons, "binicio", "scBtnFn_sys_format_ini()", "scBtnFn_sys_format_ini()", "sc_b_ini_b", "", "" . $buttonMacroLabel . "", "" . $sCondStyle . "", "", "", "", $this->Ini->path_botoes, "", "", "" . $buttonMacroDisabled . "", "", "");?>
  
 <?php
         $NM_btn = true;
@@ -2124,7 +2216,7 @@ if ($opcao_botoes != "novo" && $this->nmgp_botoes['summary'] == "on")
         $sCondStyle = ($this->nmgp_botoes['back'] == "on") ? '' : 'display: none;';
 ?>
 <?php
-        $buttonMacroDisabled = 'sc-unique-btn-18';
+        $buttonMacroDisabled = 'sc-unique-btn-28';
         $buttonMacroLabel = "";
 
         if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['back']) && 'on' == $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['back']) {
@@ -2134,7 +2226,7 @@ if ($opcao_botoes != "novo" && $this->nmgp_botoes['summary'] == "on")
             $buttonMacroLabel = $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_label']['back'];
         }
 ?>
-<?php echo nmButtonOutput($this->arr_buttons, "bretorna", "scBtnFn_sys_format_ret()", "scBtnFn_sys_format_ret()", "sc_b_ret_b", "", "" . $buttonMacroLabel . "", "" . $sCondStyle . "", "", "", "", $this->Ini->path_botoes, "", "__NM_HINT__ (Ctrl + &#8592;)", "" . $buttonMacroDisabled . "", "", "");?>
+<?php echo nmButtonOutput($this->arr_buttons, "bretorna", "scBtnFn_sys_format_ret()", "scBtnFn_sys_format_ret()", "sc_b_ret_b", "", "" . $buttonMacroLabel . "", "" . $sCondStyle . "", "", "", "", $this->Ini->path_botoes, "", "", "" . $buttonMacroDisabled . "", "", "");?>
  
 <?php
         $NM_btn = true;
@@ -2143,7 +2235,7 @@ if ($opcao_botoes != "novo" && $this->nmgp_botoes['summary'] == "on")
         $sCondStyle = ($this->nmgp_botoes['forward'] == "on") ? '' : 'display: none;';
 ?>
 <?php
-        $buttonMacroDisabled = 'sc-unique-btn-19';
+        $buttonMacroDisabled = 'sc-unique-btn-29';
         $buttonMacroLabel = "";
 
         if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['forward']) && 'on' == $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['forward']) {
@@ -2153,7 +2245,7 @@ if ($opcao_botoes != "novo" && $this->nmgp_botoes['summary'] == "on")
             $buttonMacroLabel = $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_label']['forward'];
         }
 ?>
-<?php echo nmButtonOutput($this->arr_buttons, "bavanca", "scBtnFn_sys_format_ava()", "scBtnFn_sys_format_ava()", "sc_b_avc_b", "", "" . $buttonMacroLabel . "", "" . $sCondStyle . "", "", "", "", $this->Ini->path_botoes, "", "__NM_HINT__ (Ctrl + &#8594;)", "" . $buttonMacroDisabled . "", "", "");?>
+<?php echo nmButtonOutput($this->arr_buttons, "bavanca", "scBtnFn_sys_format_ava()", "scBtnFn_sys_format_ava()", "sc_b_avc_b", "", "" . $buttonMacroLabel . "", "" . $sCondStyle . "", "", "", "", $this->Ini->path_botoes, "", "", "" . $buttonMacroDisabled . "", "", "");?>
  
 <?php
         $NM_btn = true;
@@ -2162,7 +2254,7 @@ if ($opcao_botoes != "novo" && $this->nmgp_botoes['summary'] == "on")
         $sCondStyle = ($this->nmgp_botoes['last'] == "on") ? '' : 'display: none;';
 ?>
 <?php
-        $buttonMacroDisabled = 'sc-unique-btn-20';
+        $buttonMacroDisabled = 'sc-unique-btn-30';
         $buttonMacroLabel = "";
 
         if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['last']) && 'on' == $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_disabled']['last']) {
@@ -2172,7 +2264,7 @@ if ($opcao_botoes != "novo" && $this->nmgp_botoes['summary'] == "on")
             $buttonMacroLabel = $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['btn_label']['last'];
         }
 ?>
-<?php echo nmButtonOutput($this->arr_buttons, "bfinal", "scBtnFn_sys_format_fim()", "scBtnFn_sys_format_fim()", "sc_b_fim_b", "", "" . $buttonMacroLabel . "", "" . $sCondStyle . "", "", "", "", $this->Ini->path_botoes, "", "__NM_HINT__ (Ctrl + Shift + &#8594;)", "" . $buttonMacroDisabled . "", "", "");?>
+<?php echo nmButtonOutput($this->arr_buttons, "bfinal", "scBtnFn_sys_format_fim()", "scBtnFn_sys_format_fim()", "sc_b_fim_b", "", "" . $buttonMacroLabel . "", "" . $sCondStyle . "", "", "", "", $this->Ini->path_botoes, "", "", "" . $buttonMacroDisabled . "", "", "");?>
  
 <?php
         $NM_btn = true;
@@ -2381,98 +2473,30 @@ scAjax_displayEmptyForm();
 }
 ?>
 <script type="text/javascript">
-	function scBtnFn_sys_GridPermiteSeq(btnPos) {
-		if ($("#brec_b").length && $("#brec_b").is(":visible")) {
-		    if ($("#brec_b").hasClass("disabled")) {
-		        return;
-		    }
-			if (document.F1['nmgp_rec_' + btnPos].value != '') {nm_navpage(document.F1['nmgp_rec_' + btnPos].value, 'P');} document.F1['nmgp_rec_' + btnPos].value = '';
-			toggleToolbar(event, true); return;
-		}
-	}
-	function scBtnFn_sys_format_ini() {
-		if ($("#sc_b_ini_b.sc-unique-btn-1").length && $("#sc_b_ini_b.sc-unique-btn-1").is(":visible")) {
-		    if ($("#sc_b_ini_b.sc-unique-btn-1").hasClass("disabled")) {
-		        return;
-		    }
-			nm_move ('inicio');
-			toggleToolbar(event, true); return;
-		}
-		if ($("#sc_b_ini_b.sc-unique-btn-17").length && $("#sc_b_ini_b.sc-unique-btn-17").is(":visible")) {
-		    if ($("#sc_b_ini_b.sc-unique-btn-17").hasClass("disabled")) {
-		        return;
-		    }
-			nm_move ('inicio');
-			toggleToolbar(event, true); return;
-		}
-	}
-	function scBtnFn_sys_format_ret() {
-		if ($("#sc_b_ret_b.sc-unique-btn-2").length && $("#sc_b_ret_b.sc-unique-btn-2").is(":visible")) {
-		    if ($("#sc_b_ret_b.sc-unique-btn-2").hasClass("disabled")) {
-		        return;
-		    }
-			nm_move ('retorna');
-			toggleToolbar(event, true); return;
-		}
-		if ($("#sc_b_ret_b.sc-unique-btn-18").length && $("#sc_b_ret_b.sc-unique-btn-18").is(":visible")) {
-		    if ($("#sc_b_ret_b.sc-unique-btn-18").hasClass("disabled")) {
-		        return;
-		    }
-			nm_move ('retorna');
-			toggleToolbar(event, true); return;
-		}
-	}
-	function scBtnFn_sys_format_ava() {
-		if ($("#sc_b_avc_b.sc-unique-btn-3").length && $("#sc_b_avc_b.sc-unique-btn-3").is(":visible")) {
-		    if ($("#sc_b_avc_b.sc-unique-btn-3").hasClass("disabled")) {
-		        return;
-		    }
-			nm_move ('avanca');
-			toggleToolbar(event, true); return;
-		}
-		if ($("#sc_b_avc_b.sc-unique-btn-19").length && $("#sc_b_avc_b.sc-unique-btn-19").is(":visible")) {
-		    if ($("#sc_b_avc_b.sc-unique-btn-19").hasClass("disabled")) {
-		        return;
-		    }
-			nm_move ('avanca');
-			toggleToolbar(event, true); return;
-		}
-	}
-	function scBtnFn_sys_format_fim() {
-		if ($("#sc_b_fim_b.sc-unique-btn-4").length && $("#sc_b_fim_b.sc-unique-btn-4").is(":visible")) {
-		    if ($("#sc_b_fim_b.sc-unique-btn-4").hasClass("disabled")) {
-		        return;
-		    }
-			nm_move ('final');
-			toggleToolbar(event, true); return;
-		}
-		if ($("#sc_b_fim_b.sc-unique-btn-20").length && $("#sc_b_fim_b.sc-unique-btn-20").is(":visible")) {
-		    if ($("#sc_b_fim_b.sc-unique-btn-20").hasClass("disabled")) {
-		        return;
-		    }
-			nm_move ('final');
-			toggleToolbar(event, true); return;
-		}
-	}
-	function scBtnFn_sys_format_sai_modal() {
-		if ($("#sc_b_sai_b.sc-unique-btn-5").length && $("#sc_b_sai_b.sc-unique-btn-5").is(":visible")) {
-		    if ($("#sc_b_sai_b.sc-unique-btn-5").hasClass("disabled")) {
-		        return;
-		    }
-			scFormClose_F6('<?php echo $nm_url_saida; ?>'); return false;
-			toggleToolbar(event, true); return;
-		}
-	}
 	function scBtnFn_sys_format_inc() {
-		if ($("#sc_b_new_t.sc-unique-btn-6").length && $("#sc_b_new_t.sc-unique-btn-6").is(":visible")) {
-		    if ($("#sc_b_new_t.sc-unique-btn-6").hasClass("disabled")) {
+		if ($("#sc_b_new_t.sc-unique-btn-1").length && $("#sc_b_new_t.sc-unique-btn-1").is(":visible")) {
+		    if ($("#sc_b_new_t.sc-unique-btn-1").hasClass("disabled")) {
 		        return;
 		    }
 			nm_move ('novo');
 			toggleToolbar(event, true); return;
 		}
-		if ($("#sc_b_ins_t.sc-unique-btn-7").length && $("#sc_b_ins_t.sc-unique-btn-7").is(":visible")) {
-		    if ($("#sc_b_ins_t.sc-unique-btn-7").hasClass("disabled")) {
+		if ($("#sc_b_ins_t.sc-unique-btn-2").length && $("#sc_b_ins_t.sc-unique-btn-2").is(":visible")) {
+		    if ($("#sc_b_ins_t.sc-unique-btn-2").hasClass("disabled")) {
+		        return;
+		    }
+			nm_atualiza ('incluir');
+			toggleToolbar(event, true); return;
+		}
+		if ($("#sc_b_new_t.sc-unique-btn-16").length && $("#sc_b_new_t.sc-unique-btn-16").is(":visible")) {
+		    if ($("#sc_b_new_t.sc-unique-btn-16").hasClass("disabled")) {
+		        return;
+		    }
+			nm_move ('novo');
+			toggleToolbar(event, true); return;
+		}
+		if ($("#sc_b_ins_t.sc-unique-btn-17").length && $("#sc_b_ins_t.sc-unique-btn-17").is(":visible")) {
+		    if ($("#sc_b_ins_t.sc-unique-btn-17").hasClass("disabled")) {
 		        return;
 		    }
 			nm_atualiza ('incluir');
@@ -2480,8 +2504,15 @@ scAjax_displayEmptyForm();
 		}
 	}
 	function scBtnFn_sys_format_cnl() {
-		if ($("#sc_b_sai_t.sc-unique-btn-8").length && $("#sc_b_sai_t.sc-unique-btn-8").is(":visible")) {
-		    if ($("#sc_b_sai_t.sc-unique-btn-8").hasClass("disabled")) {
+		if ($("#sc_b_sai_t.sc-unique-btn-3").length && $("#sc_b_sai_t.sc-unique-btn-3").is(":visible")) {
+		    if ($("#sc_b_sai_t.sc-unique-btn-3").hasClass("disabled")) {
+		        return;
+		    }
+			<?php echo $this->NM_cancel_insert_new ?> document.F5.submit();
+			toggleToolbar(event, true); return;
+		}
+		if ($("#sc_b_sai_t.sc-unique-btn-18").length && $("#sc_b_sai_t.sc-unique-btn-18").is(":visible")) {
+		    if ($("#sc_b_sai_t.sc-unique-btn-18").hasClass("disabled")) {
 		        return;
 		    }
 			<?php echo $this->NM_cancel_insert_new ?> document.F5.submit();
@@ -2489,8 +2520,15 @@ scAjax_displayEmptyForm();
 		}
 	}
 	function scBtnFn_sys_format_alt() {
-		if ($("#sc_b_upd_t.sc-unique-btn-9").length && $("#sc_b_upd_t.sc-unique-btn-9").is(":visible")) {
-		    if ($("#sc_b_upd_t.sc-unique-btn-9").hasClass("disabled")) {
+		if ($("#sc_b_upd_t.sc-unique-btn-4").length && $("#sc_b_upd_t.sc-unique-btn-4").is(":visible")) {
+		    if ($("#sc_b_upd_t.sc-unique-btn-4").hasClass("disabled")) {
+		        return;
+		    }
+			nm_atualiza ('alterar');
+			toggleToolbar(event, true); return;
+		}
+		if ($("#sc_b_upd_t.sc-unique-btn-19").length && $("#sc_b_upd_t.sc-unique-btn-19").is(":visible")) {
+		    if ($("#sc_b_upd_t.sc-unique-btn-19").hasClass("disabled")) {
 		        return;
 		    }
 			nm_atualiza ('alterar');
@@ -2498,8 +2536,15 @@ scAjax_displayEmptyForm();
 		}
 	}
 	function scBtnFn_sys_format_exc() {
-		if ($("#sc_b_del_t.sc-unique-btn-10").length && $("#sc_b_del_t.sc-unique-btn-10").is(":visible")) {
-		    if ($("#sc_b_del_t.sc-unique-btn-10").hasClass("disabled")) {
+		if ($("#sc_b_del_t.sc-unique-btn-5").length && $("#sc_b_del_t.sc-unique-btn-5").is(":visible")) {
+		    if ($("#sc_b_del_t.sc-unique-btn-5").hasClass("disabled")) {
+		        return;
+		    }
+			nm_atualiza ('excluir');
+			toggleToolbar(event, true); return;
+		}
+		if ($("#sc_b_del_t.sc-unique-btn-20").length && $("#sc_b_del_t.sc-unique-btn-20").is(":visible")) {
+		    if ($("#sc_b_del_t.sc-unique-btn-20").hasClass("disabled")) {
 		        return;
 		    }
 			nm_atualiza ('excluir');
@@ -2507,8 +2552,15 @@ scAjax_displayEmptyForm();
 		}
 	}
 	function scBtnFn_sys_format_reload() {
-		if ($("#sc_b_reload_t.sc-unique-btn-11").length && $("#sc_b_reload_t.sc-unique-btn-11").is(":visible")) {
-		    if ($("#sc_b_reload_t.sc-unique-btn-11").hasClass("disabled")) {
+		if ($("#sc_b_reload_t.sc-unique-btn-6").length && $("#sc_b_reload_t.sc-unique-btn-6").is(":visible")) {
+		    if ($("#sc_b_reload_t.sc-unique-btn-6").hasClass("disabled")) {
+		        return;
+		    }
+			scAjax_formReload();
+			toggleToolbar(event, true); return;
+		}
+		if ($("#sc_b_reload_t.sc-unique-btn-21").length && $("#sc_b_reload_t.sc-unique-btn-21").is(":visible")) {
+		    if ($("#sc_b_reload_t.sc-unique-btn-21").hasClass("disabled")) {
 		        return;
 		    }
 			scAjax_formReload();
@@ -2525,39 +2577,147 @@ scAjax_displayEmptyForm();
 		}
 	}
 	function scBtnFn_sys_format_sai() {
-		if ($("#sc_b_sai_t.sc-unique-btn-12").length && $("#sc_b_sai_t.sc-unique-btn-12").is(":visible")) {
-		    if ($("#sc_b_sai_t.sc-unique-btn-12").hasClass("disabled")) {
+		if ($("#sc_b_sai_t.sc-unique-btn-7").length && $("#sc_b_sai_t.sc-unique-btn-7").is(":visible")) {
+		    if ($("#sc_b_sai_t.sc-unique-btn-7").hasClass("disabled")) {
 		        return;
 		    }
 			scFormClose_F5('<?php echo $nm_url_saida; ?>');
 			toggleToolbar(event, true); return;
 		}
-		if ($("#sc_b_sai_t.sc-unique-btn-13").length && $("#sc_b_sai_t.sc-unique-btn-13").is(":visible")) {
-		    if ($("#sc_b_sai_t.sc-unique-btn-13").hasClass("disabled")) {
+		if ($("#sc_b_sai_t.sc-unique-btn-8").length && $("#sc_b_sai_t.sc-unique-btn-8").is(":visible")) {
+		    if ($("#sc_b_sai_t.sc-unique-btn-8").hasClass("disabled")) {
 		        return;
 		    }
 			scFormClose_F5('<?php echo $nm_url_saida; ?>');
 			toggleToolbar(event, true); return;
 		}
-		if ($("#sc_b_sai_t.sc-unique-btn-14").length && $("#sc_b_sai_t.sc-unique-btn-14").is(":visible")) {
-		    if ($("#sc_b_sai_t.sc-unique-btn-14").hasClass("disabled")) {
+		if ($("#sc_b_sai_t.sc-unique-btn-9").length && $("#sc_b_sai_t.sc-unique-btn-9").is(":visible")) {
+		    if ($("#sc_b_sai_t.sc-unique-btn-9").hasClass("disabled")) {
 		        return;
 		    }
 			scFormClose_F6('<?php echo $nm_url_saida; ?>'); return false;
 			toggleToolbar(event, true); return;
 		}
-		if ($("#sc_b_sai_t.sc-unique-btn-15").length && $("#sc_b_sai_t.sc-unique-btn-15").is(":visible")) {
-		    if ($("#sc_b_sai_t.sc-unique-btn-15").hasClass("disabled")) {
+		if ($("#sc_b_sai_t.sc-unique-btn-10").length && $("#sc_b_sai_t.sc-unique-btn-10").is(":visible")) {
+		    if ($("#sc_b_sai_t.sc-unique-btn-10").hasClass("disabled")) {
 		        return;
 		    }
 			scFormClose_F6('<?php echo $nm_url_saida; ?>'); return false;
 			toggleToolbar(event, true); return;
 		}
-		if ($("#sc_b_sai_t.sc-unique-btn-16").length && $("#sc_b_sai_t.sc-unique-btn-16").is(":visible")) {
-		    if ($("#sc_b_sai_t.sc-unique-btn-16").hasClass("disabled")) {
+		if ($("#sc_b_sai_t.sc-unique-btn-11").length && $("#sc_b_sai_t.sc-unique-btn-11").is(":visible")) {
+		    if ($("#sc_b_sai_t.sc-unique-btn-11").hasClass("disabled")) {
 		        return;
 		    }
 			scFormClose_F6('<?php echo $nm_url_saida; ?>'); return false;
+			toggleToolbar(event, true); return;
+		}
+		if ($("#sc_b_sai_t.sc-unique-btn-22").length && $("#sc_b_sai_t.sc-unique-btn-22").is(":visible")) {
+		    if ($("#sc_b_sai_t.sc-unique-btn-22").hasClass("disabled")) {
+		        return;
+		    }
+			scFormClose_F5('<?php echo $nm_url_saida; ?>');
+			toggleToolbar(event, true); return;
+		}
+		if ($("#sc_b_sai_t.sc-unique-btn-23").length && $("#sc_b_sai_t.sc-unique-btn-23").is(":visible")) {
+		    if ($("#sc_b_sai_t.sc-unique-btn-23").hasClass("disabled")) {
+		        return;
+		    }
+			scFormClose_F5('<?php echo $nm_url_saida; ?>');
+			toggleToolbar(event, true); return;
+		}
+		if ($("#sc_b_sai_t.sc-unique-btn-24").length && $("#sc_b_sai_t.sc-unique-btn-24").is(":visible")) {
+		    if ($("#sc_b_sai_t.sc-unique-btn-24").hasClass("disabled")) {
+		        return;
+		    }
+			scFormClose_F6('<?php echo $nm_url_saida; ?>'); return false;
+			toggleToolbar(event, true); return;
+		}
+		if ($("#sc_b_sai_t.sc-unique-btn-25").length && $("#sc_b_sai_t.sc-unique-btn-25").is(":visible")) {
+		    if ($("#sc_b_sai_t.sc-unique-btn-25").hasClass("disabled")) {
+		        return;
+		    }
+			scFormClose_F6('<?php echo $nm_url_saida; ?>'); return false;
+			toggleToolbar(event, true); return;
+		}
+		if ($("#sc_b_sai_t.sc-unique-btn-26").length && $("#sc_b_sai_t.sc-unique-btn-26").is(":visible")) {
+		    if ($("#sc_b_sai_t.sc-unique-btn-26").hasClass("disabled")) {
+		        return;
+		    }
+			scFormClose_F6('<?php echo $nm_url_saida; ?>'); return false;
+			toggleToolbar(event, true); return;
+		}
+	}
+	function scBtnFn_sys_GridPermiteSeq(btnPos) {
+		if ($("#brec_b").length && $("#brec_b").is(":visible")) {
+		    if ($("#brec_b").hasClass("disabled")) {
+		        return;
+		    }
+			if (document.F1['nmgp_rec_' + btnPos].value != '') {nm_navpage(document.F1['nmgp_rec_' + btnPos].value, 'P');} document.F1['nmgp_rec_' + btnPos].value = '';
+			toggleToolbar(event, true); return;
+		}
+	}
+	function scBtnFn_sys_format_ini() {
+		if ($("#sc_b_ini_b.sc-unique-btn-12").length && $("#sc_b_ini_b.sc-unique-btn-12").is(":visible")) {
+		    if ($("#sc_b_ini_b.sc-unique-btn-12").hasClass("disabled")) {
+		        return;
+		    }
+			nm_move ('inicio');
+			toggleToolbar(event, true); return;
+		}
+		if ($("#sc_b_ini_b.sc-unique-btn-27").length && $("#sc_b_ini_b.sc-unique-btn-27").is(":visible")) {
+		    if ($("#sc_b_ini_b.sc-unique-btn-27").hasClass("disabled")) {
+		        return;
+		    }
+			nm_move ('inicio');
+			toggleToolbar(event, true); return;
+		}
+	}
+	function scBtnFn_sys_format_ret() {
+		if ($("#sc_b_ret_b.sc-unique-btn-13").length && $("#sc_b_ret_b.sc-unique-btn-13").is(":visible")) {
+		    if ($("#sc_b_ret_b.sc-unique-btn-13").hasClass("disabled")) {
+		        return;
+		    }
+			nm_move ('retorna');
+			toggleToolbar(event, true); return;
+		}
+		if ($("#sc_b_ret_b.sc-unique-btn-28").length && $("#sc_b_ret_b.sc-unique-btn-28").is(":visible")) {
+		    if ($("#sc_b_ret_b.sc-unique-btn-28").hasClass("disabled")) {
+		        return;
+		    }
+			nm_move ('retorna');
+			toggleToolbar(event, true); return;
+		}
+	}
+	function scBtnFn_sys_format_ava() {
+		if ($("#sc_b_avc_b.sc-unique-btn-14").length && $("#sc_b_avc_b.sc-unique-btn-14").is(":visible")) {
+		    if ($("#sc_b_avc_b.sc-unique-btn-14").hasClass("disabled")) {
+		        return;
+		    }
+			nm_move ('avanca');
+			toggleToolbar(event, true); return;
+		}
+		if ($("#sc_b_avc_b.sc-unique-btn-29").length && $("#sc_b_avc_b.sc-unique-btn-29").is(":visible")) {
+		    if ($("#sc_b_avc_b.sc-unique-btn-29").hasClass("disabled")) {
+		        return;
+		    }
+			nm_move ('avanca');
+			toggleToolbar(event, true); return;
+		}
+	}
+	function scBtnFn_sys_format_fim() {
+		if ($("#sc_b_fim_b.sc-unique-btn-15").length && $("#sc_b_fim_b.sc-unique-btn-15").is(":visible")) {
+		    if ($("#sc_b_fim_b.sc-unique-btn-15").hasClass("disabled")) {
+		        return;
+		    }
+			nm_move ('final');
+			toggleToolbar(event, true); return;
+		}
+		if ($("#sc_b_fim_b.sc-unique-btn-30").length && $("#sc_b_fim_b.sc-unique-btn-30").is(":visible")) {
+		    if ($("#sc_b_fim_b.sc-unique-btn-30").hasClass("disabled")) {
+		        return;
+		    }
+			nm_move ('final');
 			toggleToolbar(event, true); return;
 		}
 	}

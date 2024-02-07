@@ -72,6 +72,7 @@
    {
       unset($_SESSION['sc_session'][$script_case_init]['form_agenda_mob']['sc_redir_atualiz']);
       unset($_SESSION['sc_session'][$script_case_init]['form_agenda_mob']['sc_redir_insert']);
+      unset($_SESSION['sc_session'][$script_case_init]['form_agenda_mob']['sc_max_reg']);
    }
    $fecha_janela = false;
    if (isset($script_case_init) && !is_array($script_case_init) && isset($_SESSION['sc_session'][$script_case_init]['form_agenda_mob']['sc_outra_jan']) && $_SESSION['sc_session'][$script_case_init]['form_agenda_mob']['sc_outra_jan'])

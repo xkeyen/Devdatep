@@ -234,7 +234,7 @@ if (!is_file($str_root . $str_path . 'devel/class/xmlparser/nmXmlparserIniSys.cl
     unset($_SESSION['scriptcase']['menu']['glo_nm_conexao']);
 }
 
-/* Path definitions */
+/* Definiciones de las rutas */
 $menu_menuData         = array();
 $menu_menuData['path'] = array();
 $menu_menuData['url']  = array();
@@ -586,7 +586,7 @@ if ((isset($nmgp_outra_jan) && $nmgp_outra_jan == "true") || (isset($_SESSION['s
      unset($_SESSION['scriptcase']['sc_outra_jan']);
     $_SESSION['scriptcase']['sc_saida_menu'] = "javascript:window.close()";
 }
-/* Menu configuration variables */
+/* Menú de configuración de las variables */
 
 if (!isset($_SESSION['scriptcase']['sc_apl_seg']))
 {
@@ -611,7 +611,26 @@ if (isset($_SESSION['nm_session']['user']['sec']['flag']) && $_SESSION['nm_sessi
 { 
     $_SESSION['scriptcase']['sc_apl_seg']['grid_agenda'] = "on";
 } 
-/* Menu items */
+if (is_file($path_apls . $this->tab_grupo[0] . "_lib/_app_data/form_agenda_ini.php"))
+{
+    include($path_apls . $this->tab_grupo[0] . "_lib/_app_data/form_agenda_ini.php");
+    if ((!isset($arr_data['status']) || trim($arr_data['status']) == "NAO") || (isset($_SESSION['nm_session']['user']['sec']['flag']) && $_SESSION['nm_session']['user']['sec']['flag'] == "N")) 
+    {
+        if (!isset($_SESSION['scriptcase']['sc_apl_seg']['form_agenda']))
+        {
+            $_SESSION['scriptcase']['sc_apl_seg']['form_agenda'] = "on";
+        }
+    }
+    if (isset($_SESSION['nm_session']['user']['sec']['flag']) && $_SESSION['nm_session']['user']['sec']['flag'] == "N") 
+    { 
+        $_SESSION['scriptcase']['sc_apl_seg']['form_agenda'] = "on";
+    } 
+}
+if (isset($_SESSION['nm_session']['user']['sec']['flag']) && $_SESSION['nm_session']['user']['sec']['flag'] == "N") 
+{ 
+    $_SESSION['scriptcase']['sc_apl_seg']['form_agenda'] = "on";
+} 
+/* Elementos de menú */
 
 $sOutputBuffer = ob_get_contents();
 ob_end_clean();
@@ -620,12 +639,7 @@ $saida_apl = $_SESSION['scriptcase']['sc_saida_menu'];
 
 $menu_menuData['data'] = array();
 $str_disabled = 'N';
-if (!isset($_SESSION['scriptcase']['sc_apl_seg']['grid_agenda']) || strtolower($_SESSION['scriptcase']['sc_apl_seg']['grid_agenda']) != "on")
-{
-    $str_link = "#";
-    $str_disabled = 'Y';
-}
-$str_label = "Item 1";
+$str_label = "Agenda";
 $str_hint = "";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && !NM_is_utf8($str_label))
 {
@@ -634,7 +648,7 @@ if ($_SESSION['scriptcase']['charset'] != "UTF-8" && !NM_is_utf8($str_label))
 }
 $menu_menuData['data']['itens']['item_1'] = array(
                                                   'label'       => $str_label,
-                                                  'link'        => "menu_form_php.php?sc_item_menu=item_1&sc_apl_menu=grid_agenda&sc_apl_link=" . urlencode($menu_menuData['url']['link']) . "&sc_usa_grupo=" . $_SESSION['scriptcase']['menu']['glo_nm_usa_grupo'] . "",
+                                                  'link'        => "#",
                                                   'hint'        => $str_hint,
                                                   'icon_fa'     => "fas fa-file",
                                                   'link_target'     => "self",
@@ -648,12 +662,70 @@ $menu_menuData['data']['itens']['item_1'] = array(
                                                   'itens'    => [],
                                                   );
 $str_disabled = 'N';
+if (!isset($_SESSION['scriptcase']['sc_apl_seg']['grid_agenda']) || strtolower($_SESSION['scriptcase']['sc_apl_seg']['grid_agenda']) != "on")
+{
+    $str_link = "#";
+    $str_disabled = 'Y';
+}
+$str_label = "Tabla";
+$str_hint = "";
+if ($_SESSION['scriptcase']['charset'] != "UTF-8" && !NM_is_utf8($str_label))
+{
+    $str_label = sc_convert_encoding($str_label, "UTF-8", $_SESSION['scriptcase']['charset']);
+    $str_hint = sc_convert_encoding($str_hint, "UTF-8", $_SESSION['scriptcase']['charset']);
+}
+$menu_menuData['data']['itens']['item_1']['itens']['item_2'] = array(
+                                                  'label'       => $str_label,
+                                                  'link'        => "menu_form_php.php?sc_item_menu=item_2&sc_apl_menu=grid_agenda&sc_apl_link=" . urlencode($menu_menuData['url']['link']) . "&sc_usa_grupo=" . $_SESSION['scriptcase']['menu']['glo_nm_usa_grupo'] . "",
+                                                  'hint'        => $str_hint,
+                                                  'icon_fa'     => "fas fa-file",
+                                                  'link_target'     => "self",
+                                                  'fav_check'     => "N",
+                                                  'icon_check'     => "S",
+                                                  'id'     => "item_2",
+                                                  'target'      => $this->menu_target('_self'),
+                                                  'disabled'    => $str_disabled,
+                                                  'parent_list'    => array (
+  0 => 'item_1',
+),
+                                                  'itens'    => [],
+                                                  );
+$str_disabled = 'N';
+if (!isset($_SESSION['scriptcase']['sc_apl_seg']['form_agenda']) || strtolower($_SESSION['scriptcase']['sc_apl_seg']['form_agenda']) != "on")
+{
+    $str_link = "#";
+    $str_disabled = 'Y';
+}
+$str_label = "Formulario";
+$str_hint = "";
+if ($_SESSION['scriptcase']['charset'] != "UTF-8" && !NM_is_utf8($str_label))
+{
+    $str_label = sc_convert_encoding($str_label, "UTF-8", $_SESSION['scriptcase']['charset']);
+    $str_hint = sc_convert_encoding($str_hint, "UTF-8", $_SESSION['scriptcase']['charset']);
+}
+$menu_menuData['data']['itens']['item_1']['itens']['item_3'] = array(
+                                                  'label'       => $str_label,
+                                                  'link'        => "menu_form_php.php?sc_item_menu=item_3&sc_apl_menu=form_agenda&sc_apl_link=" . urlencode($menu_menuData['url']['link']) . "&sc_usa_grupo=" . $_SESSION['scriptcase']['menu']['glo_nm_usa_grupo'] . "",
+                                                  'hint'        => $str_hint,
+                                                  'icon_fa'     => "fas fa-file",
+                                                  'link_target'     => "self",
+                                                  'fav_check'     => "N",
+                                                  'icon_check'     => "S",
+                                                  'id'     => "item_3",
+                                                  'target'      => $this->menu_target('_self'),
+                                                  'disabled'    => $str_disabled,
+                                                  'parent_list'    => array (
+  0 => 'item_1',
+),
+                                                  'itens'    => [],
+                                                  );
+$str_disabled = 'N';
 if (!isset($_SESSION['scriptcase']['sc_apl_seg']['search']) || strtolower($_SESSION['scriptcase']['sc_apl_seg']['search']) != "on")
 {
     $str_link = "#";
     $str_disabled = 'Y';
 }
-$str_label = "Search";
+$str_label = "Búsqueda";
 $str_hint = "";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && !NM_is_utf8($str_label))
 {
@@ -680,7 +752,7 @@ if (!isset($_SESSION['scriptcase']['sc_apl_seg']['languages']) || strtolower($_S
     $str_link = "#";
     $str_disabled = 'Y';
 }
-$str_label = "Languages";
+$str_label = "Idiomas";
 $str_hint = "";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && !NM_is_utf8($str_label))
 {
@@ -707,7 +779,7 @@ if (!isset($_SESSION['scriptcase']['sc_apl_seg']['themes']) || strtolower($_SESS
     $str_link = "#";
     $str_disabled = 'Y';
 }
-$str_label = "Themes";
+$str_label = "Temas";
 $str_hint = "";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && !NM_is_utf8($str_label))
 {
@@ -734,7 +806,7 @@ if (!isset($_SESSION['scriptcase']['sc_apl_seg']['shortcuts']) || strtolower($_S
     $str_link = "#";
     $str_disabled = 'Y';
 }
-$str_label = "Shortcuts";
+$str_label = "Atajos";
 $str_hint = "";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && !NM_is_utf8($str_label))
 {
@@ -828,7 +900,7 @@ if (isset($_SESSION['scriptcase']['sc_menu_disable']['menu']) && !empty($_SESSIO
     sc_menu_disable($menu_menuData['data_user'], $_SESSION['scriptcase']['sc_menu_disable']['menu']);
 }
 
-/* HTML header */
+/* Cabecera HTML */
     header("X-XSS-Protection: 1; mode=block");
     header("X-Frame-Options: SAMEORIGIN");
 ?>
@@ -988,7 +1060,7 @@ if ('' != $sOutputBuffer)
 </script>
 <?php 
 
-/* JS files */
+/* Archivos JS */
 ?>
 <script type="text/javascript" src="<?php echo $_SESSION['scriptcase']['menu']['glo_nm_path_prod']; ?>/third/jquery/js/jquery.js"></script>
 <script  type="text/javascript" src="<?php echo $_SESSION['scriptcase']['menu']['glo_nm_path_prod']; ?>/third/jquery_plugin/contextmenu/jquery.contextmenu.js"></script>
@@ -1798,7 +1870,7 @@ function menu_escreveMenuRec($arr_menu, $arr_menu_apl, $path_imag_cab = '')
     }
     $menu_itens = (isset($arr_menu['itens']) && !empty($arr_menu['itens'])) ? json_encode(array_values($arr_menu['itens']), JSON_INVALID_UTF8_SUBSTITUTE) : '[]';
     $user_itens = (isset($arr_menu_apl['data_user']['itens']) && !empty($arr_menu_apl['data_user']['itens'])) ? json_encode(array_values($arr_menu_apl['data_user']['itens']), JSON_INVALID_UTF8_SUBSTITUTE) : '[]';
-    $menu_data = json_decode('{"theme":"dark-cobalt","layout":"H","header_string":"","header_string_pos":"H","check_split":"S","check_toolbar":"S","check_show_search_path":"S","check_shortcut_label":"S","check_start_expanded":"S","check_use_loader":"N","should_reload":"S","layout_usr_pos":"out","usercheck":"S","username":"","userimage":"","userdesc":"","logo":"","logo_compact":"","pick_themes":["dark-cobalt","dark-coffee"],"shortcuts":[],"items":[{"text":"Item 1","app":"grid_agenda","icon":"fas fa-file","icon_check":"S","id":"item_1","hint":"","link_target":"self","fav_check":"N","itree":{"a":{"attributes":[]},"icon":false,"li":{"attributes":[]}},"target":"_self"}],"user_items":[],"tb_items":[{"text":"Search","app":"search","icon":"fas fa-search","icon_check":"S","display":"S","id":"item_tb_1","itree":{"a":{"attributes":[]},"icon":false,"li":{"attributes":[]}},"target":"_self","hint":"","fav_check":"N","link_target":"self"},{"text":"Languages","app":"languages","icon":"fas fa-globe","icon_check":"S","display":"S","id":"item_tb_2","itree":{"a":{"attributes":[]},"icon":false,"li":{"attributes":[]}},"target":"_self","hint":"","fav_check":"N","link_target":"self"},{"text":"Themes","app":"themes","icon":"fas fa-paint-roller","icon_check":"S","display":"S","id":"item_tb_3","itree":{"a":{"attributes":[]},"icon":false,"li":{"attributes":[]}},"target":"_self","hint":"","fav_check":"N","link_target":"self"},{"text":"Shortcuts","app":"shortcuts","icon":"fas fa-grip-vertical","icon_check":"S","display":"S","id":"item_tb_4","itree":{"a":{"attributes":[]},"icon":false,"li":{"attributes":[]}},"target":"_self","hint":"","fav_check":"N","link_target":"self"}]}', true);
+    $menu_data = json_decode('{"theme":"dark-cobalt","layout":"H","header_string":"devdatep","header_string_pos":"H","check_split":"S","check_toolbar":"S","check_show_search_path":"S","check_shortcut_label":"S","check_start_expanded":"S","check_use_loader":"N","should_reload":"S","layout_usr_pos":"out","usercheck":"N","username":"","userimage":"","userdesc":"","logo":"","logo_compact":"","pick_themes":["dark-cobalt","dark-coffee"],"shortcuts":[],"items":[{"text":"Agenda","app":"","icon":"fas fa-file","icon_check":"S","id":"item_1","hint":"","link_target":"self","fav_check":"N","itree":{"a":{"attributes":[]},"icon":false,"li":{"attributes":[]}},"children":[{"text":"Tabla","app":"grid_agenda","icon":"fas fa-file","icon_check":"S","id":"item_2","hint":"","link_target":"self","fav_check":"N","itree":{"a":{"attributes":[]},"icon":false,"li":{"attributes":[]}},"target":"_self"},{"text":"Formulario","app":"form_agenda","icon":"fas fa-file","icon_check":"S","id":"item_3","hint":"","link_target":"self","fav_check":"N","itree":{"a":{"attributes":[]},"icon":false,"li":{"attributes":[]}},"target":"_self"}],"target":"_self"}],"user_items":[],"tb_items":[{"text":"B\u00fasqueda","app":"search","icon":"fas fa-search","icon_check":"S","display":"S","id":"item_tb_1","itree":{"a":{"attributes":[]},"icon":false,"li":{"attributes":[]}},"target":"_self","hint":"","fav_check":"N","link_target":"self"},{"text":"Idiomas","app":"languages","icon":"fas fa-globe","icon_check":"S","display":"S","id":"item_tb_2","itree":{"a":{"attributes":[]},"icon":false,"li":{"attributes":[]}},"target":"_self","hint":"","fav_check":"N","link_target":"self"},{"text":"Temas","app":"themes","icon":"fas fa-paint-roller","icon_check":"S","display":"S","id":"item_tb_3","itree":{"a":{"attributes":[]},"icon":false,"li":{"attributes":[]}},"target":"_self","hint":"","fav_check":"N","link_target":"self"},{"text":"Atajos","app":"shortcuts","icon":"fas fa-grip-vertical","icon_check":"S","display":"S","id":"item_tb_4","itree":{"a":{"attributes":[]},"icon":false,"li":{"attributes":[]}},"target":"_self","hint":"","fav_check":"N","link_target":"self"}]}', true);
     $var_themes_list = json_decode('{"dark-cobalt":{"name":"Dark Cobalt","p":"#0A083A","a":"#3E3B87","t":"#DDDEE9","m":"#B3B2D4","b":"rgba(0, 0, 0, 0.5)"},"dark-coffee":{"name":"Dark Coffee","p":"#6C3B06","a":"#311a01","t":"#FDDAC0","m":"#FFEDD9","b":"rgba(0, 0, 0, 0.5)"},"dark-sunset":{"name":"Dark Sunset","p":"#451952","a":"#662549","t":"#DDDEE9","m":"#dab0a7","b":"rgba(0, 0, 0, 0.5)"},"dark-rhino":{"name":"Dark Rhino","p":"#27374D","a":"#526D82","t":"#DDDEE9","m":"#DDE6ED","b":"rgba(0, 0, 0, 0.5)"},"dark-pink":{"name":"Dark Pink","p":"#4C0033","a":"#b81470","t":"#DDDEE9","m":"#DF9AC7","b":"rgba(0, 0, 0, 0.5)"},"dark-hyper-space":{"name":"Dark Hyper Space","p":"#313866","a":"#b82d9e","t":"#DDDEE9","m":"#E7C2FD","b":"rgba(0, 0, 0, 0.5)"},"dark-midnight":{"name":"Dark Midnight","p":"#37404a","a":"#727cf5","t":"#DDDEE9","m":"#cbdcec","b":"rgba(0, 0, 0, 0.5)"},"light-gray":{"name":"Light Gray","p":"#ffffff","a":"#dadada","t":"rgba(47, 43, 61, 0.6784313725)","m":"rgba(47, 43, 61, 0.6784313725)","b":"rgba(0, 0, 0, 0.15)"}}', true);
     $var_targets = '{"blank":"_blank","_blank":"_blank","self":"nm_frame_app","_self":"nm_frame_app","window":"_window","parente":"_self","_parent":"_self"}';
     $apl_default = '';
@@ -7367,7 +7439,7 @@ iframe.loading + .loader-placeholder {
         word-wrap: break-word;
     }
 </style>
-<span class="header-string-h-text"><?php echo ""; ?></span>
+<span class="header-string-h-text"><?php echo "devdatep"; ?></span>
       </div>
       <div class="wrapper">
         <div class="toolbar" role="toolbar" aria-orientation="horizontal" aria-label="barra de ações">

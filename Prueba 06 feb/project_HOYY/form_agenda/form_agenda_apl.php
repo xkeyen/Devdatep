@@ -173,6 +173,18 @@ class form_agenda_apl
           {
               $this->nmgp_arg_dyn_search = $this->NM_ajax_info['param']['nmgp_arg_dyn_search'];
           }
+          if (isset($this->NM_ajax_info['param']['nmgp_arg_fast_search']))
+          {
+              $this->nmgp_arg_fast_search = $this->NM_ajax_info['param']['nmgp_arg_fast_search'];
+          }
+          if (isset($this->NM_ajax_info['param']['nmgp_cond_fast_search']))
+          {
+              $this->nmgp_cond_fast_search = $this->NM_ajax_info['param']['nmgp_cond_fast_search'];
+          }
+          if (isset($this->NM_ajax_info['param']['nmgp_fast_search']))
+          {
+              $this->nmgp_fast_search = $this->NM_ajax_info['param']['nmgp_fast_search'];
+          }
           if (isset($this->NM_ajax_info['param']['nmgp_num_form']))
           {
               $this->nmgp_num_form = $this->NM_ajax_info['param']['nmgp_num_form'];
@@ -688,12 +700,13 @@ class form_agenda_apl
       }
 
       $this->nmgp_botoes['cancel'] = "on";
-      $this->nmgp_botoes['exit'] = "off";
-      $this->nmgp_botoes['new']  = "off";
+      $this->nmgp_botoes['exit'] = "on";
+      $this->nmgp_botoes['qsearch'] = "on";
+      $this->nmgp_botoes['new'] = "on";
+      $this->nmgp_botoes['insert'] = "on";
       $this->nmgp_botoes['copy'] = "off";
-      $this->nmgp_botoes['insert'] = "off";
-      $this->nmgp_botoes['update'] = "off";
-      $this->nmgp_botoes['delete'] = "off";
+      $this->nmgp_botoes['update'] = "on";
+      $this->nmgp_botoes['delete'] = "on";
       $this->nmgp_botoes['first'] = "on";
       $this->nmgp_botoes['back'] = "on";
       $this->nmgp_botoes['forward'] = "on";
@@ -702,7 +715,7 @@ class form_agenda_apl
       $this->nmgp_botoes['navpage'] = "on";
       $this->nmgp_botoes['goto'] = "on";
       $this->nmgp_botoes['qtline'] = "off";
-      $this->nmgp_botoes['reload'] = "off";
+      $this->nmgp_botoes['reload'] = "on";
       if (isset($this->NM_btn_cancel) && 'N' == $this->NM_btn_cancel)
       {
           $this->nmgp_botoes['cancel'] = "off";
@@ -1002,6 +1015,13 @@ class form_agenda_apl
       $this->Erro      = new form_agenda_erro();
       $this->Erro->Ini = $this->Ini;
       $this->proc_fast_search = false;
+      if ($this->nmgp_opcao == "fast_search")  
+      {
+          $this->SC_fast_search($this->nmgp_fast_search, $this->nmgp_cond_fast_search, $this->nmgp_arg_fast_search);
+          $_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda']['opcao'] = "inicio";
+          $this->nmgp_opcao = "inicio";
+          $this->proc_fast_search = true;
+      } 
       if ((!isset($nm_opc_lookup) || $nm_opc_lookup != "lookup") && (!isset($nm_opc_php) || $nm_opc_php != "formphp"))
       { 
          if (empty($_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda']['opcao']))
@@ -5131,15 +5151,19 @@ if (isset($_SESSION['scriptcase']['device_mobile']) && $_SESSION['scriptcase']['
                   $this->NM_ajax_info['buttonDisplay']['forward'] = $this->nmgp_botoes['forward'] = "off";
                   $this->NM_ajax_info['buttonDisplay']['last']    = $this->nmgp_botoes['last']    = "off";
               }
-              $this->NM_ajax_info['buttonDisplay']['update'] = $this->nmgp_botoes['update'] = "off";
-              $this->NM_ajax_info['buttonDisplay']['delete'] = $this->nmgp_botoes['delete'] = "off";
-              return; 
+              $this->nmgp_opcao = "novo"; 
+              $this->nm_flag_saida_novo = "S"; 
+              $rs->Close(); 
+              if ($this->aba_iframe)
+              {
+                  $this->NM_ajax_info['buttonDisplay']['exit'] = $this->nmgp_botoes['exit'] = 'off';
+              }
           } 
           if ($rs === false && $GLOBALS["NM_ERRO_IBASE"] == 1) 
           { 
               $GLOBALS["NM_ERRO_IBASE"] = 0; 
-              $this->Erro->mensagem (__FILE__, __LINE__, "banco", $this->Ini->Nm_lang['lang_errm_nfnd_extr'], $this->Db->ErrorMsg()); 
-              exit ; 
+              $this->Erro->mensagem (__FILE__, __LINE__, "critica", $this->Ini->Nm_lang['lang_errm_nfnd_extr']); 
+              $this->nmgp_opcao = "novo"; 
           }  
           if ($this->nmgp_opcao != "novo") 
           { 
@@ -5379,9 +5403,14 @@ if (isset($_SESSION['scriptcase']['device_mobile']) && $_SESSION['scriptcase']['
      }  
      if ($rs->fields[0] == 0) 
      { 
-         $this->Erro->mensagem (__FILE__, __LINE__, "banco", $this->Ini->Nm_lang['lang_errm_nfnd_extr'], $this->Db->ErrorMsg()); 
+         $this->nmgp_opcao = "novo"; 
+         $this->nm_flag_saida_novo = "S"; 
          $rs->Close(); 
-         exit ; 
+         if ($this->aba_iframe)
+         {
+             $this->nmgp_botoes['exit'] = 'off';
+         }
+         return;
      }
      $str_where_filter = ('' != $str_where_param) ? ' where ' . $str_where_param : '';
      if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_access))
@@ -6681,23 +6710,44 @@ if (parent && parent.scAjaxDetailValue)
 }
     function getButtonIds($buttonName) {
         switch ($buttonName) {
+            case "new":
+                return array("sc_b_new_t.sc-unique-btn-1");
+                break;
+            case "insert":
+                return array("sc_b_ins_t.sc-unique-btn-2");
+                break;
+            case "bcancelar":
+                return array("sc_b_sai_t.sc-unique-btn-3");
+                break;
+            case "update":
+                return array("sc_b_upd_t.sc-unique-btn-4");
+                break;
+            case "delete":
+                return array("sc_b_del_t.sc-unique-btn-5");
+                break;
+            case "breload":
+                return array("sc_b_reload_t.sc-unique-btn-6");
+                break;
+            case "help":
+                return array("sc_b_hlp_t");
+                break;
+            case "exit":
+                return array("sc_b_sai_t.sc-unique-btn-7", "sc_b_sai_t.sc-unique-btn-8", "sc_b_sai_t.sc-unique-btn-10", "sc_b_sai_t.sc-unique-btn-9", "sc_b_sai_t.sc-unique-btn-11");
+                break;
             case "birpara":
                 return array("brec_b");
                 break;
             case "first":
-                return array("sc_b_ini_b.sc-unique-btn-1");
+                return array("sc_b_ini_b.sc-unique-btn-12");
                 break;
             case "back":
-                return array("sc_b_ret_b.sc-unique-btn-2");
+                return array("sc_b_ret_b.sc-unique-btn-13");
                 break;
             case "forward":
-                return array("sc_b_avc_b.sc-unique-btn-3");
+                return array("sc_b_avc_b.sc-unique-btn-14");
                 break;
             case "last":
-                return array("sc_b_fim_b.sc-unique-btn-4");
-                break;
-            case "exit":
-                return array("sc_b_sai_b.sc-unique-btn-5");
+                return array("sc_b_fim_b.sc-unique-btn-15");
                 break;
         }
 

@@ -51,7 +51,7 @@
    $_SESSION['scriptcase']['form_agenda']['glo_nm_path_prod']       = "/scriptcase/prod";
    $_SESSION['scriptcase']['form_agenda']['glo_nm_path_imagens']    = "/scriptcase/file/img";
    $_SESSION['scriptcase']['form_agenda']['glo_nm_path_imag_temp']  = "/scriptcase/tmp";
-   $_SESSION['scriptcase']['form_agenda']['glo_nm_path_cache']  = "C:/Program Files/NetMake/v9-php81/wwwroot/scriptcase/file/cache";
+   $_SESSION['scriptcase']['form_agenda']['glo_nm_path_cache']  = "D:/SCRIPTCASE/wwwroot/scriptcase/file/cache";
    $_SESSION['scriptcase']['form_agenda']['glo_nm_path_doc']        = "C:/Program Files/NetMake/v9-php81/wwwroot/scriptcase/file/doc";
    $_SESSION['scriptcase']['form_agenda']['glo_nm_conexao']         = "conn_mysql";
    $NM_dir_atual = getcwd();
@@ -944,7 +944,7 @@ class form_agenda_ini
               else 
               { 
 ?>
-                  <input type="button" id="sai" onClick="window.location='<?php echo $nm_url_saida ?>'; return false" class="scButton_danger" value="<?php echo $this->Nm_lang['lang_btns_exit'] ?>" title="__NM_HINT__ (Alt + Q)" style="<?php echo $sCondStyle; ?>vertical-align: middle;display: ''">
+                  <input type="button" id="sai" onClick="window.location='<?php echo $nm_url_saida ?>'; return false" class="scButton_danger" value="<?php echo $this->Nm_lang['lang_btns_exit'] ?>" title="<?php echo $this->Nm_lang['lang_btns_exit_hint'] ?>" style="<?php echo $sCondStyle; ?>vertical-align: middle;display: ''">
 
 <?php
               } 
@@ -1107,7 +1107,7 @@ class form_agenda_ini
       $this->nm_bases_odbc       = array("odbc");
       $this->nm_bases_progress   = array("progress", "pdo_progress_odbc");
       $this->nm_bases_all        = array_merge($this->nm_bases_access, $this->nm_bases_db2, $this->nm_bases_ibase, $this->nm_bases_informix, $this->nm_bases_mssql, $this->nm_bases_mysql, $this->nm_bases_postgres, $this->nm_bases_oracle, $this->nm_bases_sqlite, $this->nm_bases_sybase, $this->nm_bases_vfp, $this->nm_bases_odbc, $this->nm_bases_progress);
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_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";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQJeDQX7D1BeHQBOHgvsDkBsDuX7VoBqHQBsZ1FGDSNOV5JwHgBeHEFiV5B3DoF7D9XsDuFaHANKV5XGDMBYV9BUHEF/HMF7HQXOH9BOHArYHuB/HgBODkFeV5FqHIFGDcXGZSBiHAvOVWBODMBYVcFiV5X/VEFGHQXGZ1BiD1rKD5JwHgNKDkBsV5FqHIFGHQNwH9FUHAveHuBqHgrwZSrCH5FqDoJeD9JmZ1B/D1NaD5rqHgrKHErsHEXCHIB/HQXODQBqHINaV5BODMzGZSJ3V5FYHIJeHQBiZ1FGHIrwHuXGHgrKHEFKV5FqHIB/HQXODQFaHANOHQJsDMNOZSrCV5FYHMX7HQBqZ1FGDSBeHQX7HgBOHAFKH5FYVoX7D9JKDQX7D1BOV5FGDMzGV9BUHEF/HIFUHQXOZSBqHAN7HuBqHgvsDkFeV5FqDoJsDcBiDQBqHAvCVWBODMvmZSrCV5FYHMJwDcFYZ1X7HINKZMXGHgBYHAFKV5FqHMX7HQXODuFaHIrwHuXGDMzGVcFiH5FqDoJeD9JmZ1B/D1NaD5rqDErKZSXeH5FYDoFUD9NwDQJsHArYVWJsHuvmVcXKV5X7HMJsHQBqVIraZ1BeHuX7HgBeZSJqDWr/HIF7HQFYDQB/D1veHuF7DMvmVcB/H5FqHMJwHQFYH9FaHIBeZMBODEvsZSJGDWr/DoB/D9XsZSFGD1NKV5JwHuzGDkBOH5FqVoX7D9JmZ1FaHArKZMB/DMBYZSXeDWX7DoXGDcBwDuBOZ1NaV5FGHuNOVcFKHEFYVoBqDcBwH9FaD1rwD5rqDMNKZSXeDuJeDoB/D9NwZSFGD1veV5raDMNOVcFeDWFYHIXGHQXOH9BOD1rKHuJeHgNOHEFKV5FqHIF7HQFYDQFaD1BOVWJwDMzGDkBsV5X7HIBiHQJmZ1F7Z1vmD5rqDEBOHArCDWF/HIF7D9NmDQFGHAveD5JeHgrwVIFCDur/DoFUHQXGZkFGHArKV5FUDMrYZSXeV5FqHIJsHQXGZSX7HAN7V5JwHuzGVIBOV5FYVoJwDcBqZ1B/HIBeV5FaDEBOVkXeH5F/DoraHQXGH9FGHAveD5BOHuzGVcFeDWXCDoJsDcBwH9B/Z1rYHQJwHgBeHEFiV5B3DoF7D9XsDuFaHANKV5BqDMrYZSJqH5FqVEF7D9JmZ1FaDSNOHQBiDMvCVkJqDuFaHIJsD9XsZ9JeD1BeD5F7DMvmVcFKH5XCDoraD9BsZ1B/Z1BeHQJwDEBODkFeH5FYVoFGHQJKDQBqHAvmV5JeDMvOZSNiH5B3VorqHQNmVINUHAvsZMBqHgBeHEFiV5B3DoF7D9XsDuFaHAveVWJsHgrKDkFCDWXKVoF7DcJUZSBqHANOHQBiDMBYZSXeDWFqDoXGHQXOZSX7HArYHuJeDMvsVcFeDWXCDoJsDcBwH9B/Z1rYHQJwDMzGHEFiDWFqVoFGD9XsZSBiHAveD5NUHgNKDkBOV5FYHMBiHQBqZkFUZ1vmD5Bq";
       $this->prep_conect();
       $this->conectDB();
       if (!in_array(strtolower($this->nm_tpbanco), $this->nm_bases_all))
@@ -1690,7 +1690,7 @@ class form_agenda_ini
               elseif(!empty($nm_url_saida)) 
               { 
 ?>
-                  <input type="button" id="sai" onClick="window.location='<?php echo $nm_url_saida ?>'; return false" class="scButton_danger" value="<?php echo $this->Nm_lang['lang_btns_exit'] ?>" title="__NM_HINT__ (Alt + Q)" style="<?php echo $sCondStyle; ?>vertical-align: middle;display: ''">
+                  <input type="button" id="sai" onClick="window.location='<?php echo $nm_url_saida ?>'; return false" class="scButton_danger" value="<?php echo $this->Nm_lang['lang_btns_exit'] ?>" title="<?php echo $this->Nm_lang['lang_btns_exit_hint'] ?>" style="<?php echo $sCondStyle; ?>vertical-align: middle;display: ''">
 
 <?php
               } 
@@ -2160,8 +2160,11 @@ ob_start();
             $nm_form_submit = NM_utf8_urldecode($_POST['rsargs'][1]);
             $nmgp_opcao = NM_utf8_urldecode($_POST['rsargs'][2]);
             $nmgp_ordem = NM_utf8_urldecode($_POST['rsargs'][3]);
-            $nmgp_arg_dyn_search = NM_utf8_urldecode($_POST['rsargs'][4]);
-            $script_case_init = NM_utf8_urldecode($_POST['rsargs'][5]);
+            $nmgp_fast_search = NM_utf8_urldecode($_POST['rsargs'][4]);
+            $nmgp_cond_fast_search = NM_utf8_urldecode($_POST['rsargs'][5]);
+            $nmgp_arg_fast_search = NM_utf8_urldecode($_POST['rsargs'][6]);
+            $nmgp_arg_dyn_search = NM_utf8_urldecode($_POST['rsargs'][7]);
+            $script_case_init = NM_utf8_urldecode($_POST['rsargs'][8]);
         }
     }
 
@@ -2978,7 +2981,7 @@ ob_start();
         exit;
     } // ajax_submit_form
 
-    function ajax_form_agenda_navigate_form($id_agenda, $nm_form_submit, $nmgp_opcao, $nmgp_ordem, $nmgp_arg_dyn_search, $script_case_init)
+    function ajax_form_agenda_navigate_form($id_agenda, $nm_form_submit, $nmgp_opcao, $nmgp_ordem, $nmgp_fast_search, $nmgp_cond_fast_search, $nmgp_arg_fast_search, $nmgp_arg_dyn_search, $script_case_init)
     {
         global $inicial_form_agenda;
         //register_shutdown_function("form_agenda_pack_ajax_response");
@@ -2989,6 +2992,9 @@ ob_start();
                   'nm_form_submit' => NM_utf8_urldecode($nm_form_submit),
                   'nmgp_opcao' => NM_utf8_urldecode($nmgp_opcao),
                   'nmgp_ordem' => NM_utf8_urldecode($nmgp_ordem),
+                  'nmgp_fast_search' => NM_utf8_urldecode($nmgp_fast_search),
+                  'nmgp_cond_fast_search' => NM_utf8_urldecode($nmgp_cond_fast_search),
+                  'nmgp_arg_fast_search' => NM_utf8_urldecode($nmgp_arg_fast_search),
                   'nmgp_arg_dyn_search' => NM_utf8_urldecode($nmgp_arg_dyn_search),
                   'script_case_init' => NM_utf8_urldecode($script_case_init),
                   'buffer_output' => true,

@@ -4001,6 +4001,8 @@ foreach ($this->Ini->sc_lig_iframe as $tmp_i => $tmp_v)
   function do_ajax_form_agenda_mob_navigate_form_cb_after_alert() {
     scAjaxMessage();
     scAjaxJavascript();
+    scQuickSearchKeyUp('t', null);
+    $('#SC_fast_search_t').blur();
     scAjaxSetFocus();
 <?php
 if ($this->Embutida_form)

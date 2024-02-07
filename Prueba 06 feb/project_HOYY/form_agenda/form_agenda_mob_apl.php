@@ -1008,6 +1008,10 @@ class form_agenda_mob_apl
       }
       $this->Erro      = new form_agenda_mob_erro();
       $this->Erro->Ini = $this->Ini;
+      if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['sc_max_reg']) && strtolower($_SESSION['sc_session'][$this->Ini->sc_page]['form_agenda_mob']['sc_max_reg']) == "all")
+      {
+          $this->form_paginacao = "total";
+      }
       $this->proc_fast_search = false;
       if ((!isset($nm_opc_lookup) || $nm_opc_lookup != "lookup") && (!isset($nm_opc_php) || $nm_opc_php != "formphp"))
       { 
@@ -6629,44 +6633,44 @@ if (parent && parent.scAjaxDetailValue)
 }
     function getButtonIds($buttonName) {
         switch ($buttonName) {
+            case "new":
+                return array("sc_b_new_t.sc-unique-btn-1", "sc_b_new_t.sc-unique-btn-16");
+                break;
+            case "insert":
+                return array("sc_b_ins_t.sc-unique-btn-2", "sc_b_ins_t.sc-unique-btn-17");
+                break;
+            case "bcancelar":
+                return array("sc_b_sai_t.sc-unique-btn-3", "sc_b_sai_t.sc-unique-btn-18");
+                break;
+            case "update":
+                return array("sc_b_upd_t.sc-unique-btn-4", "sc_b_upd_t.sc-unique-btn-19");
+                break;
+            case "delete":
+                return array("sc_b_del_t.sc-unique-btn-5", "sc_b_del_t.sc-unique-btn-20");
+                break;
+            case "breload":
+                return array("sc_b_reload_t.sc-unique-btn-6", "sc_b_reload_t.sc-unique-btn-21");
+                break;
+            case "help":
+                return array("sc_b_hlp_t");
+                break;
+            case "exit":
+                return array("sc_b_sai_t.sc-unique-btn-7", "sc_b_sai_t.sc-unique-btn-8", "sc_b_sai_t.sc-unique-btn-10", "sc_b_sai_t.sc-unique-btn-22", "sc_b_sai_t.sc-unique-btn-23", "sc_b_sai_t.sc-unique-btn-25", "sc_b_sai_t.sc-unique-btn-9", "sc_b_sai_t.sc-unique-btn-11", "sc_b_sai_t.sc-unique-btn-24", "sc_b_sai_t.sc-unique-btn-26");
+                break;
             case "birpara":
                 return array("brec_b");
                 break;
             case "first":
-                return array("sc_b_ini_b.sc-unique-btn-1", "sc_b_ini_b.sc-unique-btn-17");
+                return array("sc_b_ini_b.sc-unique-btn-12", "sc_b_ini_b.sc-unique-btn-27");
                 break;
             case "back":
-                return array("sc_b_ret_b.sc-unique-btn-2", "sc_b_ret_b.sc-unique-btn-18");
+                return array("sc_b_ret_b.sc-unique-btn-13", "sc_b_ret_b.sc-unique-btn-28");
                 break;
             case "forward":
-                return array("sc_b_avc_b.sc-unique-btn-3", "sc_b_avc_b.sc-unique-btn-19");
+                return array("sc_b_avc_b.sc-unique-btn-14", "sc_b_avc_b.sc-unique-btn-29");
                 break;
             case "last":
-                return array("sc_b_fim_b.sc-unique-btn-4", "sc_b_fim_b.sc-unique-btn-20");
-                break;
-            case "exit":
-                return array("sc_b_sai_b.sc-unique-btn-5", "sc_b_sai_t.sc-unique-btn-14", "sc_b_sai_t.sc-unique-btn-16", "sc_b_sai_t.sc-unique-btn-12", "sc_b_sai_t.sc-unique-btn-13", "sc_b_sai_t.sc-unique-btn-15");
-                break;
-            case "new":
-                return array("sc_b_new_t.sc-unique-btn-6");
-                break;
-            case "insert":
-                return array("sc_b_ins_t.sc-unique-btn-7");
-                break;
-            case "bcancelar":
-                return array("sc_b_sai_t.sc-unique-btn-8");
-                break;
-            case "update":
-                return array("sc_b_upd_t.sc-unique-btn-9");
-                break;
-            case "delete":
-                return array("sc_b_del_t.sc-unique-btn-10");
-                break;
-            case "breload":
-                return array("sc_b_reload_t.sc-unique-btn-11");
-                break;
-            case "help":
-                return array("sc_b_hlp_t");
+                return array("sc_b_fim_b.sc-unique-btn-15", "sc_b_fim_b.sc-unique-btn-30");
                 break;
         }
 
