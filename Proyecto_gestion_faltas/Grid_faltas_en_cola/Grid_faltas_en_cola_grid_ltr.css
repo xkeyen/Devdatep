@@ -1,0 +1,12 @@
+.css_nombre_apellido_label, .css_nombre_apellido_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_nombre_apellido_grid_line, .css_nombre_apellido_grid_line:hover {vertical-align: top;text-align: left;}
+.css_desc_falta_label, .css_desc_falta_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_desc_falta_grid_line, .css_desc_falta_grid_line:hover {vertical-align: top;text-align: left;}
+.css_tipo_de_falta_label, .css_tipo_de_falta_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_tipo_de_falta_grid_line, .css_tipo_de_falta_grid_line:hover {vertical-align: top;text-align: left;}
+.css_fecha_f_label, .css_fecha_f_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_fecha_f_grid_line, .css_fecha_f_grid_line:hover {vertical-align: top;text-align: center;}
+.css_sc_field_0_label, .css_sc_field_0_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_sc_field_0_grid_line, .css_sc_field_0_grid_line:hover {vertical-align: top;text-align: left;}
+.css_estado_label, .css_estado_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_estado_grid_line, .css_estado_grid_line:hover {vertical-align: top;text-align: left;}
