@@ -1,0 +1,20 @@
+.css_colaborador_label, .css_colaborador_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_colaborador_grid_line, .css_colaborador_grid_line:hover {vertical-align: top;text-align: right;}
+.css_desc_falta_label, .css_desc_falta_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_desc_falta_grid_line, .css_desc_falta_grid_line:hover {vertical-align: top;text-align: right;}
+.css_fecha_falta_label, .css_fecha_falta_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_fecha_falta_grid_line, .css_fecha_falta_grid_line:hover {vertical-align: top;text-align: center;}
+.css_usuario_registro_label, .css_usuario_registro_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_usuario_registro_grid_line, .css_usuario_registro_grid_line:hover {vertical-align: top;text-align: right;}
+.css_perfil_r_label, .css_perfil_r_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_perfil_r_grid_line, .css_perfil_r_grid_line:hover {vertical-align: top;text-align: right;}
+.css_fecha_registro_label, .css_fecha_registro_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_fecha_registro_grid_line, .css_fecha_registro_grid_line:hover {vertical-align: top;text-align: center;}
+.css_usuario_sancion_label, .css_usuario_sancion_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_usuario_sancion_grid_line, .css_usuario_sancion_grid_line:hover {vertical-align: top;text-align: right;}
+.css_perfil_s_label, .css_perfil_s_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_perfil_s_grid_line, .css_perfil_s_grid_line:hover {vertical-align: top;text-align: right;}
+.css_fecha_sancion_label, .css_fecha_sancion_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_fecha_sancion_grid_line, .css_fecha_sancion_grid_line:hover {vertical-align: top;text-align: center;}
+.css_tiempo_transcurrido_label, .css_tiempo_transcurrido_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_tiempo_transcurrido_grid_line, .css_tiempo_transcurrido_grid_line:hover {vertical-align: top;text-align: right;}
