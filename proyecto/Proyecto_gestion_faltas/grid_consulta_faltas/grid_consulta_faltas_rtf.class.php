@@ -324,6 +324,14 @@ function actionBar_getStateHide($buttonName)
               $SC_Label = str_replace('>', '&gt;', $SC_Label);
               $this->Texto_tag .= "<td>" . $SC_Label . "</td>\r\n";
           }
+          $SC_Label = (isset($this->New_label['perfil_s'])) ? $this->New_label['perfil_s'] : "PERFIL S"; 
+          if ($Cada_col == "perfil_s" && (!isset($this->NM_cmp_hidden[$Cada_col]) || $this->NM_cmp_hidden[$Cada_col] != "off"))
+          {
+              $SC_Label = NM_charset_to_utf8($SC_Label);
+              $SC_Label = str_replace('<', '&lt;', $SC_Label);
+              $SC_Label = str_replace('>', '&gt;', $SC_Label);
+              $this->Texto_tag .= "<td>" . $SC_Label . "</td>\r\n";
+          }
           $SC_Label = (isset($this->New_label['perfil_r'])) ? $this->New_label['perfil_r'] : "PERFIL R"; 
           if ($Cada_col == "perfil_r" && (!isset($this->NM_cmp_hidden[$Cada_col]) || $this->NM_cmp_hidden[$Cada_col] != "off"))
           {
@@ -347,27 +355,27 @@ function actionBar_getStateHide($buttonName)
       $nmgp_select_count = "SELECT count(*) AS countTest from " . $this->Ini->nm_tabela; 
       if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_sybase))
       { 
-          $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, str_replace (convert(char(10),f.fault_practitioner_date,102), '.', '-') + ' ' + convert(char(8),f.fault_practitioner_date,20) as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, str_replace (convert(char(10),f.sanction_date,102), '.', '-') + ' ' + convert(char(8),f.sanction_date,20) as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d2.division_name as perfil_r, str_replace (convert(char(10),f.fault_register_date,102), '.', '-') + ' ' + convert(char(8),f.fault_register_date,20) as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
+          $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, str_replace (convert(char(10),f.fault_practitioner_date,102), '.', '-') + ' ' + convert(char(8),f.fault_practitioner_date,20) as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, str_replace (convert(char(10),f.sanction_date,102), '.', '-') + ' ' + convert(char(8),f.sanction_date,20) as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d3.division_name as perfil_s, d2.division_name as perfil_r, str_replace (convert(char(10),f.fault_register_date,102), '.', '-') + ' ' + convert(char(8),f.fault_register_date,20) as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
       } 
       elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mysql))
       { 
-          $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, f.fault_practitioner_date as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, f.sanction_date as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d2.division_name as perfil_r, f.fault_register_date as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
+          $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, f.fault_practitioner_date as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, f.sanction_date as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d3.division_name as perfil_s, d2.division_name as perfil_r, f.fault_register_date as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
       } 
       elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mssql))
       { 
-       $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, convert(char(23),f.fault_practitioner_date,121) as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, convert(char(23),f.sanction_date,121) as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d2.division_name as perfil_r, convert(char(23),f.fault_register_date,121) as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
+       $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, convert(char(23),f.fault_practitioner_date,121) as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, convert(char(23),f.sanction_date,121) as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d3.division_name as perfil_s, d2.division_name as perfil_r, convert(char(23),f.fault_register_date,121) as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
       } 
       elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_oracle))
       { 
-          $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, f.fault_practitioner_date as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, f.sanction_date as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d2.division_name as perfil_r, f.fault_register_date as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
+          $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, f.fault_practitioner_date as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, f.sanction_date as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d3.division_name as perfil_s, d2.division_name as perfil_r, f.fault_register_date as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
       } 
       elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_informix))
       { 
-          $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, EXTEND(f.fault_practitioner_date, YEAR TO FRACTION) as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, EXTEND(f.sanction_date, YEAR TO FRACTION) as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d2.division_name as perfil_r, EXTEND(f.fault_register_date, YEAR TO FRACTION) as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
+          $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, EXTEND(f.fault_practitioner_date, YEAR TO FRACTION) as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, EXTEND(f.sanction_date, YEAR TO FRACTION) as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d3.division_name as perfil_s, d2.division_name as perfil_r, EXTEND(f.fault_register_date, YEAR TO FRACTION) as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
       } 
       else 
       { 
-          $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, f.fault_practitioner_date as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, f.sanction_date as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d2.division_name as perfil_r, f.fault_register_date as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
+          $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, f.fault_practitioner_date as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, f.sanction_date as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d3.division_name as perfil_s, d2.division_name as perfil_r, f.fault_register_date as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
       } 
       $nmgp_select .= " " . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['where_pesq'];
       $nmgp_select_count .= " " . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['where_pesq'];
@@ -422,9 +430,10 @@ function actionBar_getStateHide($buttonName)
          $this->fecha_sancion = $rs->fields[6] ;  
          $this->evidencia = $rs->fields[7] ;  
          $this->usuario_registro = $rs->fields[8] ;  
-         $this->perfil_r = $rs->fields[9] ;  
-         $this->fecha_registro = $rs->fields[10] ;  
-         $this->area = $rs->fields[11] ;  
+         $this->perfil_s = $rs->fields[9] ;  
+         $this->perfil_r = $rs->fields[10] ;  
+         $this->fecha_registro = $rs->fields[11] ;  
+         $this->area = $rs->fields[12] ;  
          $this->sc_proc_grid = true; 
          foreach ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['field_order'] as $Cada_col)
          { 
@@ -565,6 +574,16 @@ function actionBar_getStateHide($buttonName)
          $this->usuario_registro = str_replace('<', '&lt;', $this->usuario_registro);
          $this->usuario_registro = str_replace('>', '&gt;', $this->usuario_registro);
          $this->Texto_tag .= "<td>" . $this->usuario_registro . "</td>\r\n";
+   }
+   //----- perfil_s
+   function NM_export_perfil_s()
+   {
+         $this->perfil_s = html_entity_decode($this->perfil_s, ENT_COMPAT, $_SESSION['scriptcase']['charset']);
+         $this->perfil_s = strip_tags($this->perfil_s);
+         $this->perfil_s = NM_charset_to_utf8($this->perfil_s);
+         $this->perfil_s = str_replace('<', '&lt;', $this->perfil_s);
+         $this->perfil_s = str_replace('>', '&gt;', $this->perfil_s);
+         $this->Texto_tag .= "<td>" . $this->perfil_s . "</td>\r\n";
    }
    //----- perfil_r
    function NM_export_perfil_r()

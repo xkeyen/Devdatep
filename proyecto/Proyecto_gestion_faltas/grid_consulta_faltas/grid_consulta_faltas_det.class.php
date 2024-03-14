@@ -21,10 +21,10 @@ class grid_consulta_faltas_det
    var $fecha_sancion;
    var $evidencia;
    var $usuario_registro;
+   var $perfil_s;
    var $perfil_r;
    var $fecha_registro;
    var $usuario_sancion;
-   var $perfil_s;
    var $area;
    var $tiempo_transcurrido;
     function getFieldHighlight($filter_type, $field, $str_value, $str_value_original='')
@@ -140,7 +140,7 @@ class grid_consulta_faltas_det
                 (
                     (
                     $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['fast_search'][0] == 'SC_all_Cmp' &&
-                    in_array($field, array('colaborador', 'desc_falta', 'tipo_falta_descripcion', 'fecha_falta', 'tipo_sancion', 'estado_sancion', 'fecha_sancion', 'evidencia', 'usuario_registro', 'perfil_r', 'fecha_registro'))
+                    in_array($field, array('colaborador', 'desc_falta', 'tipo_falta_descripcion', 'fecha_falta', 'tipo_sancion', 'estado_sancion', 'fecha_sancion', 'evidencia', 'usuario_registro', 'perfil_s', 'perfil_r', 'fecha_registro'))
                     ) ||
                     $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['fast_search'][0] == $field ||
                     strpos($_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['fast_search'][0], $field . '_VLS_') !== false ||
@@ -243,7 +243,7 @@ class grid_consulta_faltas_det
     $this->sc_where_filtro = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['where_pesq_filtro'];
     $this->nm_field_dinamico = array();
     $this->nm_order_dinamico = array();
-    $this->nm_data = new nm_data("es_es");
+    $this->nm_data = new nm_data("en_us");
     $this->NM_raiz_img  = ""; 
     if ($this->Ini->sc_export_ajax_img)
     { 
@@ -310,15 +310,15 @@ class grid_consulta_faltas_det
    } 
    if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_access))
    {
-       $nmgp_select .= " where  g1.general_name = '$parms_det[0]' and fl.fault_name = '$parms_det[1]' and ft.fault_type_description = '$parms_det[2]' and f.fault_practitioner_date = #$parms_det[3]# and fr.sanction_type_name = '$parms_det[4]' and fp.sanction_description = '$parms_det[5]' and f.sanction_date = #$parms_det[6]# and f.evidence = '$parms_det[7]' and g2.general_name = '$parms_det[8]' and d2.division_name = '$parms_det[9]' and f.fault_register_date = #$parms_det[10]# and f.area_id = '$parms_det[11]'" ;  
+       $nmgp_select .= " where  g1.general_name = '$parms_det[0]' and fl.fault_name = '$parms_det[1]' and ft.fault_type_description = '$parms_det[2]' and f.fault_practitioner_date = #$parms_det[3]# and fr.sanction_type_name = '$parms_det[4]' and fp.sanction_description = '$parms_det[5]' and f.sanction_date = #$parms_det[6]# and f.evidence = '$parms_det[7]' and g2.general_name = '$parms_det[8]' and d3.division_name = '$parms_det[9]' and d2.division_name = '$parms_det[10]' and f.fault_register_date = #$parms_det[11]# and f.area_id = '$parms_det[12]'" ;  
    } 
    elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mssql))
    {
-       $nmgp_select .= " where  g1.general_name = '$parms_det[0]' and fl.fault_name = '$parms_det[1]' and ft.fault_type_description = '$parms_det[2]' and convert(char(23),f.fault_practitioner_date,121) = '$parms_det[3]' and fr.sanction_type_name = '$parms_det[4]' and fp.sanction_description = '$parms_det[5]' and convert(char(23),f.sanction_date,121) = '$parms_det[6]' and f.evidence = '$parms_det[7]' and g2.general_name = '$parms_det[8]' and d2.division_name = '$parms_det[9]' and convert(char(23),f.fault_register_date,121) = '$parms_det[10]' and f.area_id = '$parms_det[11]'" ;  
+       $nmgp_select .= " where  g1.general_name = '$parms_det[0]' and fl.fault_name = '$parms_det[1]' and ft.fault_type_description = '$parms_det[2]' and convert(char(23),f.fault_practitioner_date,121) = '$parms_det[3]' and fr.sanction_type_name = '$parms_det[4]' and fp.sanction_description = '$parms_det[5]' and convert(char(23),f.sanction_date,121) = '$parms_det[6]' and f.evidence = '$parms_det[7]' and g2.general_name = '$parms_det[8]' and d3.division_name = '$parms_det[9]' and d2.division_name = '$parms_det[10]' and convert(char(23),f.fault_register_date,121) = '$parms_det[11]' and f.area_id = '$parms_det[12]'" ;  
    } 
    else 
    { 
-       $nmgp_select .= " where  g1.general_name = '$parms_det[0]' and fl.fault_name = '$parms_det[1]' and ft.fault_type_description = '$parms_det[2]' and f.fault_practitioner_date = " . $this->Ini->date_delim . $parms_det[3] . $this->Ini->date_delim1 . " and fr.sanction_type_name = '$parms_det[4]' and fp.sanction_description = '$parms_det[5]' and f.sanction_date = " . $this->Ini->date_delim . $parms_det[6] . $this->Ini->date_delim1 . " and f.evidence = '$parms_det[7]' and g2.general_name = '$parms_det[8]' and d2.division_name = '$parms_det[9]' and f.fault_register_date = " . $this->Ini->date_delim . $parms_det[10] . $this->Ini->date_delim1 . " and f.area_id = '$parms_det[11]'" ;  
+       $nmgp_select .= " where  g1.general_name = '$parms_det[0]' and fl.fault_name = '$parms_det[1]' and ft.fault_type_description = '$parms_det[2]' and f.fault_practitioner_date = " . $this->Ini->date_delim . $parms_det[3] . $this->Ini->date_delim1 . " and fr.sanction_type_name = '$parms_det[4]' and fp.sanction_description = '$parms_det[5]' and f.sanction_date = " . $this->Ini->date_delim . $parms_det[6] . $this->Ini->date_delim1 . " and f.evidence = '$parms_det[7]' and g2.general_name = '$parms_det[8]' and d3.division_name = '$parms_det[9]' and d2.division_name = '$parms_det[10]' and f.fault_register_date = " . $this->Ini->date_delim . $parms_det[11] . $this->Ini->date_delim1 . " and f.area_id = '$parms_det[12]'" ;  
    } 
    $_SESSION['scriptcase']['sc_sql_ult_conexao'] = ''; 
    $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nmgp_select; 
@@ -362,7 +362,7 @@ class grid_consulta_faltas_det
        $nm_saida->saida(" <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0\" />\r\n");
    }
 
-           $nm_saida->saida("   <script type=\"text/javascript\" src=\"grid_consulta_faltas_jquery_2783.js\"></script>\r\n");
+           $nm_saida->saida("   <script type=\"text/javascript\" src=\"grid_consulta_faltas_jquery_1040.js\"></script>\r\n");
            $nm_saida->saida("   <script type=\"text/javascript\" src=\"grid_consulta_faltas_ajax.js\"></script>\r\n");
            $nm_saida->saida("   <script type=\"text/javascript\" src=\"grid_consulta_faltas_message.js\"></script>\r\n");
            $nm_saida->saida("   <script type=\"text/javascript\">\r\n");

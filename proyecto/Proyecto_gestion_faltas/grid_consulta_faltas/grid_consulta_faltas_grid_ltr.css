@@ -2,8 +2,8 @@
 .css_colaborador_grid_line, .css_colaborador_grid_line:hover {vertical-align: top;text-align: left;}
 .css_desc_falta_label, .css_desc_falta_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
 .css_desc_falta_grid_line, .css_desc_falta_grid_line:hover {vertical-align: top;text-align: left;}
-.css_tipo_falta_descripcion_label, .css_tipo_falta_descripcion_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
-.css_tipo_falta_descripcion_grid_line, .css_tipo_falta_descripcion_grid_line:hover {vertical-align: top;text-align: left;}
+.css_tipo_falta_descripcion_label, .css_tipo_falta_descripcion_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_tipo_falta_descripcion_grid_line, .css_tipo_falta_descripcion_grid_line:hover {vertical-align: top;text-align: center;}
 .css_fecha_falta_label, .css_fecha_falta_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
 .css_fecha_falta_grid_line, .css_fecha_falta_grid_line:hover {vertical-align: top;text-align: center;}
 .css_tipo_sancion_label, .css_tipo_sancion_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
@@ -16,6 +16,8 @@
 .css_evidencia_grid_line, .css_evidencia_grid_line:hover {vertical-align: top;text-align: left;}
 .css_usuario_registro_label, .css_usuario_registro_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
 .css_usuario_registro_grid_line, .css_usuario_registro_grid_line:hover {vertical-align: top;text-align: left;}
+.css_perfil_s_label, .css_perfil_s_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_perfil_s_grid_line, .css_perfil_s_grid_line:hover {vertical-align: top;text-align: left;}
 .css_perfil_r_label, .css_perfil_r_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
 .css_perfil_r_grid_line, .css_perfil_r_grid_line:hover {vertical-align: top;text-align: left;}
 .css_fecha_registro_label, .css_fecha_registro_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}

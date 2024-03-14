@@ -4230,6 +4230,10 @@ SCEOT;
        {
            $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['labels']['usuario_registro'] = "USUARIO REGISTRO"; 
        }
+       if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['labels']['perfil_s']))
+       {
+           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['labels']['perfil_s'] = "PERFIL S"; 
+       }
        if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['labels']['perfil_r']))
        {
            $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['labels']['perfil_r'] = "PERFIL R"; 
@@ -4241,10 +4245,6 @@ SCEOT;
        if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['labels']['usuario_sancion']))
        {
            $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['labels']['usuario_sancion'] = "USUARIO SANCION"; 
-       }
-       if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['labels']['perfil_s']))
-       {
-           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['labels']['perfil_s'] = "PERFIL S"; 
        }
        if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['labels']['area']))
        {
@@ -7383,7 +7383,7 @@ if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['doc_w
            $nm_saida->saida("   var sc_ajaxBordS = '" . $this->Ini->Border_s_ajax . "';\r\n");
            $nm_saida->saida("   var sc_ajaxBordW = '" . $this->Ini->Border_w_ajax . "';\r\n");
            $nm_saida->saida(" </script>\r\n");
-           $nm_saida->saida(" <script type=\"text/javascript\" src=\"grid_consulta_faltas_jquery_2783.js\"></script>\r\n");
+           $nm_saida->saida(" <script type=\"text/javascript\" src=\"grid_consulta_faltas_jquery_1040.js\"></script>\r\n");
            $nm_saida->saida(" <script type=\"text/javascript\" src=\"grid_consulta_faltas_message.js\"></script>\r\n");
            $nm_saida->saida(" <script type=\"text/javascript\" src=\"../_lib/lib/js/scInput.js\"></script>\r\n");
            $nm_saida->saida(" <script type=\"text/javascript\" src=\"../_lib/lib/js/jquery.scInput.js\"></script>\r\n");
@@ -9723,19 +9723,19 @@ if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['doc_w
      $_SESSION['scriptcase']['sc_sql_ult_conexao'] = ""; 
      if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_sybase))
      { 
-         $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, str_replace (convert(char(10),f.fault_practitioner_date,102), '.', '-') + ' ' + convert(char(8),f.fault_practitioner_date,20) as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, str_replace (convert(char(10),f.sanction_date,102), '.', '-') + ' ' + convert(char(8),f.sanction_date,20) as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d2.division_name as perfil_r, str_replace (convert(char(10),f.fault_register_date,102), '.', '-') + ' ' + convert(char(8),f.fault_register_date,20) as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
+         $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, str_replace (convert(char(10),f.fault_practitioner_date,102), '.', '-') + ' ' + convert(char(8),f.fault_practitioner_date,20) as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, str_replace (convert(char(10),f.sanction_date,102), '.', '-') + ' ' + convert(char(8),f.sanction_date,20) as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d3.division_name as perfil_s, d2.division_name as perfil_r, str_replace (convert(char(10),f.fault_register_date,102), '.', '-') + ' ' + convert(char(8),f.fault_register_date,20) as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
      } 
      elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mysql))
      { 
-         $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, f.fault_practitioner_date as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, f.sanction_date as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d2.division_name as perfil_r, f.fault_register_date as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
+         $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, f.fault_practitioner_date as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, f.sanction_date as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d3.division_name as perfil_s, d2.division_name as perfil_r, f.fault_register_date as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
      } 
      elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mssql))
      { 
-         $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, convert(char(23),f.fault_practitioner_date,121) as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, convert(char(23),f.sanction_date,121) as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d2.division_name as perfil_r, convert(char(23),f.fault_register_date,121) as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
+         $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, convert(char(23),f.fault_practitioner_date,121) as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, convert(char(23),f.sanction_date,121) as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d3.division_name as perfil_s, d2.division_name as perfil_r, convert(char(23),f.fault_register_date,121) as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
      } 
      else 
      { 
-         $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, f.fault_practitioner_date as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, f.sanction_date as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d2.division_name as perfil_r, f.fault_register_date as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
+         $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, f.fault_practitioner_date as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, f.sanction_date as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d3.division_name as perfil_s, d2.division_name as perfil_r, f.fault_register_date as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
      } 
      $nmgp_select .= " " . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['where_pesq']; 
      $campos_order = "";
@@ -9809,9 +9809,10 @@ if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['doc_w
             $this->fecha_sancion = $rs_res->fields[6] ;  
             $this->evidencia = $rs_res->fields[7] ;  
             $this->usuario_registro = $rs_res->fields[8] ;  
-            $this->perfil_r = $rs_res->fields[9] ;  
-            $this->fecha_registro = $rs_res->fields[10] ;  
-            $this->area = $rs_res->fields[11] ;  
+            $this->perfil_s = $rs_res->fields[9] ;  
+            $this->perfil_r = $rs_res->fields[10] ;  
+            $this->fecha_registro = $rs_res->fields[11] ;  
+            $this->area = $rs_res->fields[12] ;  
             $this->area_orig = $this->area;
             if ($nm_tipo == "resumo")
             {

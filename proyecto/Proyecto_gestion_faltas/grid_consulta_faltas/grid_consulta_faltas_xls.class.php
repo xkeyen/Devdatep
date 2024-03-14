@@ -375,27 +375,27 @@ function actionBar_getStateHide($buttonName)
       $nmgp_select_count = "SELECT count(*) AS countTest from " . $this->Ini->nm_tabela; 
       if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_sybase))
       { 
-          $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, str_replace (convert(char(10),f.fault_practitioner_date,102), '.', '-') + ' ' + convert(char(8),f.fault_practitioner_date,20) as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, str_replace (convert(char(10),f.sanction_date,102), '.', '-') + ' ' + convert(char(8),f.sanction_date,20) as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d2.division_name as perfil_r, str_replace (convert(char(10),f.fault_register_date,102), '.', '-') + ' ' + convert(char(8),f.fault_register_date,20) as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
+          $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, str_replace (convert(char(10),f.fault_practitioner_date,102), '.', '-') + ' ' + convert(char(8),f.fault_practitioner_date,20) as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, str_replace (convert(char(10),f.sanction_date,102), '.', '-') + ' ' + convert(char(8),f.sanction_date,20) as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d3.division_name as perfil_s, d2.division_name as perfil_r, str_replace (convert(char(10),f.fault_register_date,102), '.', '-') + ' ' + convert(char(8),f.fault_register_date,20) as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
       } 
       elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mysql))
       { 
-          $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, f.fault_practitioner_date as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, f.sanction_date as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d2.division_name as perfil_r, f.fault_register_date as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
+          $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, f.fault_practitioner_date as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, f.sanction_date as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d3.division_name as perfil_s, d2.division_name as perfil_r, f.fault_register_date as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
       } 
       elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mssql))
       { 
-       $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, convert(char(23),f.fault_practitioner_date,121) as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, convert(char(23),f.sanction_date,121) as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d2.division_name as perfil_r, convert(char(23),f.fault_register_date,121) as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
+       $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, convert(char(23),f.fault_practitioner_date,121) as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, convert(char(23),f.sanction_date,121) as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d3.division_name as perfil_s, d2.division_name as perfil_r, convert(char(23),f.fault_register_date,121) as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
       } 
       elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_oracle))
       { 
-          $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, f.fault_practitioner_date as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, f.sanction_date as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d2.division_name as perfil_r, f.fault_register_date as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
+          $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, f.fault_practitioner_date as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, f.sanction_date as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d3.division_name as perfil_s, d2.division_name as perfil_r, f.fault_register_date as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
       } 
       elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_informix))
       { 
-          $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, EXTEND(f.fault_practitioner_date, YEAR TO FRACTION) as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, EXTEND(f.sanction_date, YEAR TO FRACTION) as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d2.division_name as perfil_r, EXTEND(f.fault_register_date, YEAR TO FRACTION) as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
+          $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, EXTEND(f.fault_practitioner_date, YEAR TO FRACTION) as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, EXTEND(f.sanction_date, YEAR TO FRACTION) as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d3.division_name as perfil_s, d2.division_name as perfil_r, EXTEND(f.fault_register_date, YEAR TO FRACTION) as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
       } 
       else 
       { 
-          $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, f.fault_practitioner_date as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, f.sanction_date as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d2.division_name as perfil_r, f.fault_register_date as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
+          $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, f.fault_practitioner_date as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, f.sanction_date as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d3.division_name as perfil_s, d2.division_name as perfil_r, f.fault_register_date as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
       } 
       $nmgp_select .= " " . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['where_pesq'];
       $nmgp_select_count .= " " . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['where_pesq'];
@@ -446,9 +446,10 @@ function actionBar_getStateHide($buttonName)
          $this->fecha_sancion = $rs->fields[6] ;  
          $this->evidencia = $rs->fields[7] ;  
          $this->usuario_registro = $rs->fields[8] ;  
-         $this->perfil_r = $rs->fields[9] ;  
-         $this->fecha_registro = $rs->fields[10] ;  
-         $this->area = $rs->fields[11] ;  
+         $this->perfil_s = $rs->fields[9] ;  
+         $this->perfil_r = $rs->fields[10] ;  
+         $this->fecha_registro = $rs->fields[11] ;  
+         $this->area = $rs->fields[12] ;  
          $this->arg_sum_area = " = " . $this->Db->qstr($this->area);
           if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['SC_Ind_Groupby'] == "sc_free_group_by") 
           {  
@@ -841,18 +842,18 @@ function actionBar_getStateHide($buttonName)
               if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['embutida'])
               { 
                   $this->arr_export['label'][$this->Xls_col]['data']     = $SC_Label;
-                  $this->arr_export['label'][$this->Xls_col]['align']    = "left";
+                  $this->arr_export['label'][$this->Xls_col]['align']    = "center";
                   $this->arr_export['label'][$this->Xls_col]['autosize'] = "s";
                   $this->arr_export['label'][$this->Xls_col]['bold']     = "s";
               }
               else
               { 
                   if ($this->Use_phpspreadsheet) {
-                      $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
+                      $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
                       $this->Nm_ActiveSheet->setCellValueExplicit($current_cell_ref . $this->Xls_row, $SC_Label, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
                   }
                   else {
-                      $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+                      $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
                       $this->Nm_ActiveSheet->setCellValueExplicit($current_cell_ref . $this->Xls_row, $SC_Label, PHPExcel_Cell_DataType::TYPE_STRING);
                   }
                   $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getFont()->setBold(true);
@@ -1028,6 +1029,34 @@ function actionBar_getStateHide($buttonName)
               }
               $this->Xls_col++;
           }
+          $SC_Label = (isset($this->New_label['perfil_s'])) ? $this->New_label['perfil_s'] : "PERFIL S"; 
+          if ($Cada_col == "perfil_s" && (!isset($this->NM_cmp_hidden[$Cada_col]) || $this->NM_cmp_hidden[$Cada_col] != "off"))
+          {
+              $this->count_span++;
+              $current_cell_ref = $this->calc_cell($this->Xls_col);
+              $SC_Label = NM_charset_to_utf8($SC_Label);
+              if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['embutida'])
+              { 
+                  $this->arr_export['label'][$this->Xls_col]['data']     = $SC_Label;
+                  $this->arr_export['label'][$this->Xls_col]['align']    = "left";
+                  $this->arr_export['label'][$this->Xls_col]['autosize'] = "s";
+                  $this->arr_export['label'][$this->Xls_col]['bold']     = "s";
+              }
+              else
+              { 
+                  if ($this->Use_phpspreadsheet) {
+                      $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
+                      $this->Nm_ActiveSheet->setCellValueExplicit($current_cell_ref . $this->Xls_row, $SC_Label, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+                  }
+                  else {
+                      $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+                      $this->Nm_ActiveSheet->setCellValueExplicit($current_cell_ref . $this->Xls_row, $SC_Label, PHPExcel_Cell_DataType::TYPE_STRING);
+                  }
+                  $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getFont()->setBold(true);
+                  $this->Nm_ActiveSheet->getColumnDimension($current_cell_ref)->setAutoSize(true);
+              }
+              $this->Xls_col++;
+          }
           $SC_Label = (isset($this->New_label['perfil_r'])) ? $this->New_label['perfil_r'] : "PERFIL R"; 
           if ($Cada_col == "perfil_r" && (!isset($this->NM_cmp_hidden[$Cada_col]) || $this->NM_cmp_hidden[$Cada_col] != "off"))
           {
@@ -1134,7 +1163,7 @@ function actionBar_getStateHide($buttonName)
          $current_cell_ref = $this->calc_cell($this->Xls_col);
          if (!isset($this->NM_ctrl_style[$current_cell_ref])) {
              $this->NM_ctrl_style[$current_cell_ref]['ini'] = $this->Xls_row;
-             $this->NM_ctrl_style[$current_cell_ref]['align'] = "LEFT"; 
+             $this->NM_ctrl_style[$current_cell_ref]['align'] = "CENTER"; 
          }
          $this->NM_ctrl_style[$current_cell_ref]['end'] = $this->Xls_row;
          $this->tipo_falta_descripcion = html_entity_decode($this->tipo_falta_descripcion, ENT_COMPAT, $_SESSION['scriptcase']['charset']);
@@ -1300,6 +1329,26 @@ function actionBar_getStateHide($buttonName)
          }
          $this->Xls_col++;
    }
+   //----- perfil_s
+   function NM_export_perfil_s()
+   {
+         $current_cell_ref = $this->calc_cell($this->Xls_col);
+         if (!isset($this->NM_ctrl_style[$current_cell_ref])) {
+             $this->NM_ctrl_style[$current_cell_ref]['ini'] = $this->Xls_row;
+             $this->NM_ctrl_style[$current_cell_ref]['align'] = "LEFT"; 
+         }
+         $this->NM_ctrl_style[$current_cell_ref]['end'] = $this->Xls_row;
+         $this->perfil_s = html_entity_decode($this->perfil_s, ENT_COMPAT, $_SESSION['scriptcase']['charset']);
+         $this->perfil_s = strip_tags($this->perfil_s);
+         $this->perfil_s = NM_charset_to_utf8($this->perfil_s);
+         if ($this->Use_phpspreadsheet) {
+             $this->Nm_ActiveSheet->setCellValueExplicit($current_cell_ref . $this->Xls_row, $this->perfil_s, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+         }
+         else {
+             $this->Nm_ActiveSheet->setCellValueExplicit($current_cell_ref . $this->Xls_row, $this->perfil_s, PHPExcel_Cell_DataType::TYPE_STRING);
+         }
+         $this->Xls_col++;
+   }
    //----- perfil_r
    function NM_export_perfil_r()
    {
@@ -1387,7 +1436,7 @@ function actionBar_getStateHide($buttonName)
          $this->tipo_falta_descripcion = strip_tags($this->tipo_falta_descripcion);
          $this->tipo_falta_descripcion = NM_charset_to_utf8($this->tipo_falta_descripcion);
          $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['data']   = $this->tipo_falta_descripcion;
-         $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['align']  = "left";
+         $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['align']  = "center";
          $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['type']   = "char";
          $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['format'] = "";
          $this->Xls_col++;
@@ -1491,6 +1540,18 @@ function actionBar_getStateHide($buttonName)
          $this->usuario_registro = strip_tags($this->usuario_registro);
          $this->usuario_registro = NM_charset_to_utf8($this->usuario_registro);
          $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['data']   = $this->usuario_registro;
+         $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['align']  = "left";
+         $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['type']   = "char";
+         $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['format'] = "";
+         $this->Xls_col++;
+   }
+   //----- perfil_s
+   function NM_sub_cons_perfil_s()
+   {
+         $this->perfil_s = html_entity_decode($this->perfil_s, ENT_COMPAT, $_SESSION['scriptcase']['charset']);
+         $this->perfil_s = strip_tags($this->perfil_s);
+         $this->perfil_s = NM_charset_to_utf8($this->perfil_s);
+         $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['data']   = $this->perfil_s;
          $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['align']  = "left";
          $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['type']   = "char";
          $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['format'] = "";

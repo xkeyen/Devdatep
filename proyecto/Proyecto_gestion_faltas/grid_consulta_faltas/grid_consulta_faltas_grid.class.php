@@ -73,6 +73,7 @@ class grid_consulta_faltas_grid
    var $fecha_sancion;
    var $evidencia;
    var $usuario_registro;
+   var $perfil_s;
    var $perfil_r;
    var $fecha_registro;
    var $area;
@@ -583,6 +584,8 @@ function actionBar_getStateHide($buttonName)
    $this->Cmps_ord_def["f.evidence"] = "";
    $this->Cmps_ord_def['usuario_registro'] = " asc";
    $this->Cmps_ord_def["g2.general_name"] = "";
+   $this->Cmps_ord_def['perfil_s'] = " asc";
+   $this->Cmps_ord_def["d3.division_name"] = "";
    $this->Cmps_ord_def['perfil_r'] = " asc";
    $this->Cmps_ord_def["d2.division_name"] = "";
    $this->Cmps_ord_def['fecha_registro'] = " desc";
@@ -1058,27 +1061,27 @@ function actionBar_getStateHide($buttonName)
 //----- 
    if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_sybase))
    { 
-       $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, str_replace (convert(char(10),f.fault_practitioner_date,102), '.', '-') + ' ' + convert(char(8),f.fault_practitioner_date,20) as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, str_replace (convert(char(10),f.sanction_date,102), '.', '-') + ' ' + convert(char(8),f.sanction_date,20) as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d2.division_name as perfil_r, str_replace (convert(char(10),f.fault_register_date,102), '.', '-') + ' ' + convert(char(8),f.fault_register_date,20) as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
+       $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, str_replace (convert(char(10),f.fault_practitioner_date,102), '.', '-') + ' ' + convert(char(8),f.fault_practitioner_date,20) as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, str_replace (convert(char(10),f.sanction_date,102), '.', '-') + ' ' + convert(char(8),f.sanction_date,20) as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d3.division_name as perfil_s, d2.division_name as perfil_r, str_replace (convert(char(10),f.fault_register_date,102), '.', '-') + ' ' + convert(char(8),f.fault_register_date,20) as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
    } 
    elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mysql))
    { 
-       $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, f.fault_practitioner_date as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, f.sanction_date as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d2.division_name as perfil_r, f.fault_register_date as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
+       $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, f.fault_practitioner_date as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, f.sanction_date as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d3.division_name as perfil_s, d2.division_name as perfil_r, f.fault_register_date as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
    } 
    elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mssql))
    { 
-       $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, convert(char(23),f.fault_practitioner_date,121) as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, convert(char(23),f.sanction_date,121) as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d2.division_name as perfil_r, convert(char(23),f.fault_register_date,121) as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
+       $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, convert(char(23),f.fault_practitioner_date,121) as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, convert(char(23),f.sanction_date,121) as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d3.division_name as perfil_s, d2.division_name as perfil_r, convert(char(23),f.fault_register_date,121) as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
    } 
    elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_oracle))
    { 
-       $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, f.fault_practitioner_date as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, f.sanction_date as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d2.division_name as perfil_r, f.fault_register_date as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
+       $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, f.fault_practitioner_date as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, f.sanction_date as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d3.division_name as perfil_s, d2.division_name as perfil_r, f.fault_register_date as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
    } 
    elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_informix))
    { 
-       $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, EXTEND(f.fault_practitioner_date, YEAR TO FRACTION) as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, EXTEND(f.sanction_date, YEAR TO FRACTION) as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d2.division_name as perfil_r, EXTEND(f.fault_register_date, YEAR TO FRACTION) as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
+       $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, EXTEND(f.fault_practitioner_date, YEAR TO FRACTION) as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, EXTEND(f.sanction_date, YEAR TO FRACTION) as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d3.division_name as perfil_s, d2.division_name as perfil_r, EXTEND(f.fault_register_date, YEAR TO FRACTION) as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
    } 
    else 
    { 
-       $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, f.fault_practitioner_date as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, f.sanction_date as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d2.division_name as perfil_r, f.fault_register_date as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
+       $nmgp_select = "SELECT g1.general_name as colaborador, fl.fault_name as desc_falta, ft.fault_type_description as tipo_falta_descripcion, f.fault_practitioner_date as fecha_falta, fr.sanction_type_name as tipo_sancion, fp.sanction_description as estado_sancion, f.sanction_date as fecha_sancion, f.evidence as evidencia, g2.general_name as usuario_registro, d3.division_name as perfil_s, d2.division_name as perfil_r, f.fault_register_date as fecha_registro, f.area_id as area from " . $this->Ini->nm_tabela; 
    } 
    $nmgp_select .= " " . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['where_pesq']; 
    if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['where_resumo']) && !empty($_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['where_resumo'])) 
@@ -1168,9 +1171,10 @@ function actionBar_getStateHide($buttonName)
        $this->fecha_sancion = $this->rs_grid->fields[6] ;  
        $this->evidencia = $this->rs_grid->fields[7] ;  
        $this->usuario_registro = $this->rs_grid->fields[8] ;  
-       $this->perfil_r = $this->rs_grid->fields[9] ;  
-       $this->fecha_registro = $this->rs_grid->fields[10] ;  
-       $this->area = $this->rs_grid->fields[11] ;  
+       $this->perfil_s = $this->rs_grid->fields[9] ;  
+       $this->perfil_r = $this->rs_grid->fields[10] ;  
+       $this->fecha_registro = $this->rs_grid->fields[11] ;  
+       $this->area = $this->rs_grid->fields[12] ;  
        if (!isset($this->area)) { $this->area = ""; }
        $this->arg_sum_area = " = " . $this->Db->qstr($this->area);
        $this->SC_seq_register = $this->nmgp_reg_start ; 
@@ -1220,9 +1224,10 @@ function actionBar_getStateHide($buttonName)
            $this->fecha_sancion = $this->rs_grid->fields[6] ;  
            $this->evidencia = $this->rs_grid->fields[7] ;  
            $this->usuario_registro = $this->rs_grid->fields[8] ;  
-           $this->perfil_r = $this->rs_grid->fields[9] ;  
-           $this->fecha_registro = $this->rs_grid->fields[10] ;  
-           $this->area = $this->rs_grid->fields[11] ;  
+           $this->perfil_s = $this->rs_grid->fields[9] ;  
+           $this->perfil_r = $this->rs_grid->fields[10] ;  
+           $this->fecha_registro = $this->rs_grid->fields[11] ;  
+           $this->area = $this->rs_grid->fields[12] ;  
            if (!isset($this->area)) { $this->area = ""; }
        } 
    } 
@@ -1462,7 +1467,7 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
            $nm_saida->saida("     var scSweetAlertConfirmButtonFAPos = \"" . $confirmButtonFAPos . "\";\r\n");
            $nm_saida->saida("     var scSweetAlertCancelButtonFAPos = \"" . $cancelButtonFAPos . "\";\r\n");
            $nm_saida->saida("   </script>\r\n");
-           $nm_saida->saida("   <script type=\"text/javascript\" src=\"grid_consulta_faltas_jquery_2783.js\"></script>\r\n");
+           $nm_saida->saida("   <script type=\"text/javascript\" src=\"grid_consulta_faltas_jquery_1040.js\"></script>\r\n");
            $nm_saida->saida("   <script type=\"text/javascript\" src=\"grid_consulta_faltas_ajax.js\"></script>\r\n");
            $nm_saida->saida("   <script type=\"text/javascript\" src=\"grid_consulta_faltas_message.js\"></script>\r\n");
            $nm_saida->saida("   <script type=\"text/javascript\">\r\n");
@@ -2970,6 +2975,8 @@ $nm_saida->saida("}\r\n");
    $this->css_evidencia_grid_line = $compl_css_emb . "css_evidencia_grid_line";
    $this->css_usuario_registro_label = $compl_css_emb . "css_usuario_registro_label";
    $this->css_usuario_registro_grid_line = $compl_css_emb . "css_usuario_registro_grid_line";
+   $this->css_perfil_s_label = $compl_css_emb . "css_perfil_s_label";
+   $this->css_perfil_s_grid_line = $compl_css_emb . "css_perfil_s_grid_line";
    $this->css_perfil_r_label = $compl_css_emb . "css_perfil_r_label";
    $this->css_perfil_r_grid_line = $compl_css_emb . "css_perfil_r_grid_line";
    $this->css_fecha_registro_label = $compl_css_emb . "css_fecha_registro_label";
@@ -3589,7 +3596,7 @@ $nm_saida->saida("}\r\n");
     $label_fieldName = nl2br($SC_Label);
     if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['embutida'] && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['opcao_print'] != 'print' && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['opcao'] != 'pdf') {
         // label & order
-        $divLabelStyle = '';
+        $divLabelStyle = '; justify-content: center';
         $NM_cmp_class = "tipo_falta_descripcion";
         if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_access)) {
             $NM_cmp_class = "ft.fault_type_description";
@@ -3966,6 +3973,62 @@ $nm_saida->saida("}\r\n");
    $nm_saida->saida("</TD>\r\n");
    } 
  }
+ function NM_label_perfil_s()
+ {
+   global $nm_saida;
+   $SC_Label = (isset($this->New_label['perfil_s'])) ? $this->New_label['perfil_s'] : "PERFIL S";
+   $classColFld = "";
+   $classColTitle = "";
+   if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['embutida'] && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['opcao_print'] != 'print' && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['opcao'] != 'pdf') {
+     $classColFld = " sc-col-fld sc-col-fld-" . $this->grid_fixed_column_no;
+     $classColTitle = " sc-col-title";
+   }
+   if (!isset($this->NM_cmp_hidden['perfil_s']) || $this->NM_cmp_hidden['perfil_s'] != "off") { 
+   $nm_saida->saida("     <TD class=\"" . $this->css_inherit_bg . ' ' . $this->css_scGridLabelFont . $this->css_sep . $this->css_perfil_s_label . " " . $classColFld . $classColTitle . "\"  style=\"" . $this->css_scGridLabelNowrap . "" . $this->Css_Cmp['css_perfil_s_label'] . "\" >\r\n");
+    $label_fieldName = nl2br($SC_Label);
+    if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['embutida'] && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['opcao_print'] != 'print' && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['opcao'] != 'pdf') {
+        // label & order
+        $divLabelStyle = '';
+        $NM_cmp_class = "perfil_s";
+        if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_access)) {
+            $NM_cmp_class = "d3.division_name";
+        }
+        elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_ibase)) {
+            $NM_cmp_class = "d3.division_name";
+        }
+        $fieldSortRule = $this->scGetColumnOrderRule($NM_cmp_class);
+        $fieldSortIcon = $this->scGetColumnOrderIcon($NM_cmp_class, $fieldSortRule);
+        if (empty($this->Ini->Label_sort_pos) || $this->Ini->Label_sort_pos == 'right') {
+            $this->Ini->Label_sort_pos = 'right_field';
+        }
+        if (empty($fieldSortIcon)) {
+            $label_labelContent = "<div style=\"flex-grow: 1; white-space: nowrap" . $divLabelStyle . "\">" . $label_fieldName . "</div>";
+        } elseif ($this->Ini->Label_sort_pos == 'right_field') {
+            $label_labelContent = "<div style=\"display: flex" . $divLabelStyle . "\"><div class=\"" . $this->css_perfil_s_label . "\" style=\"display: flex; white-space: nowrap\">" . $label_fieldName . "</div>" . $fieldSortIcon . "</div>";
+        } elseif ($this->Ini->Label_sort_pos == 'left_field') {
+            $label_labelContent = "<div style=\"display: flex" . $divLabelStyle . "\">" . $fieldSortIcon . "<div style=\"display: flex; white-space: nowrap\">" . $label_fieldName . "</div></div>";
+        } elseif ($this->Ini->Label_sort_pos == 'right_cell') {
+            $label_labelContent = "<div style=\"display: flex; justify-content: space-between\"><div class=\"" . $this->css_perfil_s_label . "\" style=\"display: flex; flex-grow: 1; white-space: nowrap" . $divLabelStyle . "\">" . $label_fieldName . "</div>" . $fieldSortIcon . "</div>";
+        } elseif ($this->Ini->Label_sort_pos == 'left_cell') {
+            $label_labelContent = "<div style=\"display: flex; justify-content: space-between\">" . $fieldSortIcon . "<div style=\"display: flex; flex-grow: 1; white-space: nowrap" . $divLabelStyle . "\">" . $label_fieldName . "</div></div>";
+        } else {
+            $label_labelContent = "<div style=\"flex-grow: 1; white-space: nowrap" . $divLabelStyle . "\">" . $label_fieldName . "</div>";
+        }
+        $label_labelContent = "<a href=\"javascript:nm_gp_submit2('" . $NM_cmp_class . "')\" class=\"" . $this->css_scGridLabelLink . "\">" . $label_labelContent . "</a>";
+        $label_divLabel = "<div style=\"flex-grow: 1\">". $label_labelContent . "</div>";
+        // controls
+        $label_chart = '';
+        $label_fixedColumn = "<span class=\"sc-op-fix-col sc-op-fix-col-" . $this->grid_fixed_column_no . " sc-op-fix-col-notfixed\" data-fixcolid=\"" . $this->grid_fixed_column_no . "\" id=\"sc-fld-fix-col-" . $this->grid_fixed_column_no . "\"><i class=\"fas fa-thumbtack\"></i></span>";
+        $label_divControl = '<div style="display: flex; flex-wrap: nowrap; align-items: baseline">' . $label_chart . $label_fixedColumn . '</div>';
+        // final label
+        $label_final = '<div style="display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; align-items: baseline">' . $label_divLabel . $label_divControl . '</div>';
+    } else {
+        $label_final = $label_fieldName;
+    }
+   $nm_saida->saida("" . $label_final . "\r\n");
+   $nm_saida->saida("</TD>\r\n");
+   } 
+ }
  function NM_label_perfil_r()
  {
    global $nm_saida;
@@ -4190,6 +4253,8 @@ function SC_label_rightActionBar()
    $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['labels']['evidencia'] = $SC_Label; 
    $SC_Label = (isset($this->New_label['usuario_registro'])) ? $this->New_label['usuario_registro'] : "USUARIO REGISTRO";
    $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['labels']['usuario_registro'] = $SC_Label; 
+   $SC_Label = (isset($this->New_label['perfil_s'])) ? $this->New_label['perfil_s'] : "PERFIL S";
+   $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['labels']['perfil_s'] = $SC_Label; 
    $SC_Label = (isset($this->New_label['perfil_r'])) ? $this->New_label['perfil_r'] : "PERFIL R";
    $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['labels']['perfil_r'] = $SC_Label; 
    $SC_Label = (isset($this->New_label['fecha_registro'])) ? $this->New_label['fecha_registro'] : "FECHA REGISTRO";
@@ -4446,9 +4511,10 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['proc_p
           $this->fecha_sancion = $this->rs_grid->fields[6] ;  
           $this->evidencia = $this->rs_grid->fields[7] ;  
           $this->usuario_registro = $this->rs_grid->fields[8] ;  
-          $this->perfil_r = $this->rs_grid->fields[9] ;  
-          $this->fecha_registro = $this->rs_grid->fields[10] ;  
-          $this->area = $this->rs_grid->fields[11] ;  
+          $this->perfil_s = $this->rs_grid->fields[9] ;  
+          $this->perfil_r = $this->rs_grid->fields[10] ;  
+          $this->fecha_registro = $this->rs_grid->fields[11] ;  
+          $this->area = $this->rs_grid->fields[12] ;  
           if (!isset($this->area)) { $this->area = ""; }
           $this->arg_sum_area = " = " . $this->Db->qstr($this->area);
           $this->SC_seq_page++; 
@@ -4623,7 +4689,7 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['proc_p
  } 
  if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['embutida'] && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['opcao_print'] != "print" && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['opcao'] != "pdf" && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['mostra_edit'] != "N"){ 
               $Sc_parent = ($this->grid_emb_form || $this->grid_emb_form_full) ? "S" : "";
-              $Parms_Det  = "nmgp_chave_det?#?" . $this->colaborador . "*PDet*" . $this->desc_falta . "*PDet*" . $this->tipo_falta_descripcion . "*PDet*" . $this->fecha_falta . "*PDet*" . $this->tipo_sancion . "*PDet*" . $this->estado_sancion . "*PDet*" . $this->fecha_sancion . "*PDet*" . $this->evidencia . "*PDet*" . $this->usuario_registro . "*PDet*" . $this->perfil_r . "*PDet*" . $this->fecha_registro . "*PDet*" . $this->area . "?@?Sc_seq_det?#?" . $this->SC_seq_register . "?#?";
+              $Parms_Det  = "nmgp_chave_det?#?" . $this->colaborador . "*PDet*" . $this->desc_falta . "*PDet*" . $this->tipo_falta_descripcion . "*PDet*" . $this->fecha_falta . "*PDet*" . $this->tipo_sancion . "*PDet*" . $this->estado_sancion . "*PDet*" . $this->fecha_sancion . "*PDet*" . $this->evidencia . "*PDet*" . $this->usuario_registro . "*PDet*" . $this->perfil_s . "*PDet*" . $this->perfil_r . "*PDet*" . $this->fecha_registro . "*PDet*" . $this->area . "?@?Sc_seq_det?#?" . $this->SC_seq_register . "?#?";
               $Md5_Det    = "@SC_par@" . NM_encode_input($this->Ini->sc_page) . "@SC_par@grid_consulta_faltas@SC_par@" . md5($Parms_Det);
               $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['Lig_Md5'][md5($Parms_Det)] = $Parms_Det;
               $Link_Det  = nmButtonOutput($this->arr_buttons, "bcons_detalhes", "nm_gp_submit3('" . $Md5_Det . "', '', 'detalhe', '" . $this->SC_ancora . "')", "nm_gp_submit3('" . $Md5_Det . "', '', 'detalhe', '" . $this->SC_ancora . "')", "", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
@@ -4638,7 +4704,7 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['proc_p
  $this->grid_fixed_column_no++;} 
  if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['embutida'] && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['opcao_print'] != "print" && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['opcao'] != "pdf" && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['mostra_edit'] == "N"){ 
               $Sc_parent = ($this->grid_emb_form || $this->grid_emb_form_full) ? "S" : "";
-              $Parms_Det  = "nmgp_chave_det?#?" . $this->colaborador . "*PDet*" . $this->desc_falta . "*PDet*" . $this->tipo_falta_descripcion . "*PDet*" . $this->fecha_falta . "*PDet*" . $this->tipo_sancion . "*PDet*" . $this->estado_sancion . "*PDet*" . $this->fecha_sancion . "*PDet*" . $this->evidencia . "*PDet*" . $this->usuario_registro . "*PDet*" . $this->perfil_r . "*PDet*" . $this->fecha_registro . "*PDet*" . $this->area . "?@?Sc_seq_det?#?" . $this->SC_seq_register . "?#?";
+              $Parms_Det  = "nmgp_chave_det?#?" . $this->colaborador . "*PDet*" . $this->desc_falta . "*PDet*" . $this->tipo_falta_descripcion . "*PDet*" . $this->fecha_falta . "*PDet*" . $this->tipo_sancion . "*PDet*" . $this->estado_sancion . "*PDet*" . $this->fecha_sancion . "*PDet*" . $this->evidencia . "*PDet*" . $this->usuario_registro . "*PDet*" . $this->perfil_s . "*PDet*" . $this->perfil_r . "*PDet*" . $this->fecha_registro . "*PDet*" . $this->area . "?@?Sc_seq_det?#?" . $this->SC_seq_register . "?#?";
               $Md5_Det    = "@SC_par@" . NM_encode_input($this->Ini->sc_page) . "@SC_par@grid_consulta_faltas@SC_par@" . md5($Parms_Det);
               $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['Lig_Md5'][md5($Parms_Det)] = $Parms_Det;
               $Link_Det  = nmButtonOutput($this->arr_buttons, "bcons_detalhes", "nm_gp_submit3('" . $Md5_Det . "', '', 'detalhe', '" . $this->SC_ancora . "')", "nm_gp_submit3('" . $Md5_Det . "', '', 'detalhe', '" . $this->SC_ancora . "')", "", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
@@ -5134,6 +5200,45 @@ function SC_grid_rightActionBar()
    $nm_saida->saida("     <TD rowspan=\"" . $this->Rows_span . "\" class=\"" . $this->css_inherit_bg . ' ' . $this->css_line_fonf . $this->css_sep . $this->css_usuario_registro_grid_line . " " . $classColFld . "\"  style=\"" . $this->Css_Cmp['css_usuario_registro_grid_line'] . "\" " . $this->SC_nowrap . " align=\"\" valign=\"top\"   HEIGHT=\"0px\"><span id=\"id_sc_field_usuario_registro_" . $this->SC_seq_page . "\">" . $conteudo . "</span></TD>\r\n");
       }
  }
+ function NM_grid_perfil_s()
+ {
+      global $nm_saida;
+      if (!isset($this->NM_cmp_hidden['perfil_s']) || $this->NM_cmp_hidden['perfil_s'] != "off") { 
+          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['opcao'] == "pdf" && isset($_SESSION['nm_session']['sys_wkhtmltopdf_show_html_content']) && $_SESSION['nm_session']['sys_wkhtmltopdf_show_html_content'] == 'Y') {
+              $conteudo = NM_encode_input(sc_strip_script($this->perfil_s));
+              $conteudo_original = NM_encode_input(sc_strip_script($this->perfil_s));
+          }
+          else {
+              $conteudo = sc_strip_script($this->perfil_s); 
+              $conteudo_original = sc_strip_script($this->perfil_s); 
+          }
+          if ($conteudo === "") 
+          { 
+              $conteudo = "&nbsp;" ;  
+              $graf = "" ;  
+          } 
+          $str_tem_display = $conteudo;
+          if(!empty($str_tem_display) && $str_tem_display != '&nbsp;' && !$_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['proc_pdf'] && !$_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['embutida'] && !empty($conteudo)) 
+          { 
+              $str_tem_display = $this->getFieldHighlight('quicksearch', 'perfil_s', $str_tem_display, $conteudo_original); 
+              $str_tem_display = $this->getFieldHighlight('advanced_search', 'perfil_s', $str_tem_display, $conteudo_original); 
+          } 
+              $conteudo = $str_tem_display; 
+          $classColFld = "";
+          if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['embutida'] && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['opcao_print'] != 'print' && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['opcao'] != 'pdf') {
+              $classColFld = " sc-col-fld sc-col-fld-" . $this->grid_fixed_column_no;
+          }
+          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['proc_pdf'])
+          {
+              $this->SC_nowrap = "";
+          }
+          else
+          {
+              $this->SC_nowrap = "";
+          }
+   $nm_saida->saida("     <TD rowspan=\"" . $this->Rows_span . "\" class=\"" . $this->css_inherit_bg . ' ' . $this->css_line_fonf . $this->css_sep . $this->css_perfil_s_grid_line . " " . $classColFld . "\"  style=\"" . $this->Css_Cmp['css_perfil_s_grid_line'] . "\" " . $this->SC_nowrap . " align=\"\" valign=\"top\"   HEIGHT=\"0px\"><span id=\"id_sc_field_perfil_s_" . $this->SC_seq_page . "\">" . $conteudo . "</span></TD>\r\n");
+      }
+ }
  function NM_grid_perfil_r()
  {
       global $nm_saida;
@@ -5226,7 +5331,7 @@ function SC_grid_rightActionBar()
  }
  function NM_calc_span()
  {
-   $this->NM_colspan  = 13;
+   $this->NM_colspan  = 14;
    if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['opc_psq'])
    {
        $this->NM_colspan++;
@@ -5578,6 +5683,7 @@ $nm_saida->saida("    </style>\r\n");
           $SC_Label_atu['fecha_sancion'] = (isset($this->New_label['fecha_sancion'])) ? $this->New_label['fecha_sancion'] : 'FECHA SANCION'; 
           $SC_Label_atu['evidencia'] = (isset($this->New_label['evidencia'])) ? $this->New_label['evidencia'] : 'EVIDENCIA'; 
           $SC_Label_atu['usuario_registro'] = (isset($this->New_label['usuario_registro'])) ? $this->New_label['usuario_registro'] : 'USUARIO REGISTRO'; 
+          $SC_Label_atu['perfil_s'] = (isset($this->New_label['perfil_s'])) ? $this->New_label['perfil_s'] : 'PERFIL S'; 
           $SC_Label_atu['perfil_r'] = (isset($this->New_label['perfil_r'])) ? $this->New_label['perfil_r'] : 'PERFIL R'; 
           $SC_Label_atu['fecha_registro'] = (isset($this->New_label['fecha_registro'])) ? $this->New_label['fecha_registro'] : 'FECHA REGISTRO'; 
           foreach ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['field_order'] as $cada_field)
@@ -5617,15 +5723,6 @@ $nm_saida->saida("    </style>\r\n");
       }
           $nm_saida->saida("         </td> \r\n");
           $nm_saida->saida("          <td class=\"" . $this->css_scGridToolbarPadd . "\" nowrap valign=\"middle\" align=\"center\" width=\"33%\"> \r\n");
-      if ($this->nmgp_botoes['sel_col'] == "on" && !$_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['opc_psq'] && empty($this->nm_grid_sem_reg) && !$this->grid_emb_form)
-      {
-      $pos_path = strrpos($this->Ini->path_prod, "/");
-      $path_fields = $this->Ini->root . substr($this->Ini->path_prod, 0, $pos_path) . "/conf/fields/";
-              $this->nm_btn_exist['sel_col'][] = "selcmp_top";
-              $Cod_Btn = nmButtonOutput($this->arr_buttons, "bcolumns", "scBtnSelCamposShow('" . $this->Ini->path_link . "grid_consulta_faltas/grid_consulta_faltas_sel_campos.php?path_img=" . $this->Ini->path_img_global . "&path_btn=" . $this->Ini->path_botoes . "&path_fields=" . $path_fields . "&script_case_init=" . NM_encode_input($this->Ini->sc_page) . "&embbed_groupby=Y&toolbar_pos=top', 'top');", "scBtnSelCamposShow('" . $this->Ini->path_link . "grid_consulta_faltas/grid_consulta_faltas_sel_campos.php?path_img=" . $this->Ini->path_img_global . "&path_btn=" . $this->Ini->path_botoes . "&path_fields=" . $path_fields . "&script_case_init=" . NM_encode_input($this->Ini->sc_page) . "&embbed_groupby=Y&toolbar_pos=top', 'top');", "selcmp_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
-              $nm_saida->saida("           $Cod_Btn \r\n");
-              $NM_btn = true;
-      }
       if ($this->nmgp_botoes['sort_col'] == "on" && !$_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['opc_psq'] && empty($this->nm_grid_sem_reg) && !$this->grid_emb_form)
       {
           if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_access))
@@ -5645,8 +5742,6 @@ $nm_saida->saida("    </style>\r\n");
               $nm_saida->saida("           $Cod_Btn \r\n");
               $NM_btn = true;
       }
-          $nm_saida->saida("         </td> \r\n");
-          $nm_saida->saida("          <td class=\"" . $this->css_scGridToolbarPadd . "\" nowrap valign=\"middle\" align=\"right\" width=\"33%\"> \r\n");
           if ($this->nmgp_botoes['summary'] == "on" && !$_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['opc_psq'] && empty($this->nm_grid_sem_reg) && !$this->grid_emb_form)
           {
             if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['SC_Ind_Groupby'] == "sc_free_group_by" && empty($_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['SC_Gb_Free_cmp']))
@@ -5663,12 +5758,8 @@ $nm_saida->saida("    </style>\r\n");
                   $NM_btn = true;
             }
           }
-          if ($this->nmgp_botoes['reload'] == "on")
-          {
-              $Cod_Btn = nmButtonOutput($this->arr_buttons, "breload", "nm_gp_submit_ajax ('igual', 'breload');", "nm_gp_submit_ajax ('igual', 'breload');", "reload_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
-              $nm_saida->saida("           $Cod_Btn \r\n");
-              $NM_btn = true;
-          }
+          $nm_saida->saida("         </td> \r\n");
+          $nm_saida->saida("          <td class=\"" . $this->css_scGridToolbarPadd . "\" nowrap valign=\"middle\" align=\"right\" width=\"33%\"> \r\n");
           if (is_file("grid_consulta_faltas_help.txt") && !$this->grid_emb_form)
           {
              $Arq_WebHelp = file("grid_consulta_faltas_help.txt"); 
@@ -5721,6 +5812,12 @@ $nm_saida->saida("    </style>\r\n");
          $nm_saida->saida("           $Cod_Btn \r\n");
          $NM_btn = true;
       }
+          if ($this->nmgp_botoes['reload'] == "on")
+          {
+              $Cod_Btn = nmButtonOutput($this->arr_buttons, "breload", "nm_gp_submit_ajax ('igual', 'breload');", "nm_gp_submit_ajax ('igual', 'breload');", "reload_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
+              $nm_saida->saida("           $Cod_Btn \r\n");
+              $NM_btn = true;
+          }
       if (is_file($this->Ini->path_css . "schemas.ini") && !$_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['opc_psq'] && empty($this->nm_grid_sem_reg) && !$this->grid_emb_form)
       {
           $arq_sch = file($this->Ini->path_css . "schemas.ini");
@@ -6092,6 +6189,7 @@ $nm_saida->saida("    </style>\r\n");
           $SC_Label_atu['fecha_sancion'] = (isset($this->New_label['fecha_sancion'])) ? $this->New_label['fecha_sancion'] : 'FECHA SANCION'; 
           $SC_Label_atu['evidencia'] = (isset($this->New_label['evidencia'])) ? $this->New_label['evidencia'] : 'EVIDENCIA'; 
           $SC_Label_atu['usuario_registro'] = (isset($this->New_label['usuario_registro'])) ? $this->New_label['usuario_registro'] : 'USUARIO REGISTRO'; 
+          $SC_Label_atu['perfil_s'] = (isset($this->New_label['perfil_s'])) ? $this->New_label['perfil_s'] : 'PERFIL S'; 
           $SC_Label_atu['perfil_r'] = (isset($this->New_label['perfil_r'])) ? $this->New_label['perfil_r'] : 'PERFIL R'; 
           $SC_Label_atu['fecha_registro'] = (isset($this->New_label['fecha_registro'])) ? $this->New_label['fecha_registro'] : 'FECHA REGISTRO'; 
           foreach ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['field_order'] as $cada_field)
@@ -8462,7 +8560,7 @@ $nm_saida->saida("    </style>\r\n");
                 (
                     (
                     $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['fast_search'][0] == 'SC_all_Cmp' &&
-                    in_array($field, array('colaborador', 'desc_falta', 'tipo_falta_descripcion', 'fecha_falta', 'tipo_sancion', 'estado_sancion', 'fecha_sancion', 'evidencia', 'usuario_registro', 'perfil_r', 'fecha_registro'))
+                    in_array($field, array('colaborador', 'desc_falta', 'tipo_falta_descripcion', 'fecha_falta', 'tipo_sancion', 'estado_sancion', 'fecha_sancion', 'evidencia', 'usuario_registro', 'perfil_s', 'perfil_r', 'fecha_registro'))
                     ) ||
                     $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['fast_search'][0] == $field ||
                     strpos($_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['fast_search'][0], $field . '_VLS_') !== false ||

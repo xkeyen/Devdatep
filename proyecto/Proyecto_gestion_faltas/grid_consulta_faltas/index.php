@@ -235,8 +235,8 @@ class grid_consulta_faltas_ini
       $this->nm_dt_criacao   = "20240311"; 
       $this->nm_hr_criacao   = "132307"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20240311"; 
-      $this->nm_hr_ult_alt   = "143312"; 
+      $this->nm_dt_ult_alt   = "20240313"; 
+      $this->nm_hr_ult_alt   = "121307"; 
       $this->Apl_paginacao   = "PARCIAL"; 
       $temp_bug_list         = explode(" ", microtime()); 
       list($NM_usec, $NM_sec) = $temp_bug_list; 
@@ -1123,7 +1123,7 @@ class grid_consulta_faltas_ini
       $this->nm_ttf_chi  = array("zh_cn", "zh_hk", "ko");
       $_SESSION['sc_session'][$this->sc_page]['grid_consulta_faltas']['seq_dir'] = 0; 
       $_SESSION['sc_session'][$this->sc_page]['grid_consulta_faltas']['sub_dir'] = array(); 
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQJKH9BiZ1rwHQrqHuzGV9FeV5X7HIFUHQXOH9B/DSNOZMXGHgNOZSJGH5FYDoBOHQNwZSX7Z1BYVWJwDMvmVcFKV5BmVoBqD9BsZkFGHAvsD5BOHgvsHArsHEXCHMBOHQNwDQB/HAN7HuBqDMBYVcFiV5FYHMFaHQBsZkFGZ1NOHuX7HgBYHAFKV5FqHIFUHQJKH9BiZ1BYHuXGDMvOZSrCV5FYHMX7HQBqZkFGHIveHQBiHgvsHAFKH5FYVoX7D9JKDQX7D1BOV5FGDMzGVcBUHEF/HMBOHQJmH9BqHANOHuBqHgNOHAFKV5FqHIBiHQJeDQFaHINaVWJeDMNOVcFiV5FYHIF7HQBiZkFGDSBeD5JwHgNKHEFKV5FqHIX7HQXsDuFaHANOHuJwHgrwV9FiH5FqDoJeD9JmZ1B/D1NaD5rqHgrKHArsHEXCHIJeDcXGH9FUHANOHuraDMBYZSrCV5FYHMJwHQJmH9BOD1NaD5JeHgNOHAFKV5FqHMB/DcXGZ9XGHIrwHQBODMBYVcFiV5X/VoFGHQXOZSBqHINKZMJeHgrKDkFeH5FYVoX7D9JKDQX7D1BOV5FGHuzGDkBOH5FqVoJwD9XOZ1F7HABYZMB/DEBeHENiV5FaHIFGHQJeZ9JeZ1rwHQFaHuzGVIBOV5X7DoF7D9XOZSB/HABYV5X7DMrYHErCDWXCVoXGD9XsDQJsHABYV5BqDMrwDkBsV5F/DoraD9BiZ1FGZ1rYD5NUDEBeZSXeH5FGDoB/D9NmZ9XGDSzGD5F7HuzGVcFKDur/VorqHQBqZ1BiHAzGD5FaDEvsZSJGDuFaZuBqD9NwH9X7Z1rwV5JwHuBYVcFiV5X7VoFGDcBqH9FaHAN7V5JeDErKHEBUH5F/DoF7DcJeDQFGD1BeD5JwDMrwZSJ3H5FqDoJeD9JmZ1B/D1NaD5rqDErKZSXeH5FYDoFUD9JKDQJsZ1rwV5BqHuBYVcXKV5X7HMJsHQBsZ1BOD1rwHuFaDMvCHErCV5FaHMJsHQXGDuFaD1BOV5JeDMBOV9BUH5FqHMB/HQBsH9BOD1rwHQJwDEBODkFeH5FYVoFGHQJKDQB/HABYHQB/DMzGVIB/DWF/VENUD9BsZ1BOHArKHQrqHgBeZSJ3V5FqVoBiDcBwZ9XGHAveHQJwHgrwVIBsHEFYHMBiD9BsVIraD1rwV5X7HgBeHEFKV5FaVoBqD9NwH9X7DSBYD5JsHgrYDkBOH5FqVoraD9BsZSFaD1rwZMFaDEBOHEBUH5F/DoraDcXOZSX7HAN7V5FUHuNOVcrsH5XCVoB/D9XOVIJwZ1NOD5BqDEBeHEBUDWF/HIJsD9XsZ9JeD1BeD5F7DMvmVcFeDWXCDoJsDcBwH9B/Z1rYHQJwDMvCHEJqH5F/HMFGHQBiH9BiZ1rwHQJwDMBOZSNiDWXCDoFUD9BsVINUHArKHQJeHgNKVkXeDuFYHIJsD9XsZ9JeD1BeD5F7DMvmVcFKH5XCDoraD9BsZ1B/Z1BeHQJwDEBODkFeH5FYVoFGHQJKDQBqHAvmV5JeDMvOZSNiH5B3VorqHQNmVIJsHAzGD5BOHgBeHEFiV5B3DoF7D9XsDuFaHAveVWXGHgrwDkFCH5XCVoraHQXOZ1X7DSvmZMFaHgrKDkXKH5FYHMXGHQXOZSX7Z1N7HuFaHuNOZSrCH5FqDoXGHQJmZ1F7D1rKV5FaDEBOHEXeV5FaHIJsD9XsZ9JeD1BeD5F7DMvmVcBUHEX/DoJsHQNmZ1XGZ1veZMNU";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1DcXGDQJsZ1rwD5XGDMvsV9FeDWXKVoF7D9JmH9B/HIBeD5JwDMveHErCV5FqVoJwD9NwDQFaHAveD5NUHgNKDkBOV5FYHMBiHQNmZSBqHArKV5FUDMrYZSXeV5FqHIJsHQNwZSX7D1BOVWJsHuBYVIBsV5X7VErqD9BsZ1FaHArYHuBODEBOHArsH5F/HMBqHQXOH9BiHAveD5NUHgNKDkBOV5FYHMBiDcJUZ1F7HArYV5X7DEBOZSJ3DWF/VoBiDcJUZSX7Z1BYHuFaDMrwDkBODuX7VoX7D9JmZ1B/D1rKD5BiDMBYZSXeV5FaVoBiD9NwZSFGHABYD5rqHuBYVcFKDWFaVoJwDcJUZSB/HABYV5FGDEvsHEFiDWX7DoXGHQXGH9FGHAveD5BOHuzGVcFeDWXCDoJsDcBwH9B/Z1rYHQJwHgNOVkJqH5FYVoJeDcXOZSBiD1veHuBODMNODkBsDuX7VErqDcNmZ1B/HIrwHQFUHgvsHEBUDWFGDoJeHQJeDuFaHAveD5NUHgNKDkBOV5FYHMBiHQBiZkBiDSNOHuBqHgrKHENiDWXCHIXGHQNmDQBOZ1BYHuBiDMNOV9FeV5F/HIXGHQBqZkFUZ1rYHQBiHgBeVkJ3V5FqHIBqHQBiZ9JeZ1BYHuBODMvsV9FeDur/HMJwHQBiZkFUD1rwV5FGDEBeHEXeH5X/DoF7HQNwDQBqDSN7HuX7DMvmDkBsDWF/HIrqHQXGZkFUZ1rYHQFUHgBYHErCDuXKZuBOHQXsDQBOZ1BYHQXGDMBYV9FeHEX7VoBiHQNwZ1FUZ1rYHQFGHgBOHArCDWr/HIB/DcXGDuBOD1BeD5rqHuvmVcBOH5B7VoBqHQXOZkBiDSNOHQXGDMvCVkJqDWr/HIFUHQNmZ9JeZ1BYHuraDMvmDkB/H5B7VoFGHQXGZkFUZ1rYHuFaDMvCDkXKDuFaHMJeHQNmDQBOZ1zGV5BqDMzGVIBsDurGVEFGHQXOVIraD1rwV5FGDEBeHEXeH5X/DoF7D9NwZSX7D1BeV5raHuzGVcFKDWFaVENUD9JmZ1X7Z1BeHQX7HgBYDkFeV5FaHMJsD9NwH9X7Z1rwD5XGHuzGVIBODWFaDoXGDcBwZ1FGHANOV5JeDEBOHEFiDWFqDoXGHQXGZSBiZ1N7D5JwHuBYVcFeV5FYVoB/D9JmH9B/D1zGD5FaDEvsDkXKHEB7VoFGD9NwDQJsHIrKV5JeDMvsVcBUDWXKVoraD9BiH9FaHIBeZMBODErKVkXeV5FaDoB/D9NmDQBOZ1rwV5BqHgvsDkFCDWJeDoFGD9XOZ1rqD1rKD5rqDMBYHEJGH5FYVoB/HQXGZ9rqD1BeD5rqHuvmVcBOH5B7VoBqD9XOH9B/D1rwD5BiDEBeHEFiV5FaDoXGD9NmDQB/Z1rwHuNUDMNOVcB/H5FqHIraDcFYZ1FGZ1BeHuJwHgvCHArCH5X/DoBOHQFYDuBqD1BeHuFUDMNODkB/H5FqHMBiD9BsVIraD1rwV5X7HgBeHErsDWrGDoBOHQBiZ9XGD1NKV5JeDMvOZSJqDWXKVoFGHQJmZ1F7Z1vmD5rqDEBOHArCDWF/HMJeD9JKDuFaHIrKVWJwHuvmVcBUHEFYVEFGHQNmZSFaD1rwV5XGDMveHEBUDWFqHIJsD9XsZ9JeD1BeD5F7DMvmVcFKH5XCDoraD9BsZ1B/Z1BeHQJwDEBODkFeH5FYVoFGHQJKDQBqDSzGD5NUDMvOVcXeV5r/VEB/";
       $this->prep_conect();
       $this->conectDB();
       if (!in_array(strtolower($this->nm_tpbanco), $this->nm_bases_all))
@@ -2415,6 +2415,10 @@ class grid_consulta_faltas_apl
                 { 
                     $cadapar[0] = str_replace("usuario_registro", "g2.general_name", $cadapar[0]);
                 } 
+                if ($cadapar[0] == "perfil_s")  
+                { 
+                    $cadapar[0] = str_replace("perfil_s", "d3.division_name", $cadapar[0]);
+                } 
                 if ($cadapar[0] == "perfil_r")  
                 { 
                     $cadapar[0] = str_replace("perfil_r", "d2.division_name", $cadapar[0]);
@@ -2426,10 +2430,6 @@ class grid_consulta_faltas_apl
                 if ($cadapar[0] == "usuario_sancion")  
                 { 
                     $cadapar[0] = str_replace("usuario_sancion", "g3.general_name", $cadapar[0]);
-                } 
-                if ($cadapar[0] == "perfil_s")  
-                { 
-                    $cadapar[0] = str_replace("perfil_s", "d3.division_name", $cadapar[0]);
                 } 
                 if ($cadapar[0] == "area")  
                 { 
@@ -3055,6 +3055,7 @@ class grid_consulta_faltas_apl
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['field_order'][] = "fecha_sancion";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['field_order'][] = "evidencia";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['field_order'][] = "usuario_registro";
+          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['field_order'][] = "perfil_s";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['field_order'][] = "perfil_r";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['field_order'][] = "fecha_registro";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['field_order_orig'] = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['field_order'];
@@ -3062,6 +3063,7 @@ class grid_consulta_faltas_apl
           { 
               $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['usr_cmp_sel'] = array();
           } 
+          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['usr_cmp_sel']['perfil_r'] = "off";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['usr_cmp_sel']['fecha_registro'] = "off";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['usr_cmp_sel_orig'] = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_consulta_faltas']['usr_cmp_sel'];
       } 
@@ -4416,6 +4418,10 @@ if (window.parent && typeof window.parent.updateGeneratedPdfFile === "function")
           if ($field == "SC_all_Cmp" || $field == "usuario_registro") 
           {
               $this->SC_monta_condicao($comando, "g2.general_name", $arg_search, $data_search, "VARCHAR", false);
+          }
+          if ($field == "SC_all_Cmp" || $field == "perfil_s") 
+          {
+              $this->SC_monta_condicao($comando, "d3.division_name", $arg_search, $data_search, "VARCHAR", false);
           }
           if ($field == "SC_all_Cmp" || $field == "perfil_r") 
           {

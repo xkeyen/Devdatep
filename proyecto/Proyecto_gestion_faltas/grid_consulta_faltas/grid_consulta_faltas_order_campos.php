@@ -184,16 +184,16 @@ function Ord_cmp_init()
        $tab_def_campos['usuario_registro'] = "g2.general_name";
    }
    $tab_labels["usuario_registro"]   = (isset($_SESSION['sc_session'][$sc_init]['grid_consulta_faltas']['labels']["usuario_registro"])) ? $_SESSION['sc_session'][$sc_init]['grid_consulta_faltas']['labels']["usuario_registro"] : "USUARIO REGISTRO";
-   $tab_ger_campos['perfil_r'] = "on";
+   $tab_ger_campos['perfil_s'] = "on";
    if ($use_alias == "S")
    {
-       $tab_def_campos['perfil_r'] = "perfil_r";
+       $tab_def_campos['perfil_s'] = "perfil_s";
    }
    else
    {
-       $tab_def_campos['perfil_r'] = "d2.division_name";
+       $tab_def_campos['perfil_s'] = "d3.division_name";
    }
-   $tab_labels["perfil_r"]   = (isset($_SESSION['sc_session'][$sc_init]['grid_consulta_faltas']['labels']["perfil_r"])) ? $_SESSION['sc_session'][$sc_init]['grid_consulta_faltas']['labels']["perfil_r"] : "PERFIL R";
+   $tab_labels["perfil_s"]   = (isset($_SESSION['sc_session'][$sc_init]['grid_consulta_faltas']['labels']["perfil_s"])) ? $_SESSION['sc_session'][$sc_init]['grid_consulta_faltas']['labels']["perfil_s"] : "PERFIL S";
    if (isset($_SESSION['scriptcase']['sc_apl_conf']['grid_consulta_faltas']['field_display']) && !empty($_SESSION['scriptcase']['sc_apl_conf']['grid_consulta_faltas']['field_display']))
    {
        foreach ($_SESSION['scriptcase']['sc_apl_conf']['grid_consulta_faltas']['field_display'] as $NM_cada_field => $NM_cada_opc)

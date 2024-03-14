@@ -194,6 +194,8 @@ function Sel_cmp_process()
       $tab_ger_campos['evidencia'] = "on";
       $tab_blk_campos[] = "evidencia";
       $tab_ger_campos['usuario_registro'] = "on";
+      $tab_ger_campos['perfil_s'] = "on";
+      $tab_blk_campos[] = "perfil_s";
       $tab_ger_campos['perfil_r'] = "on";
       $tab_ger_campos['fecha_registro'] = "on";
 
