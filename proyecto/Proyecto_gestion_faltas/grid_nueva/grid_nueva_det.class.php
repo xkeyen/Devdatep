@@ -392,7 +392,7 @@ class grid_nueva_det
        $nm_saida->saida(" <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0\" />\r\n");
    }
 
-           $nm_saida->saida("   <script type=\"text/javascript\" src=\"grid_nueva_jquery_1605.js\"></script>\r\n");
+           $nm_saida->saida("   <script type=\"text/javascript\" src=\"grid_nueva_jquery_9875.js\"></script>\r\n");
            $nm_saida->saida("   <script type=\"text/javascript\" src=\"grid_nueva_ajax.js\"></script>\r\n");
            $nm_saida->saida("   <script type=\"text/javascript\" src=\"grid_nueva_message.js\"></script>\r\n");
            $nm_saida->saida("   <script type=\"text/javascript\">\r\n");

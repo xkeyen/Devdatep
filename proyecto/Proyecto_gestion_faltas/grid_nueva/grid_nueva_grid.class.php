@@ -565,6 +565,7 @@ function actionBar_getStateHide($buttonName)
    $this->nmgp_botoes['gridsave'] = "on";
    $this->nmgp_botoes['gridsavesession'] = "on";
    $this->nmgp_botoes['reload'] = "on";
+   $this->nmgp_botoes['RESUMEN'] = "on";
    $this->Cmps_ord_def['colaborador'] = " asc";
    $this->Cmps_ord_def["g1.general_name"] = "";
    $this->Cmps_ord_def['tipo_falta_descripcion'] = " asc";
@@ -1505,7 +1506,7 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
            $nm_saida->saida("     var scSweetAlertConfirmButtonFAPos = \"" . $confirmButtonFAPos . "\";\r\n");
            $nm_saida->saida("     var scSweetAlertCancelButtonFAPos = \"" . $cancelButtonFAPos . "\";\r\n");
            $nm_saida->saida("   </script>\r\n");
-           $nm_saida->saida("   <script type=\"text/javascript\" src=\"grid_nueva_jquery_1605.js\"></script>\r\n");
+           $nm_saida->saida("   <script type=\"text/javascript\" src=\"grid_nueva_jquery_9875.js\"></script>\r\n");
            $nm_saida->saida("   <script type=\"text/javascript\" src=\"grid_nueva_ajax.js\"></script>\r\n");
            $nm_saida->saida("   <script type=\"text/javascript\" src=\"grid_nueva_message.js\"></script>\r\n");
            $nm_saida->saida("   <script type=\"text/javascript\">\r\n");
@@ -2924,6 +2925,7 @@ $nm_saida->saida("}\r\n");
    include($this->Ini->path_btn . $this->Ini->Str_btn_grid);
    if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_nueva']['embutida'])
    {
+       $this->arr_buttons = array_merge($this->arr_buttons, $this->Ini->arr_buttons_usr);
        $this->NM_css_val_embed = "sznmxizkjnvl";
        $this->NM_css_ajx_embed = "Ajax_res";
    }
@@ -5730,22 +5732,20 @@ $nm_saida->saida("    </style>\r\n");
               $nm_saida->saida("           $Cod_Btn \r\n");
               $NM_btn = true;
       }
-          if ($this->nmgp_botoes['summary'] == "on" && !$_SESSION['sc_session'][$this->Ini->sc_page]['grid_nueva']['opc_psq'] && empty($this->nm_grid_sem_reg) && !$this->grid_emb_form)
-          {
-            if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_nueva']['SC_Ind_Groupby'] == "sc_free_group_by" && empty($_SESSION['sc_session'][$this->Ini->sc_page]['grid_nueva']['SC_Gb_Free_cmp']))
-            { }
-            else {
-              $this->nm_btn_exist['summary'][] = "res_top";
-              if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_nueva']['where_resumo']) && !empty($_SESSION['sc_session'][$this->Ini->sc_page]['grid_nueva']['where_resumo'])) {
-                  $Cod_Btn = nmButtonOutput($this->arr_buttons, "bvoltar", "nm_gp_move('resumo', '0');", "nm_gp_move('resumo', '0');", "res_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "__NM_HINT__ (Alt + Enter)", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
-              } 
-              else { 
-                  $Cod_Btn = nmButtonOutput($this->arr_buttons, "bresumo", "nm_gp_move('resumo', '0');", "nm_gp_move('resumo', '0');", "res_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "__NM_HINT__ (Alt + Enter)", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
-              } 
-              $nm_saida->saida("           $Cod_Btn \r\n");
-                  $NM_btn = true;
-            }
-          }
+      if (!$this->Ini->SC_Link_View && $this->nmgp_botoes['RESUMEN'] == "on" && !$this->grid_emb_form) 
+      { 
+          $this->nm_btn_exist['RESUMEN'][] = "sc_RESUMEN_top";
+           if (isset($this->Ini->sc_lig_md5["tabs"]) && $this->Ini->sc_lig_md5["tabs"] == "S") {
+               $Parms_Lig  = "script_case_init*scin" . NM_encode_input($this->Ini->sc_page) . "*scout";
+               $Md5_Lig    = "@SC_par@" . NM_encode_input($this->Ini->sc_page) . "@SC_par@grid_nueva@SC_par@" . md5($Parms_Lig);
+               $_SESSION['sc_session'][$this->Ini->sc_page]['grid_nueva']['Lig_Md5'][md5($Parms_Lig)] = $Parms_Lig;
+           } else {
+               $Md5_Lig  = "script_case_init*scin" . NM_encode_input($this->Ini->sc_page) . "*scout";
+           }
+          $Cod_Btn = nmButtonOutput($this->arr_buttons, "RESUMEN", "nm_gp_submit5('" .  $this->Ini->sc_protocolo . $this->Ini->server . $this->Ini->path_link  . "" .  SC_dir_app_name('tabs')  . "/index.php', '$this->nm_location', '" .  $Md5_Lig  . "', '_self', '', '', '', '', 'tabs');;", "nm_gp_submit5('" .  $this->Ini->sc_protocolo . $this->Ini->server . $this->Ini->path_link  . "" .  SC_dir_app_name('tabs')  . "/index.php', '$this->nm_location', '" .  $Md5_Lig  . "', '_self', '', '', '', '', 'tabs');;", "sc_RESUMEN_top", "", "RESUMEN", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
+          $nm_saida->saida("          $Cod_Btn \r\n");
+          $NM_btn = true;
+      } 
           $nm_saida->saida("         </td> \r\n");
           $nm_saida->saida("          <td class=\"" . $this->css_scGridToolbarPadd . "\" nowrap valign=\"middle\" align=\"right\" width=\"33%\"> \r\n");
           if ($this->nmgp_botoes['reload'] == "on")
@@ -9019,6 +9019,10 @@ $nm_saida->saida("    </style>\r\n");
    $nm_saida->saida("       css_tr        = class_obj;\r\n");
    $nm_saida->saida("       obj.className = '" . $this->css_scGridFieldClick . "';\r\n");
    $nm_saida->saida("   }\r\n");
+   $nm_saida->saida("   function RESUMEN() \r\n");
+   $nm_saida->saida("   { \r\n");
+   $nm_saida->saida("       \r\n");
+   $nm_saida->saida("   } \r\n");
    if ($this->Rec_ini == 0)
    {
        $nm_saida->saida("   nm_gp_ini = \"ini\";\r\n");
@@ -9167,6 +9171,205 @@ $nm_saida->saida("    </style>\r\n");
    $nm_saida->saida("      document.F3.nmgp_url_saida.value = \"\";\r\n");
    $nm_saida->saida("      document.F3.action               = \"./\"  ;\r\n");
    $nm_saida->saida("      if (ancor != null) {\r\n");
+   $nm_saida->saida("         ajax_save_ancor(\"F3\", ancor);\r\n");
+   $nm_saida->saida("      } else {\r\n");
+   $nm_saida->saida("          document.F3.submit() ;\r\n");
+   $nm_saida->saida("      } \r\n");
+   $nm_saida->saida("   } \r\n");
+   $nm_saida->saida("   function nm_gp_submit4(apl_lig, apl_saida, parms, target, opc, apl_name, ancor) \r\n");
+   $nm_saida->saida("   { \r\n");
+   $nm_saida->saida("      document.F3.target = target; \r\n");
+   $nm_saida->saida("      if (\"dbifrm_widget\" == target.substr(0, 13)) {\r\n");
+   $nm_saida->saida("          var targetIframe = $(parent.document).find(\"[name='\" + target + \"']\");\r\n");
+   $nm_saida->saida("          apl_lig = parent.scIframeSCInit && parent.scIframeSCInit[target] ? addUrlParam(apl_lig, \"script_case_init\", parent.scIframeSCInit[target]) : apl_lig;\r\n");
+   $nm_saida->saida("          targetIframe.attr(\"src\", apl_lig);\r\n");
+   $nm_saida->saida("      }\r\n");
+   $nm_saida->saida("      document.F3.action = apl_lig  ;\r\n");
+   $nm_saida->saida("      if (opc == 'igual' || opc == 'novo') \r\n");
+   $nm_saida->saida("      {\r\n");
+   $nm_saida->saida("          document.F3.nmgp_opcao.value = opc;\r\n");
+   $nm_saida->saida("      }\r\n");
+   $nm_saida->saida("      else\r\n");
+   $nm_saida->saida("      if (opc != null && opc != '') \r\n");
+   $nm_saida->saida("      {\r\n");
+   $nm_saida->saida("          document.F3.nmgp_opcao.value = \"grid\" ;\r\n");
+   $nm_saida->saida("      }\r\n");
+   $nm_saida->saida("      else\r\n");
+   $nm_saida->saida("      {\r\n");
+   $nm_saida->saida("          document.F3.nmgp_opcao.value = \"igual\" ;\r\n");
+   $nm_saida->saida("      }\r\n");
+   $nm_saida->saida("      document.F3.nmgp_url_saida.value   = apl_saida ;\r\n");
+   $nm_saida->saida("      document.F3.nmgp_parms.value       = parms ;\r\n");
+   $nm_saida->saida("      if (target == '_blank') \r\n");
+   $nm_saida->saida("      {\r\n");
+   $nm_saida->saida("          NM_ancor_ult_lig = ancor;\r\n");
+   $nm_saida->saida("          document.F3.nmgp_outra_jan.value = \"true\" ;\r\n");
+   $nm_saida->saida("          window.open('','jan_sc','location=no,menubar=no,resizable,scrollbars,status=no,toolbar=no');\r\n");
+   $nm_saida->saida("          document.F3.target = \"jan_sc\"; \r\n");
+   $nm_saida->saida("      }\r\n");
+   $nm_saida->saida("      if (target == 'new_tab') \r\n");
+   $nm_saida->saida("      {\r\n");
+   $nm_saida->saida("          NM_ancor_ult_lig = ancor;\r\n");
+   $nm_saida->saida("          document.F3.nmgp_outra_jan.value = \"true\" ;\r\n");
+   $nm_saida->saida("          window.open('','jan_sc','');\r\n");
+   $nm_saida->saida("          document.F3.target = \"jan_sc\"; \r\n");
+   $nm_saida->saida("      }\r\n");
+   $nm_saida->saida("      if (ancor != null && target == '_self') {\r\n");
+   $nm_saida->saida("         ajax_save_ancor(\"F3\", ancor);\r\n");
+   $nm_saida->saida("      } else {\r\n");
+   $nm_saida->saida("          document.F3.submit() ;\r\n");
+   $nm_saida->saida("      } \r\n");
+   $nm_saida->saida("   } \r\n");
+   $nm_saida->saida("   function nm_gp_submit5(apl_lig, apl_saida, parms, target, opc, modal_h, modal_w, m_confirm, apl_name, ancor) \r\n");
+   $nm_saida->saida("   { \r\n");
+   $nm_saida->saida("      parms = parms.replace(/@percent@/g, \"%\"); \r\n");
+   $nm_saida->saida("      if (m_confirm != null && m_confirm != '') \r\n");
+   $nm_saida->saida("      { \r\n");
+   $nm_saida->saida("          if (confirm(m_confirm))\r\n");
+   $nm_saida->saida("          { }\r\n");
+   $nm_saida->saida("          else\r\n");
+   $nm_saida->saida("          {\r\n");
+   $nm_saida->saida("             return;\r\n");
+   $nm_saida->saida("          }\r\n");
+   $nm_saida->saida("      }\r\n");
+   $nm_saida->saida("      if (apl_lig.substr(0, 7) == \"http://\" || apl_lig.substr(0, 8) == \"https://\")\r\n");
+   $nm_saida->saida("      {\r\n");
+   $nm_saida->saida("          if (target == '_blank') \r\n");
+   $nm_saida->saida("          {\r\n");
+   $nm_saida->saida("              window.open (apl_lig);\r\n");
+   $nm_saida->saida("          }\r\n");
+   $nm_saida->saida("          else\r\n");
+   $nm_saida->saida("          {\r\n");
+   $nm_saida->saida("              window.location = apl_lig;\r\n");
+   $nm_saida->saida("          }\r\n");
+   $nm_saida->saida("          return;\r\n");
+   $nm_saida->saida("      }\r\n");
+   $nm_saida->saida("      if (target == 'modal' || target == 'modal_rpdf') \r\n");
+   $nm_saida->saida("      {\r\n");
+   $nm_saida->saida("          NM_ancor_ult_lig = ancor;\r\n");
+   $nm_saida->saida("          par_modal = '?&nmgp_outra_jan=true&nmgp_url_saida=modal&SC_lig_apl_orig=grid_nueva';\r\n");
+   $nm_saida->saida("          if (opc != null && opc != '') \r\n");
+   $nm_saida->saida("          {\r\n");
+   $nm_saida->saida("              par_modal += '&nmgp_opcao=grid';\r\n");
+   $nm_saida->saida("          }\r\n");
+   $nm_saida->saida("          if (parms != null && parms != '') \r\n");
+   $nm_saida->saida("          {\r\n");
+   $nm_saida->saida("              par_modal += '&nmgp_parms=' + parms;\r\n");
+   $nm_saida->saida("          }\r\n");
+   $Sc_parent = "";
+   if ($this->grid_emb_form || $this->grid_emb_form_full)
+   {
+       $Sc_parent = "parent.";
+   }
+   $nm_saida->saida("          if (target == 'modal') \r\n");
+   $nm_saida->saida("          {\r\n");
+   $nm_saida->saida("               " . $Sc_parent . "tb_show('', apl_lig + par_modal + '&TB_iframe=true&modal=true&height=' + modal_h + '&width=' + modal_w, '');\r\n");
+   $nm_saida->saida("          }\r\n");
+   $nm_saida->saida("          else \r\n");
+   $nm_saida->saida("          {\r\n");
+   $nm_saida->saida("               " . $Sc_parent . "tb_show('', apl_lig + par_modal + '&TB_iframe=true&height=' + modal_h + '&width=' + modal_w, '');\r\n");
+   $nm_saida->saida("          }\r\n");
+   $nm_saida->saida("          return;\r\n");
+   $nm_saida->saida("      }\r\n");
+   $nm_saida->saida("      document.F3.target = target; \r\n");
+   $nm_saida->saida("      if (target == '_blank') \r\n");
+   $nm_saida->saida("      {\r\n");
+   $nm_saida->saida("          NM_ancor_ult_lig = ancor;\r\n");
+   $nm_saida->saida("          document.F3.nmgp_outra_jan.value = \"true\" ;\r\n");
+   $nm_saida->saida("          window.open('','jan_sc','location=no,menubar=no,resizable,scrollbars,status=no,toolbar=no');\r\n");
+   $nm_saida->saida("          document.F3.target = \"jan_sc\"; \r\n");
+   $nm_saida->saida("      }\r\n");
+   $nm_saida->saida("      if (target == 'new_tab') \r\n");
+   $nm_saida->saida("      {\r\n");
+   $nm_saida->saida("          NM_ancor_ult_lig = ancor;\r\n");
+   $nm_saida->saida("          document.F3.nmgp_outra_jan.value = \"true\" ;\r\n");
+   $nm_saida->saida("          window.open('','jan_sc','');\r\n");
+   $nm_saida->saida("          document.F3.target = \"jan_sc\"; \r\n");
+   $nm_saida->saida("      }\r\n");
+   $nm_saida->saida("      if (\"dbifrm_widget\" == target.substr(0, 13)) {\r\n");
+   $nm_saida->saida("          var targetIframe = $(parent.document).find(\"[name='\" + target + \"']\");\r\n");
+   $nm_saida->saida("          apl_lig = parent.scIframeSCInit && parent.scIframeSCInit[target] ? addUrlParam(apl_lig, \"script_case_init\", parent.scIframeSCInit[target]) : apl_lig;\r\n");
+   $nm_saida->saida("          targetIframe.attr(\"src\", apl_lig);\r\n");
+   $nm_saida->saida("      }\r\n");
+   $nm_saida->saida("      document.F3.action = apl_lig;\r\n");
+   $nm_saida->saida("      if (opc != null && opc != '') \r\n");
+   $nm_saida->saida("      {\r\n");
+   $nm_saida->saida("          document.F3.nmgp_opcao.value = \"grid\" ;\r\n");
+   $nm_saida->saida("      }\r\n");
+   $nm_saida->saida("      else\r\n");
+   $nm_saida->saida("      {\r\n");
+   $nm_saida->saida("          document.F3.nmgp_opcao.value = \"\" ;\r\n");
+   $nm_saida->saida("      }\r\n");
+   $nm_saida->saida("      document.F3.nmgp_url_saida.value = apl_saida ;\r\n");
+   $nm_saida->saida("      document.F3.nmgp_parms.value     = parms ;\r\n");
+   $nm_saida->saida("      if (ancor != null && target == '_self') {\r\n");
+   $nm_saida->saida("         ajax_save_ancor(\"F3\", ancor);\r\n");
+   $nm_saida->saida("      } else {\r\n");
+   $nm_saida->saida("          document.F3.submit() ;\r\n");
+   $nm_saida->saida("      } \r\n");
+   $nm_saida->saida("      document.F3.nmgp_outra_jan.value   = \"\" ;\r\n");
+   $nm_saida->saida("   } \r\n");
+   $nm_saida->saida("   function addUrlParam(sUrl, sParam, sValue) {\r\n");
+   $nm_saida->saida("           var baseUrl, urlParams = [], objParams = {}, tmp, i;\r\n");
+   $nm_saida->saida("           tmp = sUrl.split(\"?\");\r\n");
+   $nm_saida->saida("           baseUrl = tmp[0];\r\n");
+   $nm_saida->saida("           if (tmp[1]) {\r\n");
+   $nm_saida->saida("                   urlParams = tmp[1].split(\"&\");\r\n");
+   $nm_saida->saida("           }\r\n");
+   $nm_saida->saida("           for (i = 0; i < urlParams.length; i++) {\r\n");
+   $nm_saida->saida("                   tmp = urlParams[i].split(\"=\");\r\n");
+   $nm_saida->saida("                   objParams[ tmp[0] ] = tmp[1] ? tmp[1] : \"\";\r\n");
+   $nm_saida->saida("           }\r\n");
+   $nm_saida->saida("           objParams[sParam] = sValue;\r\n");
+   $nm_saida->saida("           urlParams = [];\r\n");
+   $nm_saida->saida("           for (tmp in objParams) {\r\n");
+   $nm_saida->saida("                   urlParams.push(tmp + \"=\" + objParams[tmp]);\r\n");
+   $nm_saida->saida("           }\r\n");
+   $nm_saida->saida("           return baseUrl + \"?\" + urlParams.join(\"&\");\r\n");
+   $nm_saida->saida("   }\r\n");
+   $nm_saida->saida("   function nm_gp_submit6(apl_lig, apl_saida, parms, target, pos, alt, larg, opc, modal_h, modal_w, m_confirm, apl_name, ancor) \r\n");
+   $nm_saida->saida("   { \r\n");
+   if ($_SESSION['scriptcase']['proc_mobile']) {
+       $nm_saida->saida("   if (alt == '' || alt == 0) {\r\n");
+       $nm_saida->saida("       alt = '440';\r\n");
+       $nm_saida->saida("   }\r\n");
+       $nm_saida->saida("   if (larg == '' || larg == 0) {\r\n");
+       $nm_saida->saida("       larg = '630';\r\n");
+       $nm_saida->saida("   }\r\n");
+       $nm_saida->saida("   nm_gp_submit5(apl_lig, apl_saida, parms, 'modal', opc, alt, larg, m_confirm, apl_name, ancor); \r\n");
+       $nm_saida->saida("   return;\r\n");
+   }
+   $nm_saida->saida("      if (apl_lig.substr(0, 7) == \"http://\" || apl_lig.substr(0, 8) == \"https://\")\r\n");
+   $nm_saida->saida("      {\r\n");
+   $nm_saida->saida("          if (target == '_blank') \r\n");
+   $nm_saida->saida("          {\r\n");
+   $nm_saida->saida("              window.open (apl_lig);\r\n");
+   $nm_saida->saida("          }\r\n");
+   $nm_saida->saida("          else\r\n");
+   $nm_saida->saida("          {\r\n");
+   $nm_saida->saida("              window.location = apl_lig;\r\n");
+   $nm_saida->saida("          }\r\n");
+   $nm_saida->saida("          return;\r\n");
+   $nm_saida->saida("      }\r\n");
+   $nm_saida->saida("      if (pos == \"A\") {obj = document.getElementById('nmsc_iframe_liga_A_grid_nueva');} \r\n");
+   $nm_saida->saida("      if (pos == \"B\") {obj = document.getElementById('nmsc_iframe_liga_B_grid_nueva');} \r\n");
+   $nm_saida->saida("      if (pos == \"E\") {obj = document.getElementById('nmsc_iframe_liga_E_grid_nueva');} \r\n");
+   $nm_saida->saida("      if (pos == \"D\") {obj = document.getElementById('nmsc_iframe_liga_D_grid_nueva');} \r\n");
+   $nm_saida->saida("      obj.style.height = (alt == parseInt(alt)) ? alt + 'px' : alt;\r\n");
+   $nm_saida->saida("      obj.style.width  = (larg == parseInt(larg)) ? larg + 'px' : larg;\r\n");
+   $nm_saida->saida("      document.F3.target = target; \r\n");
+   $nm_saida->saida("      document.F3.action = apl_lig  ;\r\n");
+   $nm_saida->saida("      if (opc != null && opc != '') \r\n");
+   $nm_saida->saida("      {\r\n");
+   $nm_saida->saida("          document.F3.nmgp_opcao.value = \"grid\" ;\r\n");
+   $nm_saida->saida("      }\r\n");
+   $nm_saida->saida("      else\r\n");
+   $nm_saida->saida("      {\r\n");
+   $nm_saida->saida("          document.F3.nmgp_opcao.value = \"\" ;\r\n");
+   $nm_saida->saida("      }\r\n");
+   $nm_saida->saida("      document.F3.nmgp_url_saida.value = apl_saida ;\r\n");
+   $nm_saida->saida("      document.F3.nmgp_parms.value     = parms ;\r\n");
+   $nm_saida->saida("      if (ancor != null && target == '_self') {\r\n");
    $nm_saida->saida("         ajax_save_ancor(\"F3\", ancor);\r\n");
    $nm_saida->saida("      } else {\r\n");
    $nm_saida->saida("          document.F3.submit() ;\r\n");
@@ -9504,10 +9707,6 @@ $nm_saida->saida("    </style>\r\n");
    }
    $nm_saida->saida("   function process_hotkeys(hotkey)\r\n");
    $nm_saida->saida("   {\r\n");
-   $nm_saida->saida("      if (hotkey == 'sys_format_res') { \r\n");
-   $nm_saida->saida("         var output =  $('#res_top').click();\r\n");
-   $nm_saida->saida("         return (0 < output.length);\r\n");
-   $nm_saida->saida("      }\r\n");
    $nm_saida->saida("      if (hotkey == 'sys_format_webh') { \r\n");
    $nm_saida->saida("         var output =  $('#help_bot').click();\r\n");
    $nm_saida->saida("         return (0 < output.length);\r\n");

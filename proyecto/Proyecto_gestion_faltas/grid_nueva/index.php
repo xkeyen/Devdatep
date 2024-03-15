@@ -235,8 +235,8 @@ class grid_nueva_ini
       $this->nm_dt_criacao   = "20240313"; 
       $this->nm_hr_criacao   = "133356"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20240313"; 
-      $this->nm_hr_ult_alt   = "135505"; 
+      $this->nm_dt_ult_alt   = "20240315"; 
+      $this->nm_hr_ult_alt   = "102235"; 
       $this->Apl_paginacao   = "PARCIAL"; 
       $temp_bug_list         = explode(" ", microtime()); 
       list($NM_usec, $NM_sec) = $temp_bug_list; 
@@ -518,6 +518,18 @@ class grid_nueva_ini
       {
           $_SESSION['sc_session'][$this->sc_page]['grid_nueva']['dashboard_info']['maximized'] = 1 == $_GET['maximized'];
       }
+      $Tmp_apl_lig = "tabs";
+      if (is_file($this->root . $this->path_link . "_lib/_app_data/tabs_ini.php"))
+      {
+          require($this->root . $this->path_link . "_lib/_app_data/tabs_ini.php");
+          $Tmp_apl_lig = $arr_data['friendly_url'];
+          if (isset($arr_data['md5']) && trim($arr_data['md5']) == "LigMd5")
+          {
+              $this->sc_lig_md5["tabs"] = 'S';
+          }
+      }
+      $this->sc_lig_target["B_@scinf_resumen"] = '_self';
+      $this->sc_lig_target["B_@scinf_resumen_@scinf_tabs"] = '_self';
       if ($_SESSION['sc_session'][$this->sc_page]['grid_nueva']['dashboard_info']['under_dashboard'])
       {
           $sTmpDashboardApp = $_SESSION['sc_session'][$this->sc_page]['grid_nueva']['dashboard_info']['dashboard_app'];
@@ -1009,6 +1021,17 @@ class grid_nueva_ini
       { 
           $_SESSION['scriptcase']['sc_num_img'] = 1;
       } 
+      $this->arr_buttons_usr = array();
+
+      $this->arr_buttons_usr['RESUMEN']['hint']             = "";
+      $this->arr_buttons_usr['RESUMEN']['type']             = "button";
+      $this->arr_buttons_usr['RESUMEN']['value']            = "RESUMEN";
+      $this->arr_buttons_usr['RESUMEN']['display']          = "text_fontawesomeicon";
+      $this->arr_buttons_usr['RESUMEN']['display_position'] = "text_right";
+      $this->arr_buttons_usr['RESUMEN']['style']            = "default";
+      $this->arr_buttons_usr['RESUMEN']['image']            = "";
+      $this->arr_buttons_usr['RESUMEN']['has_fa']            = "true";
+      $this->arr_buttons_usr['RESUMEN']['fontawesomeicon']            = "fas fa-align-justify";
       $this->str_google_fonts= isset($str_google_fonts)?$str_google_fonts:'';
       $this->regionalDefault();
       $this->Str_btn_grid    = trim($str_button) . "/" . trim($str_button) . $_SESSION['scriptcase']['reg_conf']['css_dir'] . ".php";
@@ -1123,7 +1146,7 @@ class grid_nueva_ini
       $this->nm_ttf_chi  = array("zh_cn", "zh_hk", "ko");
       $_SESSION['sc_session'][$this->sc_page]['grid_nueva']['seq_dir'] = 0; 
       $_SESSION['sc_session'][$this->sc_page]['grid_nueva']['sub_dir'] = array(); 
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQJeDQFaDSBYD5NUDMBYDkFCDWF/DorqDcBqZkFGZ1BeD5JeDMveHEJGDWr/DoJeHQBiZSX7DSrwHuF7DMvmDkBsDWXCDoJsDcBwH9B/Z1rYHQJwHgveVkJ3DWF/VoBiDcJUZSX7Z1BYHuFaHgvOVcBODuX7HIJsDcBqZSBqHABYV5BOHgNOZSJ3V5XCVoBqHQNwZSBiZ1rwVWBqHuvmV9FeV5F/HMBiD9BsVIraD1rwV5X7HgBeHEFiH5F/VoB/D9XsDQX7Z1rwHuFaHuNOZSrCH5FqDoXGHQJmZ1FUZ1BeV5BODErKVkXeHEFqVoFaDcXOZSX7Z1N7VWJwHgrKVcFCDWF/VoB/HQFYZSFaHArKV5XGDErKHErCDWF/VoBiDcJUZSX7Z1BYHuFaHgrwVcrsDWFaDoFUDcBqZkFGHAvmD5JeHgvsHEJGH5FYVoJwHQBiDuBqHIrwHuraHgrKVIBsDWFaHIFUHQNmZkFGHArKV5FUDMrYZSXeV5FqHIJsHQNmDuBqDSN7HQJeDMzGVcXKDWF/HMFGHQBiZ1FUZ1rYHQraHgBOHArCV5XCHMFGHQJeDuBOZ1BYHuraDMvmVIBsV5FYHMF7HQNmVIraZ1rYHQXGHgBYHArCDuJeHIFUHQNmDuBOD1BeD5rqHuvmVcBOH5B7VoBqHQXOZ1BiDSNOHQF7HgBeZSJ3DWXCHMBOHQFYDuBOZ1BYHuNUDMvsVcFeDuFGVErqHQBsZ1FUZ1rYHuBOHgvsHArCHEFaDoJsHQXODQBOZ1BYHurqDMNOV9FeDWJeHMraDcFYZkFUD1rwV5FGDEBeHEXeH5X/DoF7HQNwDuBqDSN7HuBOHgrwVIB/DWJeHMJwHQBiVIraZ1rYHQBiHgBeZSJqH5X/DoXGHQFYDuBOZ1BYHQJwHgrwZSNiDuX7HIX7HQBiZ1FUZ1vOD5JeHgrKVkJ3DurmZuXGHQNwZ9JeD1BeD5rqHuvmVcBOH5B7VoBqD9XOH9B/D1rwD5BiDErKHEFiDWX7ZuFaD9JKDQB/Z1rwHuF7DMvsZSrCV5X7HIBiD9XOZSB/Z1BeV5BODErKVkXeDWX7VoFGDcJUDQFaHAN7D5BqHuNOVcFKDWFYVoFGHQFYH9BqZ1NOV5FaDEvsHErCV5FqDoraD9JKZSX7D1vOV5JwHuBYZSNiHEX/DoXGD9XOZ1F7HIveD5BqHgBYHErsDWFGDoB/D9NmZSFGHIrwVWXGHuzGVIBOV5X7VoraD9BiZ1FUZ1BeD5JeDMBYZSJGDWr/VoXGD9NwDQJwD1veV5FGHgvsVcFCH5FqDoraHQFYVIJwD1rwV5FGDEBeHEXeH5X/DoF7D9NwZSX7D1BeV5raHuvmVcFKV5X7VoFGD9BiZ1X7Z1BeHQFUHgBOHEJqH5FYHMB/DcXGDQFaZ1rwHQFaDMrwV9FeH5B7VorqHQXGZkBiD1rwHQNUHgBOZSJqH5FYHIJsD9XsZ9JeD1BeD5F7DMvmVcBUDWrmVorqHQNmVINUD1vsD5BqHgveDkB/DWFGDoXGHQJKDQJsZ1vCV5FGHuNOV9FeDWXCHMFUHQXGH9BqDSBeHuJwHgBODkXKDuFaHMFGHQFYZSFGD1BeHuFGHgrwVIBOV5X7HMBiD9BsVIraD1rwV5X7HgBeHEFiH5F/VoB/D9XsDQX7Z1rwHuFaHuNOZSrCH5FqDoXGHQJmZ1BiDSvOV5FUHgveHEBOV5JeZura";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1DcJeZSX7Z1BYD5FaDMrYVIB/DWF/VorqHQNwZ1B/Z1BeHuJeDEvsHEFiDWXCHIFGHQJKDQJsZ1vCV5FGHuNOV9FeDWB3VoF7HQBiZkBiDSNOHuBqHgrKHENiDWXCHIXGHQNmDQBOZ1BYHuBiDMNOV9FeV5F/HIXGHQBqZkFUZ1rYHQBiHgBeVkJ3V5FqHIBqHQBiZ9JeZ1BYHuBODMvsV9FeDur/HMJwHQBiZkFUD1rwV5FGDEBeHEXeH5X/DoF7HQNwDQBqDSN7HuX7DMvmDkBsDWF/HIrqHQXGZkFUZ1rYHQFUHgBYHErCDuXKZuBOHQXsDQBOZ1BYHQXGDMBYV9FeHEX7VoBiHQNwZ1FUZ1rYHQFGHgBOHArCDWr/HIB/DcXGDuBOD1BeD5rqHuvmVcBOH5B7VoBqHQXOZkBiDSNOHQXGDMvCVkJqDWr/HIFUHQNmZ9JeZ1BYHuraDMvmDkB/H5B7VoFGHQXGZkFUZ1rYHuFaDMvCDkXKDuFaHMJeHQNmDQBOZ1zGV5BqDMzGVIBsDurGVEFGHQXOVIraD1rwV5FGDEBeHEXeH5X/DoF7D9NwZSX7D1BeV5raHuzGVcFKDWFaVENUD9JmZ1X7Z1BeHQX7HgBYDkFeV5FaHMJsD9NwH9X7Z1rwD5XGHuzGVIBODWFaDoXGDcBwZ1FGHANOV5JeDEBOHEFiDWFqDoXGHQXGZSBiZ1N7D5JwHuBYVcFeV5FYVoB/D9JmH9B/D1zGD5FaDEvsDkXKHEB7VoFGD9NwDQJsHIrKV5JeDMvsVcBUDWXKVoraD9BiH9FaHIBeZMBODErKVkXeV5FaDoB/D9NmDQBOZ1rwV5BqHgvsDkFCDWJeDoFGD9XOZ1rqD1rKD5rqDMBYHEJGH5FYVoB/HQXGZ9rqD1BeD5rqHuvmVcBOH5B7VoBqD9XOH9B/D1rwD5BiDEBeHEFiV5FaDoXGD9NmDQB/Z1rwHuNUDMNOVcB/H5FqHIraDcFYZ1FGZ1BeHuJwHgvCHArCH5X/DoBOHQFYDuBqD1BeHuFUDMNODkB/H5FqHMBiD9BsVIraD1rwV5X7HgBeHENiDWFqHMBiDcJeZSFUDSzGV5JeHgrKVcFeDWF/HMB/HQXOH9BqHANOHuBODENOHEBUHEFqVoX7HQXOZSBiHAveD5NUHgNKDkBOV5FYHMBiHQFYH9B/HIBeD5XGDEBeHEXeH5F/DoFUD9XsH9FGHABYD5JwHuBYVIBODWXKDoJsD9XOZ1F7HIveD5BqHgBeHEFiV5B3DoF7D9XsDuFaHAveHuFaHuNOZSrCH5FqDoXGHQJmZ1F7Z1rYHQFaHgBeVkJ3DWr/HIraHQNmDQFUD1veHuNUDMBYDkB/DWXKDoXGD9JmZ1FGHArKV5FUDMrYZSXeV5FqHIJsDcBwDQJsHABYD5F7HuNODkBsDWXCDoJsDcBwH9B/Z1rYHQJwHgveDkXKDWBmDoJeHQXODQBqHANKV5BqDMvOV9BUDWFYHMBiD9BsVIraD1rwV5X7HgBeHErCDuJeHIX7D9XsDQFaDSNaVWBODMBYVcFeDWFYHIFUHQNmZ1FGD1rwD5BiDMzGVkJGDWFqVoBqHQXGDuFaHAveD5NUHgNKDkBOV5FYHMBiDcJUZ1F7HArYV5X7DEBOZSJ3DWF/VoBiDcJUZSX7Z1BYHuFaDMvsV9FiV5BmVorq";
       $this->prep_conect();
       $this->conectDB();
       if (!in_array(strtolower($this->nm_tpbanco), $this->nm_bases_all))

@@ -1,0 +1,6 @@
+.css_area_registro_label, .css_area_registro_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_area_registro_grid_line, .css_area_registro_grid_line:hover {vertical-align: top;text-align: right;}
+.css_total_faltas_label, .css_total_faltas_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_total_faltas_grid_line, .css_total_faltas_grid_line:hover {vertical-align: top;text-align: right;}
+.css_porcentaje_faltas_label, .css_porcentaje_faltas_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_porcentaje_faltas_grid_line, .css_porcentaje_faltas_grid_line:hover {vertical-align: top;text-align: right;}

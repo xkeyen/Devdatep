@@ -6890,6 +6890,7 @@ if($_SESSION['sc_session'][$this->Ini->sc_page]['grid_nueva']['proc_pdf'] || $_S
        if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_nueva']['embutida'])
        {
            include($this->Ini->path_btn . $this->Ini->Str_btn_grid);
+           $this->arr_buttons = array_merge($this->arr_buttons, $this->Ini->arr_buttons_usr);
        }
        if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_nueva']['embutida'])
        {
@@ -7391,7 +7392,7 @@ if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_nueva']['doc_word'])
            $nm_saida->saida("   var sc_ajaxBordS = '" . $this->Ini->Border_s_ajax . "';\r\n");
            $nm_saida->saida("   var sc_ajaxBordW = '" . $this->Ini->Border_w_ajax . "';\r\n");
            $nm_saida->saida(" </script>\r\n");
-           $nm_saida->saida(" <script type=\"text/javascript\" src=\"grid_nueva_jquery_1605.js\"></script>\r\n");
+           $nm_saida->saida(" <script type=\"text/javascript\" src=\"grid_nueva_jquery_9875.js\"></script>\r\n");
            $nm_saida->saida(" <script type=\"text/javascript\" src=\"grid_nueva_message.js\"></script>\r\n");
            $nm_saida->saida(" <script type=\"text/javascript\" src=\"../_lib/lib/js/scInput.js\"></script>\r\n");
            $nm_saida->saida(" <script type=\"text/javascript\" src=\"../_lib/lib/js/jquery.scInput.js\"></script>\r\n");

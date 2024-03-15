@@ -1,0 +1,6 @@
+.css_persona_label, .css_persona_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_persona_grid_line, .css_persona_grid_line:hover {vertical-align: top;text-align: right;}
+.css_ejecucion_de_sanciones_label, .css_ejecucion_de_sanciones_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_ejecucion_de_sanciones_grid_line, .css_ejecucion_de_sanciones_grid_line:hover {vertical-align: top;text-align: right;}
+.css_porcentaje_label, .css_porcentaje_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_porcentaje_grid_line, .css_porcentaje_grid_line:hover {vertical-align: top;text-align: right;}

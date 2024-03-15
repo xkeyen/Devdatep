@@ -1,0 +1,10 @@
+.css_falta_label, .css_falta_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_falta_grid_line, .css_falta_grid_line:hover {vertical-align: top;text-align: right;}
+.css_cantidad_label, .css_cantidad_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_cantidad_grid_line, .css_cantidad_grid_line:hover {vertical-align: top;text-align: right;}
+.css_porcentaje_label, .css_porcentaje_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_porcentaje_grid_line, .css_porcentaje_grid_line:hover {vertical-align: top;text-align: right;}
+.css_tipo_sancion_label, .css_tipo_sancion_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_tipo_sancion_grid_line, .css_tipo_sancion_grid_line:hover {vertical-align: top;text-align: right;}
+.css_total_sanciones_label, .css_total_sanciones_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_total_sanciones_grid_line, .css_total_sanciones_grid_line:hover {vertical-align: top;text-align: right;}
